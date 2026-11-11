@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "c3-vcell"
+version = "0.1.0"
+description = "Conditional perturbation-response modeling for single-cell data"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "anndata>=0.10.8,<0.13",
+  "h5py>=3.9,<4",
+  "numpy>=1.26,<3",
+  "pandas>=2.1,<3",
+  "pyarrow>=15,<25",
+  "scipy>=1.11,<2",
+  "torch>=2.4,<3",
+  "cell-eval2==0.22.0",
+  "pdex==0.3.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.2,<10"]
+vcc = ["vcc-cli==0.3.0"]
+epigenomics = [
+  "pyliftover>=0.4.1,<1",
+  "py2bit>=0.3.2,<1; platform_system != 'Windows'",
+]
+
+[project.scripts]
+c3-vcell = "c3vcell.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
