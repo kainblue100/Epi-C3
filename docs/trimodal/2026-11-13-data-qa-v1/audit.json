@@ -1,0 +1,85 @@
+{
+  "format": "epi-c3-schicar-source-prefix-qa-v1",
+  "status": "complete-prefix-qa",
+  "created_at_utc": "2026-11-13T04:29:30.216154+00:00",
+  "source": {
+    "accession": "GSE305439",
+    "species": "Mus musculus",
+    "sample": "mouse frontal cortex tissue",
+    "assembly_as_reported": "mm10",
+    "geo": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE305439",
+    "sample_method": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9177145",
+    "author_data_description": "https://github.com/DiaoLab/scHiCAR/blob/2ece10efca321d73e21046e9c8426c0b2d3c1f3e/GEO_datasets.md"
+  },
+  "compressed_assay_prefix_limit": 1048576,
+  "inputs": {
+    "rna_barcodes": {
+      "compressed_bytes": 19736,
+      "compressed_sha256": "a8f27399ff613954be1996fcfc4d730712b016abe1301a6b504466aacc51b2a8",
+      "gzip_stream_complete": true,
+      "discarded_incomplete_final_line": false,
+      "name": "GSE305439_RNA.barcodes.tsv.gz"
+    },
+    "metadata": {
+      "compressed_bytes": 152120,
+      "compressed_sha256": "8ef45f62a12a3748532d5a4c633e00456b106c7f480359a99f220d7af8c9229d",
+      "gzip_stream_complete": true,
+      "discarded_incomplete_final_line": false,
+      "name": "GSE305439_mouse_brain_scHiCAR_1_RNA_metadata.txt.gz"
+    },
+    "atac": {
+      "compressed_bytes": 1048576,
+      "compressed_sha256": "612c7e76e9ccd917427fa583c7420c6a989bae83ae415ec58a62f701ebf901cb",
+      "gzip_stream_complete": false,
+      "discarded_incomplete_final_line": true,
+      "name": "GSE305439_DNA.ATAC.tsv.gz"
+    },
+    "contacts": {
+      "compressed_bytes": 1048576,
+      "compressed_sha256": "822b62dd6ddbdb481730a7b76d011f3991bbb7cc8ad858aae0dbc4b3e8938b11",
+      "gzip_stream_complete": false,
+      "discarded_incomplete_final_line": true,
+      "name": "GSE305439_DNA.dedup.pairs.gz"
+    }
+  },
+  "source_pairing_map": {
+    "rna_axis_cells": 5313,
+    "mapped_rna_cells": 5313,
+    "mapped_dna_cells": 5313,
+    "same_barcode_in_source_paired_row": 71,
+    "dna_barcodes_also_on_rna_axis": 81,
+    "dna_barcodes_equal_to_another_cells_rna_barcode": 10
+  },
+  "assay_prefixes": {
+    "atac": {
+      "complete_rows_examined": 135380,
+      "rows_matched_by_source_dna_map": 135380,
+      "rows_not_in_source_dna_map": 0,
+      "unique_mapped_dna_barcodes": 5291,
+      "rows_matching_rna_axis_directly": 2070,
+      "direct_rna_matches_conflicting_with_source_map": 263,
+      "direct_rna_matches_without_source_dna_mapping": 0
+    },
+    "contacts": {
+      "complete_rows_examined": 89314,
+      "rows_matched_by_source_dna_map": 89314,
+      "rows_not_in_source_dna_map": 0,
+      "unique_mapped_dna_barcodes": 10,
+      "rows_matching_rna_axis_directly": 0,
+      "direct_rna_matches_conflicting_with_source_map": 0,
+      "direct_rna_matches_without_source_dna_mapping": 0
+    }
+  },
+  "mapped_dna_cells_seen_in_both_assay_prefixes": 10,
+  "final_human_cell_line_training_ready": false,
+  "model_result": false,
+  "limitations": [
+    "This is mouse tissue, not a human cell line or a three-cell-line training collection.",
+    "Only the initial compressed assay prefixes were examined; they are not random or representative samples.",
+    "The RNA expression matrix was not read, and a barcode match does not establish a positive RNA count.",
+    "Partial gzip streams have no verified full-file CRC; hashes bind only the bytes actually read.",
+    "The source map and protocol support the declared pairing but do not independently verify each physical cell.",
+    "Coordinates, assay quality, data-use permissions, cross-source leakage and model performance were not audited."
+  ],
+  "script_sha256": "7bd7369c3d7d1b8a2dbe72a4a0cc3604ee51189305f73f7c8d9e3281173e03ab"
+}

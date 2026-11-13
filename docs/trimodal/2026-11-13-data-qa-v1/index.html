@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="公开 scHiCAR 小鼠脑组织数据的配对条码与文件前缀质量检查，不是模型成绩。">
+  <title>Epi-C3 | 同细胞配对数据检查</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: #075e68; }
+    header { background: #122a3a; color: #fff; padding: 1.2rem max(6vw, 1.25rem); }
+    header a { color: #c4eee5; font-weight: 700; text-decoration: none; letter-spacing: .08em; }
+    main { max-width: 1080px; margin: auto; padding: 3rem 1.25rem 5rem; }
+    .eyebrow { color: #00786f; font-size: .82rem; font-weight: 750; letter-spacing: .13em; }
+    h1 { max-width: 800px; margin: .4rem 0 1rem; font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.18; }
+    h2 { margin: 0 0 .7rem; font-size: 1.45rem; }
+    p { margin: .7rem 0; }
+    .lead { max-width: 790px; font-size: 1.12rem; }
+    .notice { margin: 1.6rem 0 2rem; padding: 1rem 1.2rem; border-left: 4px solid #bc6a18; background: #fff5e6; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .card, section.panel { background: white; border: 1px solid #dce5e6; border-radius: 12px; padding: 1.35rem; }
+    .card strong { display: block; color: #075e68; font-size: 2rem; line-height: 1.2; }
+    .card span { font-size: .96rem; }
+    section.panel { margin-top: 1.2rem; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .7rem .6rem; border-bottom: 1px solid #e0e9e9; }
+    th { font-size: .9rem; }
+    .muted { color: #536879; font-size: .93rem; }
+    .error { color: #a63224; font-weight: 650; }
+    footer { margin-top: 2rem; color: #536879; font-size: .9rem; }
+    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 2rem; } }
+  </style>
+  <script defer>
+    async function loadAudit() {
+      try {
+        const response = await fetch("audit.json");
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const audit = await response.json();
+        if (audit.format !== "epi-c3-schicar-source-prefix-qa-v1" ||
+            audit.model_result !== false || audit.final_human_cell_line_training_ready !== false) {
+          throw new Error("审计文件格式或范围不匹配");
+        }
+        for (const element of document.querySelectorAll("[data-value]")) {
+          const value = element.dataset.value.split(".").reduce((item, key) => item?.[key], audit);
+          if (!Number.isSafeInteger(value) || value < 0) throw new Error("审计数值缺失");
+          element.textContent = value.toLocaleString("zh-CN");
+        }
+        document.getElementById("load-status").textContent = "已载入汇总审计。";
+      } catch (error) {
+        document.getElementById("load-status").textContent = "汇总数据载入失败，请打开下方 JSON 查看。";
+        document.getElementById("load-status").className = "error";
+        console.error(error);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", loadAudit);
+  </script>
+</head>
+<body>
+  <header><a href="../../">EPI.C3 / RESEARCH</a></header>
+  <main>
+    <p class="eyebrow">DATA QUALITY CHECK / 2026.11.13 / STATIC SNAPSHOT</p>
+    <h1>同细胞，不一定<br>使用相同条码。</h1>
+    <p class="lead">对公开 scHiCAR 数据检查作者提供的 RNA↔DNA 对应表，以及 ATAC 和染色质接触文件的有界前缀，避免把同名条码误当成同一细胞。</p>
+    <div class="notice"><strong>不是模型结果：</strong>这里是小鼠脑组织的数据处理检查，不是人类细胞系三模态训练、扰动预测或 cell-eval 成绩。共享 RNA foundation 尚未完成。</div>
+    <div class="cards">
+      <article class="card"><strong data-value="source_pairing_map.rna_axis_cells">—</strong><span>RNA 条码具有来源元数据中的一对一 DNA 映射</span></article>
+      <article class="card"><strong data-value="source_pairing_map.dna_barcodes_equal_to_another_cells_rna_barcode">—</strong><span>个 DNA 条码与另一细胞的 RNA 条码同名</span></article>
+      <article class="card"><strong data-value="assay_prefixes.atac.direct_rna_matches_conflicting_with_source_map">—</strong><span>条 ATAC 前缀记录的直接同名连接与来源映射冲突</span></article>
+    </div>
+    <section class="panel">
+      <h2>前缀究竟检查了什么</h2>
+      <p>完整读取 RNA 条码和元数据；ATAC、接触文件各只读取开头 1 MiB 的压缩字节。按作者映射查找 DNA 条码，不进行序列猜配。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">数据</th><th scope="col">已检查完整记录行</th><th scope="col">映射到来源表的不同 DNA 条码</th><th scope="col">与 RNA 轴直接同名的记录行</th><th scope="col">其中与来源映射冲突</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ATAC 前缀</th><td data-value="assay_prefixes.atac.complete_rows_examined">—</td><td data-value="assay_prefixes.atac.unique_mapped_dna_barcodes">—</td><td data-value="assay_prefixes.atac.rows_matching_rna_axis_directly">—</td><td data-value="assay_prefixes.atac.direct_rna_matches_conflicting_with_source_map">—</td></tr>
+            <tr><th scope="row">接触前缀</th><td data-value="assay_prefixes.contacts.complete_rows_examined">—</td><td data-value="assay_prefixes.contacts.unique_mapped_dna_barcodes">—</td><td data-value="assay_prefixes.contacts.rows_matching_rna_axis_directly">—</td><td data-value="assay_prefixes.contacts.direct_rna_matches_conflicting_with_source_map">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">两个前缀共同出现 <strong data-value="mapped_dna_cells_seen_in_both_assay_prefixes">—</strong> 个来源 DNA 条码。RNA 表达矩阵未读取，因此不能据此声称这些细胞具有有效三模态表达数据。</p>
+      <p id="load-status" class="muted" role="status">正在读取汇总审计。</p>
+      <noscript><p>此页面需要 JavaScript 显示汇总数字；可直接查看下方 JSON。</p></noscript>
+    </section>
+    <section class="panel">
+      <h2>适用范围和阻塞</h2>
+      <p>前缀非随机样本，未检查大文件的完整 CRC、RNA 数值、坐标语义、质量、数据使用许可或跨来源泄漏。作者映射和方法支持来源声明，但不能独立证明每个实体细胞的配对。</p>
+      <p>尚未确认至少三个可用的人类同细胞 RNA/ATAC/单细胞接触细胞系。协调方提示：若完整消费原计划的 Tahoe 续训流，至少 7,562,326 条论文测试扰动记录将被预训练接触；这是记录行数而非去重细胞数，也不是已发生的暴露计数。整体隔离五个测试细胞系只是候选方案，尚未接入现有等待器；第一阶段及重放数据的跨来源暴露仍未排除。</p>
+      <p>协调方的初步预检还发现，RPE1 的 28 个测试靶点中仅 5 个位于旧 2,000-HVG 轴上，其中 3 个的 Ensembl ID 不在第一阶段轴上；该发现仍待可复现审计。若变更基因轴，应在新的预注册划分上重跑全部对照，不能将旧试验分数直接正式混排。</p>
+    </section>
+    <footer>
+      <a href="audit.json">汇总审计 JSON</a> ·
+      <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE305439">GSE305439</a> ·
+      <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9177145">来源方法</a> ·
+      <a href="https://github.com/DiaoLab/scHiCAR/blob/2ece10efca321d73e21046e9c8426c0b2d3c1f3e/GEO_datasets.md">作者数据说明</a> ·
+      <a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-trimodal-data-qa-v1">审计代码与复现</a>
+    </footer>
+  </main>
+</body>
+</html>
