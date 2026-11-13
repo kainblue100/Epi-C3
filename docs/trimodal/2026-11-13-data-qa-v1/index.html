@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="公开 scHiCAR 小鼠脑组织数据的配对条码与文件前缀质量检查，不是模型成绩。">
-  <title>Epi-C3 | 同细胞配对数据检查</title>
+  <meta name="description" content="scHiCAR 配对数据检查和项目论文数据来源统计，区分旧实验、数据核查及模型状态。">
+  <title>Epi-C3 | 同细胞数据检查与来源统计</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
     * { box-sizing: border-box; }
@@ -28,6 +28,9 @@
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th, td { padding: .7rem .6rem; border-bottom: 1px solid #e0e9e9; }
     th { font-size: .9rem; }
+    .source-table { min-width: 760px; }
+    .source-table th, .source-table td { vertical-align: top; }
+    .source-table caption { text-align: left; font-weight: 700; margin-bottom: .4rem; }
     .muted { color: #536879; font-size: .93rem; }
     .error { color: #a63224; font-weight: 650; }
     footer { margin-top: 2rem; color: #536879; font-size: .9rem; }
@@ -64,7 +67,7 @@
     <p class="eyebrow">DATA QUALITY CHECK / 2026.11.13 / STATIC SNAPSHOT</p>
     <h1>同细胞，不一定<br>使用相同条码。</h1>
     <p class="lead">对公开 scHiCAR 数据检查作者提供的 RNA↔DNA 对应表，以及 ATAC 和染色质接触文件的有界前缀，避免把同名条码误当成同一细胞。</p>
-    <div class="notice"><strong>不是模型结果：</strong>这里是小鼠脑组织的数据处理检查，不是人类细胞系三模态训练、扰动预测或 cell-eval 成绩。共享 RNA foundation 尚未完成。</div>
+    <div class="notice"><strong>不是新模型结果：</strong>前半部分检查小鼠脑组织数据，下方汇总项目已使用的数据；这里没有人类细胞系三模态训练或新模型的扰动预测、cell-eval 成绩。共享 RNA foundation 尚未完成。</div>
     <div class="cards">
       <article class="card"><strong data-value="source_pairing_map.rna_axis_cells">—</strong><span>RNA 条码具有来源元数据中的一对一 DNA 映射</span></article>
       <article class="card"><strong data-value="source_pairing_map.dna_barcodes_equal_to_another_cells_rna_barcode">—</strong><span>个 DNA 条码与另一细胞的 RNA 条码同名</span></article>
@@ -85,6 +88,107 @@
       <p class="muted">两个前缀共同出现 <strong data-value="mapped_dna_cells_seen_in_both_assay_prefixes">—</strong> 个来源 DNA 条码。RNA 表达矩阵未读取，因此不能据此声称这些细胞具有有效三模态表达数据。</p>
       <p id="load-status" class="muted" role="status">正在读取汇总审计。</p>
       <noscript><p>此页面需要 JavaScript 显示汇总数字；可直接查看下方 JSON。</p></noscript>
+    </section>
+    <section class="panel" id="research-data-inventory">
+      <h2>项目使用过的论文数据</h2>
+      <p><strong>目前可核实至少 11 篇来源论文：</strong>其中至少 8 篇的数据用于过真实模型训练或预测评估，另 1 篇用于后验描述性分析、2 篇仅用于数据质量检查。这里按原始研究去重，预印本也计入；不同数据子集、细胞系或评估次数不是不同论文。其他来源的论文归属及遗漏仍待核实，因此 11 是下限，不是全项目的最终总数。</p>
+      <p>共享 RNA 第一阶段的分源数字来自 <a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/foundation-state.json">2026-11-12 17:27:54 UTC、26,250 次更新的静态快照</a>，合计 1,210,610 条已处理记录；不是跨来源去重细胞数，也不是最终检查点。较新的<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-grn-encode-v1">公开发布说明</a>记载第一阶段在验证处退出、第二阶段当时尚未开始；历史快照中的运行状态不是实时状态。</p>
+      <div class="table-wrap">
+        <table class="source-table">
+          <caption>已实际使用的数据：论文、规模与用途</caption>
+          <thead><tr><th scope="col">原始论文与来源</th><th scope="col">数据与已核实规模</th><th scope="col">实际用途及限制</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1101/2025.06.11.659105">X-Atlas/Orion（2025，预印本）</a></th>
+              <td>人类 HCT116 与 HEK293T 单细胞 RNA 扰动数据；二者属于同一论文。共享第一阶段快照分别处理 456,634 和 595,090 条记录。</td>
+              <td><strong>真实表征训练。</strong>旧单来源运行分别处理 3,373,853 和 4,487,649 行；这些是不同运行，不能与共享快照相加为独立细胞。<a href="https://huggingface.co/datasets/Xaira-Therapeutics/X-Atlas-Orion">数据卡</a>标注 CC BY-NC-SA 4.0。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1016/j.cell.2026.08.010">Tabula Sapiens 2.0（2026）</a></th>
+              <td>人类多组织 RNA 图谱。项目使用 CELLxGENE 整理版 v2，来源矩阵 1,136,218 条记录、60,606 个基因；共享第一阶段快照处理 143,342 条记录。</td>
+              <td><strong>真实表征训练。</strong><a href="https://doi.org/10.6084/m9.figshare.27921984.v1">Figshare v2</a> 是关联公开来源，但尚未证明项目整理版与该发行版逐字节相同；不能称为全 CELLxGENE 库训练。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1126/sciadv.aed3414">Li 等 scPerturbBench（2026）</a></th>
+              <td>论文将 KHP 与 CMO 两个数据集均标为本研究来源。KHP 子集 127,595 条记录 × 5,000 基因；CMO 子集 10,410 条记录 × 5,000 基因。</td>
+              <td><strong>KHP：旧内部模型训练和评价</strong>，涉及 10 个干预；<strong>CMO：仅候选数据 QA</strong>。新 foundation 中 KHP 的 9,354 条与 CMO 的 1,419 条候选训练对照以及各 32 条验证对照已核查，但均未用于该训练。<a href="https://doi.org/10.5281/zenodo.20823660">数据归档</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1016/j.cell.2022.05.013">Replogle 等（2022）</a></th>
+              <td>人类 K562 和 RPE1 CRISPRi RNA。K562 essential 来源矩阵为 310,385 条记录 × 8,563 基因，genome-wide 来源矩阵为 1,989,578 条记录 × 8,248 基因；它们与 RPE1 是同一论文的不同子集。</td>
+              <td><strong>真实旧模型试验及独立 STATE 小试验。</strong>旧 genome-wide 实验使用 159,349 个训练细胞；STATE 试验选 40 个靶点、训练 512 步，其 RPE1 测试靶点均在 K562 训练中出现。STATE 仅一个划分，不是新 Epi-C3 的正式比较。<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-state-pilot-v1">试验说明</a> · <a href="https://doi.org/10.5281/zenodo.7041849">scPerturb 数据</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1038/s41592-021-01153-z">Datlinger 等（2021）</a></th>
+              <td>人类 Jurkat 单细胞 RNA、CRISPR 扰动及固定 TCR 刺激；旧实验按靶点划分为训练 12、验证 4、测试 4。</td>
+              <td><strong>真实旧 RNA-only 模型训练与内部评价。</strong>测试仅 4 个靶点，对照复用；后验适配的 GEARS 不属于预先规定的公平比较。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1126/science.aax4438">Norman 等（2019）</a></th>
+              <td>人类 K562 单细胞 RNA 与 CRISPRa 组合；旧实验使用 62,113 个训练细胞，另有 44 个验证和 44 个测试组合。</td>
+              <td><strong>真实旧模型训练与内部评价。</strong>图先验消融和 GEARS 扩展发生在已有测试结果之后；来源计数的原始性未独立证明，未配对的 bulk 图不能当作单细胞三模态。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1038/s41593-021-00862-0">Tian 等（2021）</a></th>
+              <td>人源 iPSC 分化神经元 CRISPRi 单细胞 RNA；旧实验的训练细胞为 19,337 个，靶点按 109 / 36 / 36 分为训练 / 验证 / 测试。</td>
+              <td><strong>真实旧 RNA-only 模型训练和内部评价。</strong>单一数据集和种子，批次不是已证明的生物重复；并非新共享基础模型的外部盲测。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1101/2025.02.20.639398">Tahoe-100M（2025，预印本）</a></th>
+              <td>人类细胞系药物扰动 RNA；旧单来源部分模型的表征检查点处理 1,622,016 行，并在 AN3 CA 的 9 个条件上做探索性评价。</td>
+              <td><strong>真实旧模型部分训练与评价。</strong>该结果不是共享 foundation 的 Tahoe 第二阶段；其中 cell-eval 0.8.2 评估每条件仅有 5–10 个独立预测 parent，不是官方排行榜成绩。未来要求按细胞系分组 60% 训练 / 40% 测试；比例按细胞数还是细胞系数及验证策略尚未确定，旧评价不代表已实现该划分。<a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/cell-eval-summary.json">评估范围</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1038/s41467-021-23213-w">Pierce 等 Spear-ATAC（2021）</a></th>
+              <td>人类 K562 CRISPRi scATAC；公开峰矩阵 32,831 个细胞、6 个样本，其中 17,282 个没有明确扰动标签。</td>
+              <td><strong>仅旧项目的后验描述性分析。</strong>它不与 Norman RNA 逐细胞配对，也不是 RNA 预测测试或三模态训练。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1038/s41586-026-10322-z">CHARM（2026）</a></th>
+              <td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE303006">GSE303006</a> 小鼠 mESC：RNA、QC、ATAC 与接触文件有 805 个直接匹配身份。</td>
+              <td><strong>仅真实数据 QA。</strong>身份一致不独立证明物理配对；RNA 含非整数值，人类基因轴也不适用。这不是人类三模态训练或三个细胞系。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1038/s41587-026-03013-7">scHiCAR（2026）</a></th>
+              <td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE305439">GSE305439</a> 小鼠脑：核对 5,313 个 RNA 条码的来源映射；ATAC 和接触各仅读取 1 MiB 压缩前缀，分别检查 135,380 和 89,314 行。</td>
+              <td><strong>仅真实数据前缀及映射 QA。</strong>未读取 RNA 表达矩阵；前缀非随机，不能证明完整文件质量或模型训练资格。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">实验细节和后验局限见<a href="https://github.com/kainblue100/Epi-C3/blob/main/docs/dashboard/2026-11-12-v22/manuscripts/epi-c3-manuscript-draft-v30.md">旧版研究草稿</a>；CHARM 和 scHiCAR 的聚合证据分别见<a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/charm-mesc-trimodal-audit.json">身份审计</a>与<a href="audit.json">前缀审计</a>。原始人类细胞和身份不在此页面发布；各来源数据及其衍生用途的许可须单独核实。</p>
+    </section>
+    <section class="panel">
+      <h2>其他来源：不能直接换算为论文篇数</h2>
+      <div class="table-wrap">
+        <table class="source-table">
+          <caption>已使用但论文归属未定，或仅为候选的来源</caption>
+          <thead><tr><th scope="col">来源</th><th scope="col">已核实情况</th><th scope="col">统计边界</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://huggingface.co/datasets/cyrilzakka/arc-institute-virtual-cell-dataset">Arc Virtual Cell Challenge</a></th>
+              <td>人类 RNA 来源矩阵 221,273 条记录 × 18,080 基因；共享第一阶段快照处理 15,544 条记录。</td>
+              <td><strong>真实训练来源。</strong>尚未可靠证明应对应哪篇原始论文，故未额外计入上面的篇数；不能把不同实验的记录相加为去重细胞。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.encodeproject.org/">ENCODE</a> / <a href="https://www.gencodegenes.org/human/release_44.html">GENCODE v44</a></th>
+              <td>旧 K562/HCT116 实验使用过未配对 bulk 表观组先验：K562 ATAC 文件有 172,732 个峰及另选 7 个 TF ChIP 轨道；HCT116 WGBS 留存 53,332,109 条测量记录。</td>
+              <td>另有新 K562 ChIP/ATAC 与基因注释构建的 51,031 边<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-grn-encode-v1">候选图</a>，未用于模型训练；它与旧图不是同一实验。各原始实验和论文的对应关系尚未完整汇总，不额外计篇。</td>
+            </tr>
+            <tr>
+              <th scope="row">旧 HCT116 监督数据</th>
+              <td>旧模型使用 35,309 个监督细胞和 12,000 个有界参考细胞，并使用未配对的表观组先验。</td>
+              <td><strong>真实旧模型训练。</strong>所查公开汇总未明确这批监督细胞的原始论文归属，也不能确认是否与上面的 Orion 记录重叠；不额外计篇或跨实验相加。评价复用了此前已查看的留出集。</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267117">scHiCAR 人类细胞系记录</a></th>
+              <td>论文报告人类同细胞三模态；所查公开混样记录将 DNA 标为 batch1、RNA 标为 batch2，已列归档为 RNA 矩阵。</td>
+              <td>不同 batch 标签本身不能证明所有数据不可配对，但仅凭这些记录不能证明逐细胞配对。许可、真实 barcode 对应、ATAC/接触定义与上游读段隔离仍待核实；不计为合格三模态训练来源。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">仅阅读论文、查看公开元数据或规划接入的数据，不算已使用的论文数据。上述旧实验均不能冒充两个新模型的最终成绩。</p>
     </section>
     <section class="panel">
       <h2>适用范围和阻塞</h2>
