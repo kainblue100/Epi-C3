@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tahoe 测试情境隔离候选方案 · Epi-C3</title>
+<style>
+:root{color-scheme:light;--ink:#17243a;--muted:#52647a;--line:#dce4ef;--blue:#275fa4;--red:#bd4a3e;--bg:#f4f7fb}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1100px;margin:auto;padding:32px 22px 60px} h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin:.4rem 0}
+h2{font-size:1.25rem;margin:0 0 12px} p{margin:.55rem 0} a{color:#164f93} .eyebrow{font-size:.84rem;letter-spacing:.08em;color:var(--blue);font-weight:700}
+.notice{background:#fff5e8;border-left:5px solid #d27b16;padding:15px 18px;margin:22px 0;border-radius:4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}
+.card,section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px}
+.card strong{display:block;font-size:1.45rem;color:var(--blue)} .card span,.muted{color:var(--muted);font-size:.92rem}
+section{margin-top:14px} .chart{overflow-x:auto} svg{display:block;width:100%;min-width:720px;height:auto}
+svg .label,svg .value{font:14px system-ui,sans-serif;fill:var(--ink)} svg .total{fill:#b8cce4} svg .matched{fill:var(--red)}
+.legend{display:flex;gap:22px;flex-wrap:wrap;font-size:.9rem;color:var(--muted)} .swatch{display:inline-block;width:12px;height:12px;margin-right:6px;border-radius:2px}
+.table-wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:.94rem} th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child{text-align:left} thead th{color:var(--muted);font-weight:600} ul{padding-left:1.3rem} li{margin:.35rem 0}
+code{overflow-wrap:anywhere;font-size:.85em} footer{color:var(--muted);font-size:.85rem;margin-top:22px}
+details{margin-top:14px} summary{cursor:pointer;color:var(--blue);font-weight:600} pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);padding:12px;border-radius:6px;font-size:.8rem}
+@media(max-width:600px){main{padding:22px 14px 40px} .cards{grid-template-columns:1fr 1fr} .card{padding:13px} .card strong{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">EPI-C3 · TAHOE / STATE</div>
+<h1>测试情境隔离候选方案</h1>
+<p class="muted">基于冻结元数据与历史身份排除审计；本次交集核查读取了私有身份元数据，未读取原始表达，也不公开单细胞身份。</p>
+<div class="notice"><strong>候选方案，尚未接入训练。</strong> 原有续训任务未改变，仍不受此方案保护；本页不是两个 Epi-C3 模型的预测成绩，也不是完整 STATE 比较。</div>
+<div class="cards">
+<div class="card"><strong>13,168,068</strong><span>五个测试细胞系的全部来源记录</span></div>
+<div class="card"><strong>12,699,435</strong><span>其中原规则下合格的记录，身份排除前</span></div>
+<div class="card"><strong>79,391,236</strong><span>保留的合格记录，原有身份排除后</span></div>
+<div class="card"><strong>8,133,621</strong><span>原论文测试标签精确匹配的来源记录</span></div>
+</div>
+<section>
+<h2>隔离策略与范围</h2>
+<p>候选方案把 Tahoe 中五个 STATE 测试细胞系的<strong>全部记录</strong>从基础模型训练和验证中排除，包括各种药物、剂量及对照；它不依赖药物别名或剂量字符串匹配。下游扰动预测仍需采用事先冻结的共同划分。</p>
+<p>图中浅色为各细胞系全部来源记录，红色为原论文测试条件精确匹配的子集。数字均为来源行次，不等同于去重细胞。</p>
+<div class="legend"><span><i class="swatch" style="background:#b8cce4"></i>整条细胞系</span><span><i class="swatch" style="background:#bd4a3e"></i>测试条件精确匹配</span></div>
+<div class="chart"><svg viewBox="0 0 920 275" role="img" aria-labelledby="chart-title">
+<title id="chart-title">五个测试细胞系的全部来源记录与测试条件精确匹配记录</title>
+<text x="0" y="59" class="label">C32</text><rect x="135" y="42" width="233.72" height="22" rx="4" class="total"/><rect x="135" y="48" width="143.04" height="10" rx="3" class="matched"/><text x="630" y="59" class="value">1,991,252 / 1,218,727</text>
+<text x="0" y="104" class="label">HOP62</text><rect x="135" y="87" width="388.18" height="22" rx="4" class="total"/><rect x="135" y="93" width="243.64" height="10" rx="3" class="matched"/><text x="630" y="104" class="value">3,307,302 / 2,075,793</text>
+<text x="0" y="149" class="label">HepG2/C3A</text><rect x="135" y="132" width="146.03" height="22" rx="4" class="total"/><rect x="135" y="138" width="95.52" height="10" rx="3" class="matched"/><text x="630" y="149" class="value">1,244,192 / 813,838</text>
+<text x="0" y="194" class="label">Hs 766T</text><rect x="135" y="177" width="297.62" height="22" rx="4" class="total"/><rect x="135" y="183" width="176.34" height="10" rx="3" class="matched"/><text x="630" y="194" class="value">2,535,736 / 1,502,381</text>
+<text x="0" y="239" class="label">PANC-1</text><rect x="135" y="222" width="480.00" height="22" rx="4" class="total"/><rect x="135" y="228" width="296.11" height="10" rx="3" class="matched"/><text x="630" y="239" class="value">4,089,586 / 2,522,882</text>
+</svg></div>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">细胞系</th><th scope="col">全部来源记录</th><th scope="col">测试条件匹配</th><th scope="col">原规则合格记录*</th></tr></thead>
+<tbody><tr><th scope="row">C32</th><td>1,991,252</td><td>1,218,727</td><td>1,915,792</td></tr>
+<tr><th scope="row">HOP62</th><td>3,307,302</td><td>2,075,793</td><td>3,189,638</td></tr>
+<tr><th scope="row">HepG2/C3A</th><td>1,244,192</td><td>813,838</td><td>1,194,825</td></tr>
+<tr><th scope="row">Hs 766T</th><td>2,535,736</td><td>1,502,381</td><td>2,451,584</td></tr>
+<tr><th scope="row">PANC-1</th><td>4,089,586</td><td>2,522,882</td><td>3,947,596</td></tr></tbody></table></div>
+<p class="muted">* 原规则合格记录为旧身份排除之前的处理记录与训练对照之和。</p>
+</section>
+<section>
+<h2>数量如何确定</h2>
+<p>冻结的 Tahoe 来源共 95,624,334 条记录。原规则下五个测试细胞系有 12,699,435 条合格记录；从其余记录中扣除既有的历史身份留出后，得到 79,391,236 条。该值<strong>尚未扣除</strong>新方案需要重新选取的验证身份。</p>
+<p>历史留出与五个细胞系的交集通过已验证来源分片的元数据核对；没有向报告导出单细胞身份。分片完整性沿用冻结的大小、修改时间及下载时哈希证据。</p>
+</section>
+<section>
+<h2>尚未解决</h2>
+<ul>
+<li>需要把候选过滤器同时接入新的训练流和验证选择，保留原有身份排除，并重新核对实际流的完整行数。</li>
+<li>第一阶段检查点和重放数据的跨来源重复与测试暴露尚未排除；不能因此宣称整个基础模型无泄漏。</li>
+<li>细胞系注释和来源文件仍需独立核实；两个新模型和其他论文基线尚未完成同协议评测。</li>
+</ul>
+<p><a href="https://github.com/ArcInstitute/state/tree/9bbfe78a434a55205e4de834e1ea99f85f7a3add/state_preprint_toml_files/tahoe_tomls">STATE 作者冻结划分</a> · <a href="https://kainblue100.github.io/Epi-C3/benchmark/2026-11-13-v3/">已发布的独立小规模 STATE 试验</a></p>
+<details><summary>查看聚合摘要（JSON）</summary><pre>{
+  &quot;format&quot;: &quot;epi-c3-tahoe-state-context-holdout-exact-summary-v1&quot;,
+  &quot;status&quot;: &quot;candidate-not-enforced&quot;,
+  &quot;source_rows&quot;: 95624334,
+  &quot;official_test_rows_with_exact_condition_match&quot;: 8133621,
+  &quot;all_source_rows_in_heldout_contexts&quot;: 13168068,
+  &quot;eligible_rows_in_heldout_contexts_before_identity_exclusions&quot;: 12699435,
+  &quot;remaining_eligible_rows_before_identity_exclusions&quot;: 79396293,
+  &quot;previous_identity_exclusions_already_in_heldout_contexts&quot;: 2,
+  &quot;previous_identity_exclusions_outside_heldout_contexts&quot;: 5057,
+  &quot;remaining_eligible_rows_after_original_identity_exclusions&quot;: 79391236,
+  &quot;new_validation_selection_still_required&quot;: true,
+  &quot;contexts&quot;: [
+    {
+      &quot;context&quot;: &quot;C32&quot;,
+      &quot;source_rows_in_context&quot;: 1991252,
+      &quot;matched_official_test_rows&quot;: 1218727,
+      &quot;eligible_treated_rows_before_identity_exclusions&quot;: 1876617,
+      &quot;eligible_training_control_rows_before_identity_exclusions&quot;: 39175
+    },
+    {
+      &quot;context&quot;: &quot;HOP62&quot;,
+      &quot;source_rows_in_context&quot;: 3307302,
+      &quot;matched_official_test_rows&quot;: 2075793,
+      &quot;eligible_treated_rows_before_identity_exclusions&quot;: 3129256,
+      &quot;eligible_training_control_rows_before_identity_exclusions&quot;: 60382
+    },
+    {
+      &quot;context&quot;: &quot;HepG2/C3A&quot;,
+      &quot;source_rows_in_context&quot;: 1244192,
+      &quot;matched_official_test_rows&quot;: 813838,
+      &quot;eligible_treated_rows_before_identity_exclusions&quot;: 1171607,
+      &quot;eligible_training_control_rows_before_identity_exclusions&quot;: 23218
+    },
+    {
+      &quot;context&quot;: &quot;Hs 766T&quot;,
+      &quot;source_rows_in_context&quot;: 2535736,
+      &quot;matched_official_test_rows&quot;: 1502381,
+      &quot;eligible_treated_rows_before_identity_exclusions&quot;: 2407363,
+      &quot;eligible_training_control_rows_before_identity_exclusions&quot;: 44221
+    },
+    {
+      &quot;context&quot;: &quot;PANC-1&quot;,
+      &quot;source_rows_in_context&quot;: 4089586,
+      &quot;matched_official_test_rows&quot;: 2522882,
+      &quot;eligible_treated_rows_before_identity_exclusions&quot;: 3871237,
+      &quot;eligible_training_control_rows_before_identity_exclusions&quot;: 76359
+    }
+  ],
+  &quot;source_sha256&quot;: {
+    &quot;metadata_plan&quot;: &quot;71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031&quot;,
+    &quot;isolation_audit&quot;: &quot;a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351&quot;,
+    &quot;official_split&quot;: &quot;eac16fb06052dec9d6842dfae04d5ca693b847e3432f719a975adce205707783&quot;,
+    &quot;cell_line_metadata&quot;: &quot;67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d&quot;,
+    &quot;sample_metadata&quot;: &quot;33167f0ce28cff8357c503cda67d1c7fea200bff6918ee1de3c4f3549175b9d3&quot;,
+    &quot;drug_metadata&quot;: &quot;7a04c7a6611e74c92253163b994ff0a47191928ee7511f1c2ca508cee0e79f28&quot;
+  },
+  &quot;limitations&quot;: [
+    &quot;The existing Tahoe continuation does not enforce this candidate.&quot;,
+    &quot;Every Tahoe row in the five official STATE test contexts is excluded by the candidate, including all controls and doses.&quot;,
+    &quot;The count is before any additional validation identities are selected for a new protected stream.&quot;,
+    &quot;Stage-one and replay source overlap with test cells or conditions has not been ruled out.&quot;,
+    &quot;Source-shard validation uses frozen size and mtime plus previously verified download hashes.&quot;,
+    &quot;Historical identity counts rely on the earlier audit and the present metadata-only shard check.&quot;,
+    &quot;Rows are source occurrences, not deduplicated biological cells.&quot;
+  ],
+  &quot;candidate_summary_sha256&quot;: &quot;30291b6785dabb585b903560816f006c8bc83344203c4713ccb26d5cdb01eb60&quot;,
+  &quot;identity_intersection_sha256&quot;: &quot;5765c19fb7e4e3ccd189a8ff40750b9bac9da04edda2420fb64274017b67c96b&quot;,
+  &quot;identity_intersection_script_sha256&quot;: &quot;70bf33707e8b4bb115f34bec5fe5dea873800f3c3d9a3c36c8d0dc8959b57962&quot;,
+  &quot;guard_sha256&quot;: &quot;de8021f3ddc043b816ca262abab2d5cf2b9a91a453bce02d13c1fe017d35278a&quot;
+}</pre></details>
+</section>
+<footer>聚合报告 SHA-256：<code>f65a246e1e153989d0c28b16e64d4fb5032937bee8f3020d99f7bc2ea8d4a9d1</code>。该摘要不含细胞身份、表达矩阵或模型权重。</footer>
+</main>
+</body>
+</html>

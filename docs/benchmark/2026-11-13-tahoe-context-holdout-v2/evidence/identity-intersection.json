@@ -1,0 +1,33 @@
+{
+    "cell_line_metadata_sha256":  "67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d",
+    "format":  "epi-c3-tahoe-context-identity-intersection-v1",
+    "historical_progress_private_sha256":  "b1702b0532820eac73d9ede092c40c3e8a477af1bf376f0affd0403cb35ec6fb",
+    "isolation_audit_sha256":  "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+    "limitations":  [
+                        "Historical identity counts and source-shard provenance depend on the frozen prior audit.",
+                        "Current historical progress is checked against aggregate audit totals, not bound by a prior progress hash.",
+                        "Source shards are checked using frozen size and mtime; download-time LFS hashes are not recomputed.",
+                        "Results are Tahoe row occurrences, not deduplicated biological cells or proof of cross-source independence.",
+                        "This audit does not alter or enforce the candidate holdout."
+                    ],
+    "metadata_plan_sha256":  "71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031",
+    "protected_eligible":  5027,
+    "protected_heldout":  0,
+    "protected_manifest_sha256":  "1ca293edadc11ac74ec8952cd386b161cf0b2175a1dd31aa7b1c4388f8895fb7",
+    "protected_private_sha256":  "fdd127d55046c288d4598bc0d767df8cddd8f27a19a75a3bbf7de2ceddc28efc",
+    "protected_retained":  5027,
+    "protected_unresolved":  0,
+    "protected_with_verified_shard":  5027,
+    "row_groups_pruned":  2954,
+    "row_groups_scanned":  729,
+    "source_files_scanned":  127,
+    "status":  "complete",
+    "target_shards":  127,
+    "validation_eligible":  32,
+    "validation_heldout":  2,
+    "validation_private_sha256":  "af4965d049b96ef4ec9aa2ef37e8894aae01b24d81db61245944dcb9b74d97b7",
+    "validation_retained":  30,
+    "validation_unresolved":  0,
+    "validation_with_verified_shard":  32,
+    "script_sha256":  "70bf33707e8b4bb115f34bec5fe5dea873800f3c3d9a3c36c8d0dc8959b57962"
+}

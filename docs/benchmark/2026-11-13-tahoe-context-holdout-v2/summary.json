@@ -1,0 +1,71 @@
+{
+  "format": "epi-c3-tahoe-state-context-holdout-exact-summary-v1",
+  "status": "candidate-not-enforced",
+  "source_rows": 95624334,
+  "official_test_rows_with_exact_condition_match": 8133621,
+  "all_source_rows_in_heldout_contexts": 13168068,
+  "eligible_rows_in_heldout_contexts_before_identity_exclusions": 12699435,
+  "remaining_eligible_rows_before_identity_exclusions": 79396293,
+  "previous_identity_exclusions_already_in_heldout_contexts": 2,
+  "previous_identity_exclusions_outside_heldout_contexts": 5057,
+  "remaining_eligible_rows_after_original_identity_exclusions": 79391236,
+  "new_validation_selection_still_required": true,
+  "contexts": [
+    {
+      "context": "C32",
+      "source_rows_in_context": 1991252,
+      "matched_official_test_rows": 1218727,
+      "eligible_treated_rows_before_identity_exclusions": 1876617,
+      "eligible_training_control_rows_before_identity_exclusions": 39175
+    },
+    {
+      "context": "HOP62",
+      "source_rows_in_context": 3307302,
+      "matched_official_test_rows": 2075793,
+      "eligible_treated_rows_before_identity_exclusions": 3129256,
+      "eligible_training_control_rows_before_identity_exclusions": 60382
+    },
+    {
+      "context": "HepG2/C3A",
+      "source_rows_in_context": 1244192,
+      "matched_official_test_rows": 813838,
+      "eligible_treated_rows_before_identity_exclusions": 1171607,
+      "eligible_training_control_rows_before_identity_exclusions": 23218
+    },
+    {
+      "context": "Hs 766T",
+      "source_rows_in_context": 2535736,
+      "matched_official_test_rows": 1502381,
+      "eligible_treated_rows_before_identity_exclusions": 2407363,
+      "eligible_training_control_rows_before_identity_exclusions": 44221
+    },
+    {
+      "context": "PANC-1",
+      "source_rows_in_context": 4089586,
+      "matched_official_test_rows": 2522882,
+      "eligible_treated_rows_before_identity_exclusions": 3871237,
+      "eligible_training_control_rows_before_identity_exclusions": 76359
+    }
+  ],
+  "source_sha256": {
+    "metadata_plan": "71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031",
+    "isolation_audit": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+    "official_split": "eac16fb06052dec9d6842dfae04d5ca693b847e3432f719a975adce205707783",
+    "cell_line_metadata": "67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d",
+    "sample_metadata": "33167f0ce28cff8357c503cda67d1c7fea200bff6918ee1de3c4f3549175b9d3",
+    "drug_metadata": "7a04c7a6611e74c92253163b994ff0a47191928ee7511f1c2ca508cee0e79f28"
+  },
+  "limitations": [
+    "The existing Tahoe continuation does not enforce this candidate.",
+    "Every Tahoe row in the five official STATE test contexts is excluded by the candidate, including all controls and doses.",
+    "The count is before any additional validation identities are selected for a new protected stream.",
+    "Stage-one and replay source overlap with test cells or conditions has not been ruled out.",
+    "Source-shard validation uses frozen size and mtime plus previously verified download hashes.",
+    "Historical identity counts rely on the earlier audit and the present metadata-only shard check.",
+    "Rows are source occurrences, not deduplicated biological cells."
+  ],
+  "candidate_summary_sha256": "30291b6785dabb585b903560816f006c8bc83344203c4713ccb26d5cdb01eb60",
+  "identity_intersection_sha256": "5765c19fb7e4e3ccd189a8ff40750b9bac9da04edda2420fb64274017b67c96b",
+  "identity_intersection_script_sha256": "70bf33707e8b4bb115f34bec5fe5dea873800f3c3d9a3c36c8d0dc8959b57962",
+  "guard_sha256": "de8021f3ddc043b816ca262abab2d5cf2b9a91a453bce02d13c1fe017d35278a"
+}

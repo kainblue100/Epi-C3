@@ -1,0 +1,93 @@
+{
+  "format": "epi-c3-tahoe-state-exposure-tight-audit-v1",
+  "status": "complete",
+  "scope": "Prospective exposure under the existing planned Tahoe continuation",
+  "source_rows": 95624334,
+  "eligible_before_identity_exclusions": 92095728,
+  "eligible_after_identity_exclusions": 92090669,
+  "matched_official_test_rows": 8133621,
+  "matched_eligible_lower_before_identity_exclusions": 7771565,
+  "matched_eligible_upper_before_identity_exclusions": 7771565,
+  "private_identity_exclusions_across_all_conditions": 5059,
+  "minimum_matched_rows_after_identity_exclusions": 7766506,
+  "maximum_matched_rows_after_identity_exclusions": 7771565,
+  "contexts": [
+    {
+      "context": "C32",
+      "matched_source_rows": 1218727,
+      "matched_eligible_treated_rows": 1169569,
+      "matched_heldout_compound_rows": 41710,
+      "matched_missing_structure_rows": 7448,
+      "matched_control_rows": 0,
+      "matched_control_training_lower": 0,
+      "matched_control_training_upper": 0,
+      "matched_eligible_lower_before_identity_exclusions": 1169569,
+      "matched_eligible_upper_before_identity_exclusions": 1169569
+    },
+    {
+      "context": "HOP62",
+      "matched_source_rows": 2075793,
+      "matched_eligible_treated_rows": 1922998,
+      "matched_heldout_compound_rows": 63750,
+      "matched_missing_structure_rows": 13614,
+      "matched_control_rows": 75431,
+      "matched_control_training_lower": 60382,
+      "matched_control_training_upper": 60382,
+      "matched_eligible_lower_before_identity_exclusions": 1983380,
+      "matched_eligible_upper_before_identity_exclusions": 1983380
+    },
+    {
+      "context": "HepG2/C3A",
+      "matched_source_rows": 813838,
+      "matched_eligible_treated_rows": 753038,
+      "matched_heldout_compound_rows": 28648,
+      "matched_missing_structure_rows": 3106,
+      "matched_control_rows": 29046,
+      "matched_control_training_lower": 23218,
+      "matched_control_training_upper": 23218,
+      "matched_eligible_lower_before_identity_exclusions": 776256,
+      "matched_eligible_upper_before_identity_exclusions": 776256
+    },
+    {
+      "context": "Hs 766T",
+      "matched_source_rows": 1502381,
+      "matched_eligible_treated_rows": 1389382,
+      "matched_heldout_compound_rows": 42999,
+      "matched_missing_structure_rows": 14798,
+      "matched_control_rows": 55202,
+      "matched_control_training_lower": 44221,
+      "matched_control_training_upper": 44221,
+      "matched_eligible_lower_before_identity_exclusions": 1433603,
+      "matched_eligible_upper_before_identity_exclusions": 1433603
+    },
+    {
+      "context": "PANC-1",
+      "matched_source_rows": 2522882,
+      "matched_eligible_treated_rows": 2332398,
+      "matched_heldout_compound_rows": 75469,
+      "matched_missing_structure_rows": 19756,
+      "matched_control_rows": 95259,
+      "matched_control_training_lower": 76359,
+      "matched_control_training_upper": 76359,
+      "matched_eligible_lower_before_identity_exclusions": 2408757,
+      "matched_eligible_upper_before_identity_exclusions": 2408757
+    }
+  ],
+  "limitations": [
+    "Prospective bounds apply only if the existing scheduled Tahoe stream is fully consumed.",
+    "Exact condition labels can miss aliases or equivalent doses; rows are not unique cells.",
+    "When only part of a plate's control group matches, control eligibility is bounded, not assumed.",
+    "The identity exclusions are subtracted in the worst case, not joined to test conditions.",
+    "This does not establish stage-one or cross-source isolation or prove continuation has started."
+  ],
+  "source_sha256": {
+    "metadata_plan": "71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031",
+    "isolation_audit": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+    "official_split": "eac16fb06052dec9d6842dfae04d5ca693b847e3432f719a975adce205707783",
+    "cell_line_metadata": "67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d",
+    "sample_metadata": "33167f0ce28cff8357c503cda67d1c7fea200bff6918ee1de3c4f3549175b9d3",
+    "drug_metadata": "7a04c7a6611e74c92253163b994ff0a47191928ee7511f1c2ca508cee0e79f28",
+    "previous_audit": "1cb335cccb016b369fe0c7fabe276e8da5b437db950805568a64d040ea49422b",
+    "audit_script": "1d842987ce61ea609fb7dbace992bda37683ba605a3349f30ead9a4fe8822ad7"
+  }
+}
