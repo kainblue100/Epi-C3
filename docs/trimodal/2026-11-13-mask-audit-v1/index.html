@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="同细胞三模态原型的合成 RNA 遮挡与文库归一化审计，不是模型成绩。">
+  <title>Epi-C3 | 三模态 RNA 遮挡合成审计</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: #075e68; }
+    header { background: #122a3a; color: #fff; padding: 1.2rem max(6vw, 1.25rem); }
+    header a { color: #c4eee5; font-weight: 700; text-decoration: none; letter-spacing: .08em; }
+    main { max-width: 1080px; margin: auto; padding: 3rem 1.25rem 5rem; }
+    .eyebrow { color: #00786f; font-size: .82rem; font-weight: 750; letter-spacing: .13em; }
+    h1 { max-width: 850px; margin: .4rem 0 1rem; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.18; }
+    h2 { margin: 0 0 .7rem; font-size: 1.4rem; }
+    p { margin: .7rem 0; }
+    .lead { max-width: 850px; font-size: 1.1rem; }
+    .notice { margin: 1.6rem 0 2rem; padding: 1rem 1.2rem; border-left: 4px solid #bc6a18; background: #fff5e6; }
+    section { margin-top: 1.2rem; padding: 1.35rem; background: #fff; border: 1px solid #dce5e6; border-radius: 12px; }
+    code { overflow-wrap: anywhere; }
+    .muted, footer { color: #536879; font-size: .93rem; }
+    footer { margin-top: 2rem; }
+    @media (max-width: 680px) { main { padding-top: 2rem; } }
+  </style>
+</head>
+<body>
+  <header><a href="../../">EPI.C3 / RESEARCH</a></header>
+  <main>
+    <p class="eyebrow">TRIMODAL INPUT AUDIT / SYNTHETIC ONLY / 2026.11.13</p>
+    <h1>损失只看遮挡位置，不等于输入已遮挡。</h1>
+    <p class="lead">对已发布的三模态原型执行合成的输入 → 联合编码 → 重建 → 损失检查，识别未来训练器必须显式处理的边界。</p>
+    <div class="notice"><strong>不是模型成绩，也不是实际训练泄漏证据。</strong> 测试使用随机初始化的网络和合成计数，不读取真实细胞或已训练权重；仓库中尚未发现该损失函数的真实训练调用。</div>
+
+    <section>
+      <h2>合成反例</h2>
+      <p>当目标值仍作为已测量 RNA 输入编码器时，只改变该值就改变融合表示和重建结果，而 <code>masked_rna_loss</code> 仍接受它。该函数检查损失选择的目标是否已测量，并不检查目标是否已从模型输入移除。</p>
+      <p>这在未训练 RNA 代用编码器和随机初始化的合成 exploratory foundation 适配器中均可复现。没有进行优化器更新；结果不代表两个新模型已经训练。</p>
+    </section>
+
+    <section>
+      <h2>文库深度也可能成为路径</h2>
+      <p>底层 <code>GeneEncoder</code> 先用传入的完整计数求文库总和，再应用可见性掩码。若隐藏计数仍在输入里，只改隐藏值就会改变可见基因的归一化和表示；仅传递可见掩码不足以消除这条路径。</p>
+      <p>候选测试先清零隐藏的原始计数，再用可见原始计数之和归一化，且不把原始全库深度传入编码器；在固定其他模态的合成反例中，改变隐藏值与原始深度不会改变重建，隐藏输入梯度为零。全库深度仅用于构造分离的监督标签。这只是候选输入约定，并非已经实现或验证的生产训练器。</p>
+      <p class="muted">原始 foundation 训练采用完整传入计数的文库分母；可见计数归一化会带来分布变化，需要预注册的对照与独立评价。真实原始文库深度须涵盖投影基因轴外的计数，不能把选中面板的总和冒充全库深度。</p>
+    </section>
+
+    <section>
+      <h2>三态和剩余前置条件</h2>
+      <p>未来训练器须保留未测量、已测但隐藏、已测且可见三种状态，并核验掩码选择、基因顺序和整个输入路径。现有 RNA 编码器只接收数值和可见掩码，内部无法区分隐藏与未测量；本审计不证明未来调用者会正确使用候选约定。</p>
+      <p>共享 RNA foundation 尚未完成，至少三个经授权且有真实同细胞证据的人类 RNA / ATAC / 单细胞接触细胞系尚未确认。没有执行真实训练、扰动预测或官方 cell-eval；跨来源测试暴露和 Tahoe 候选隔离限制仍须单独审计。</p>
+    </section>
+
+    <footer>
+      <a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-trimodal-mask-audit-v1">审计测试和复现</a> ·
+      <a href="../2026-11-13-data-qa-v1/">同细胞来源 QA</a> ·
+      <a href="../2026-11-13-evaluation-protocol-v2/">共同评测协议补充</a>
+    </footer>
+  </main>
+</body>
+</html>
