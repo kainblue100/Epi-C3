@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="依据 STATE 论文原文解读 Figure 2，并分开展示作者存档结果与 Epi-C3 旧模型试算。">
+  <title>Epi-C3 | STATE 原文与比较参考</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="state-author-reference.js"></script>
+  <script defer src="report.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../">EPI<span>.</span>C3 <small>RESEARCH ATLAS</small></a>
+      <nav aria-label="页面导航">
+        <a href="#reference">作者参考图</a>
+        <a href="#paper">原文解读</a>
+        <a href="#legacy">项目试算</a>
+        <a href="#next">比较状态</a>
+        <a href="../../dashboard/2026-11-12-v22/">项目全貌 ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero shell">
+      <p class="eyebrow">PAPER REFERENCE / 2026.11.13 / STATIC SNAPSHOT</p>
+      <h1>读懂 STATE，<br><em>再进行公平比较。</em></h1>
+      <p class="lead">依据用户提供的 Cell 论文正文、图 2 图注及方法部分，整理三类扰动、六项指标和评测划分；下图使用作者公开保存的 STATE 结果，不是本项目的 STATE 实测。</p>
+      <div class="alert" role="note">
+        <strong>正式比较尚未完成。</strong> 两种新 Epi-C3 扰动模型与 STATE、论文其他基线还没有在共同划分上完成评测。旧 K562 与 Tahoe 试算采用不同任务，不能与作者结果混排。
+      </div>
+      <div class="hero-links">
+        <a class="button" href="#reference">查看作者参考图 <span aria-hidden="true">↘</span></a>
+        <a href="../2026-11-13-v1/">旧 K562 比较快照 ↗</a>
+      </div>
+    </section>
+
+    <section class="stats shell" aria-label="参考图范围">
+      <div><strong>3 × 6</strong><span>数据集 × 指标</span></div>
+      <div><strong>5 / 3 / 4</strong><span>作者存档中的匹配情境数</span></div>
+      <div><strong>2</strong><span>STATE 的两种输入表示</span></div>
+      <div><strong>0</strong><span>新 Epi-C3 同协议成绩</span></div>
+    </section>
+
+    <section class="shell section" id="reference">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / AUTHOR-PUBLISHED REFERENCE</p><h2>作者保存的 STATE 结果</h2></div>
+        <p>原创三行六列图，仅展示作者已公开的 ST+HVG 与 ST+SE 原始评分汇总；并非论文 Figure 2 的完整重现，也不是与 Epi-C3 的比较。</p>
+      </div>
+      <figure class="figure-card">
+        <img src="state-author-reference.svg" alt="作者保存的 STATE few-shot 结果：Tahoe、Parse 和 Replogle 三行，各包含 L1 扰动区分度原始字段、表达变化 Pearson、DE AUPRC、logFC Spearman、DE overlap at N 和 DE 基因数 Spearman 六列。蓝色代表 ST 加高变基因输入，橙色代表 ST 加 STATE 表示；不包含 Epi-C3 或其他基线。">
+        <figcaption>
+          <span>柱：情境等权均值；误差棒：情境均值的总体标准差；点：各情境均值。</span>
+          <span><a href="state-author-reference.svg">SVG</a> <a href="state-author-reference.png">PNG</a> <a href="state-author-reference.pdf">PDF</a></span>
+        </figcaption>
+      </figure>
+      <p class="note">作者对两种表示保留共同扰动且两侧评分有限的配对项，再对各情境等权汇总。Tahoe、Parse、Replogle 分别有 5、3、4 个匹配情境；Parse 的 ST+SE CD4 Memory 存档缺失，而论文图 2 为 4 个划分。ST+HVG 与 ST+SE 的训练配方不同，图中差异是描述性结果，不是表示方式的因果效应。</p>
+      <p class="note"><strong>L1 字段未换算为论文的归一化分数。</strong> 论文、历史绘图 notebook 与当前 cell-eval 的同名字段和尺度存在版本差异；图中保留作者存档原值，不声称等于原图分数。误差棒不表示生物学重复或置信区间。</p>
+      <details class="inset">
+        <summary>为什么不能直接换算 L1 区分度？</summary>
+        <p>论文方法以真实群体表达与预测群体表达的距离计算名次，令 r 为比正确扰动更接近预测的其他扰动数，T 为扰动总数，归一化为 <code>1 - 2r/T</code>。作者历史 Figure 2 notebook 对其当时的同名字段做 <code>1 - 2v</code> 变换。</p>
+        <p>本项目安装的 cell-eval 0.8.2 则对扰动相对于对照的表达效应排序，默认排除靶基因，以 <code>1 - rank/T</code> 返回分数，并使用排序结果处理并列。字段同名并不保证数据、排序和尺度相同；不能只改一个系数就认定与论文或作者存档等价。</p>
+      </details>
+      <details class="table-wrap">
+        <summary>查看各指标的数值、情境数与配对条件数</summary>
+        <table>
+          <caption>作者存档中可共同评分的扰动条件；数值为情境等权均值 ± 总体标准差。</caption>
+          <thead><tr><th scope="col">数据集</th><th scope="col">指标</th><th scope="col">情境数</th><th scope="col">配对条件数</th><th scope="col">ST+HVG</th><th scope="col">ST+SE</th></tr></thead>
+          <tbody id="author-results"><tr><td colspan="6">正在读取参考数据；也可直接打开下方 JSON。</td></tr></tbody>
+        </table>
+      </details>
+      <div class="links">
+        <a href="state-author-reference.json">数值与来源 JSON ↗</a>
+        <a href="https://huggingface.co/arcinstitute/ST-HVG-Tahoe/tree/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/benchmark">作者固定版本数据 ↗</a>
+        <a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-paper-reference-v2">生成与验证代码 ↗</a>
+      </div>
+      <p class="note"><strong>来源及引用：</strong>Adduri 等，<cite>Predicting cellular responses to perturbation across diverse contexts with State</cite>，Cell 189, 5914–5931 (2026)，<a href="https://doi.org/10.1016/j.cell.2026.07.052">doi:10.1016/j.cell.2026.07.052</a>。此处数值来自作者保存的 State Model 输出；适用 <a href="https://huggingface.co/arcinstitute/ST-HVG-Tahoe/blob/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/MODEL_LICENSE.md">Arc State Model 许可</a>和<a href="https://huggingface.co/arcinstitute/ST-HVG-Tahoe/blob/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/MODEL_ACCEPTABLE_USE_POLICY.md">使用政策</a>。本快照不分发模型权重或原始细胞数据。</p>
+    </section>
+
+    <section class="shell section" id="paper">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / READING THE PAPER</p><h2>Results 与方法怎么读</h2></div>
+        <p>出处：论文第 5916–5918 页、图 2 及其图注，另参照 STAR Methods e9、e15–e18 与表 S5。</p>
+      </div>
+      <div class="coverage-grid">
+        <article class="card"><span class="tag">任务</span><h3>低代表性情境泛化</h3><p>Tahoe 和 Parse 的目标情境分别使用 25% 扰动训练、5% 验证、70% 测试；Replogle-Nadig 使用 30% 训练、70% 测试，固定训练步数。其他情境提供相应扰动信息，不能称为全局未见扰动。</p></article>
+        <article class="card"><span class="tag">输入</span><h3>图 2 使用 ST+HVG</h3><p>以约 2,000 个高变基因的对数表达为主要输入和输出；预测与真实每条件细胞数相同。论文承认全数据选 HVG 会有泄漏风险，实践中建议仅用训练数据选取。</p></article>
+        <article class="card"><span class="tag">对照</span><h3>其他方法不可省略</h3><p>论文比较 PerturbMean、ContextMean、Linear、GEARS、scVI、CPA 和 scGPT architecture。PerturbMean 使用其他情境的同扰动平均效应；ContextMean 使用目标情境训练扰动的平均表达。</p></article>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>图 2 的六项指标衡量不同方面，不能相互代替。</caption>
+          <thead><tr><th scope="col">指标</th><th scope="col">解释</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">扰动区分度</th><td>按预测与真实扰动群体的 L1 距离排序，检查是否匹配正确扰动；论文将名次重标定到随机模型平均接近 0 的尺度。</td></tr>
+            <tr><th scope="row">表达变化 Pearson</th><td>预测与观测的扰动相对对照表达变化是否相关；表达空间和对照定义必须一致。</td></tr>
+            <tr><th scope="row">DE AUPRC</th><td>以真实显著差异表达为标签，检验预测显著性对基因的排序。差异表达使用 Wilcoxon 检验及 BH 多重校正，FDR 阈值 0.05。</td></tr>
+            <tr><th scope="row">logFC Spearman</th><td>仅在真实显著 DE 基因上比较预测与真实 log fold change 的排序；论文中 STATE 并非在全部数据集上都是第一。</td></tr>
+            <tr><th scope="row">DE overlap at N</th><td>N 为真实显著 DE 基因数，比较预测与真实显著基因集合；真实 N=0 时以 N 为分母的重叠率未定义，不能默认为有效零。</td></tr>
+            <tr><th scope="row">效应量 Spearman</th><td>比较各扰动的预测与真实显著 DE 基因数量的排序；若数量恒定或有效扰动不足，相关系数未定义。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">论文图 2 的误差棒是 Tahoe 5 个留出细胞系、Parse 与 Replogle-Nadig 各 4 个划分之间的标准差；这不是独立生物学重复。论文报告 STATE 在 AUPRC 上优于所比较基线，但在 Parse 与 Replogle-Nadig 的 logFC 相关性上并非最佳。</p>
+      <div class="alert" role="note">
+        <strong>原文百分比需要谨慎。</strong> 正文对 Tahoe、Parse、Replogle 的扰动区分度分别写 66%、29%、10%，图 2 的标注则为 +170%、+39%、+28%；正文称 absolute，图注称 relative，不能把它们当成同一种增幅。Parse 的 Pearson 正文写 48%，图中标为 +58%；原因尚需基于原始对照结果核实。这里不把这些百分比重新计算为项目成绩。
+      </div>
+      <p class="note">方法中的一般归一化描述为每细胞 10,000 UMI，而 Tahoe 专项段写 4,000；正式复现须核对具体数据及代码。STATE 的细胞集合和分布匹配并不证明真实单细胞轨迹或逐细胞因果配对。</p>
+    </section>
+
+    <section class="shell section" id="legacy">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / SEPARATE PROJECT EXPLORATION</p><h2>项目旧结果单独看</h2></div>
+        <p>以下试算的模型、数据划分和评分与上方作者存档不同，不做跨区排名，也不是新模型的成绩。</p>
+      </div>
+      <div class="card">
+        <h3>旧 K562：单细胞系、留出靶点</h3>
+        <p>已在共享旧参考上比较早期 Epi-C3、适配 GEARS 和简单基线。候选图与打乱图接近；训练均值的响应 Pearson 更高。评分是自定义群体均值指标，不是论文的 cell-eval 基准。</p>
+        <a href="../2026-11-13-v1/">查看独立旧 K562 图和详细限制 ↗</a>
+      </div>
+      <div class="inset">
+        <h3>旧 Tahoe：9 个条件的 cell-eval 0.8.2 试算</h3>
+        <p>每条件仅有 5–10 个独立预测 parent；这是全局留出药物，而非论文的低代表性情境划分。下面的值仅供检查管线，不支持与 STATE 比较。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">指标</th><th scope="col">旧模型</th><th scope="col">无效应</th><th scope="col">可解释的有效条件</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">L1 区分度原始字段</th><td>0.4444</td><td>0.6667</td><td>3 / 9；不能直接换算到论文尺度</td></tr>
+              <tr><th scope="row">表达变化 Pearson</th><td>-0.0391</td><td>-0.0138</td><td>9 / 9</td></tr>
+              <tr><th scope="row">DE AUPRC</th><td>0.001106</td><td>0.001106</td><td>3 / 9；无信息量</td></tr>
+              <tr><th scope="row">logFC Spearman</th><td>-0.0905</td><td>0.1171</td><td>1 / 9</td></tr>
+              <tr><th scope="row">DE overlap at N</th><td>0</td><td>0</td><td>真实 DE 数大于零的 3 / 9</td></tr>
+              <tr><th scope="row">效应量 Spearman</th><td>未定义</td><td>未定义</td><td>0 / 9</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>两种预测在 9 个条件均无显著 DE 基因。原始包对 overlap 返回 9 个零，但其中 6 个条件的真实 DE 数也为零；上表按论文分母排除这 6 个条件，而不是把它们当作有效零。</p>
+        <a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/cell-eval-summary.json">原始汇总及包版本 ↗</a>
+      </div>
+    </section>
+
+    <section class="shell section" id="next">
+      <div class="section-head">
+        <div><p class="eyebrow">04 / WHAT IS STILL MISSING</p><h2>正式同协议比较的状态</h2></div>
+        <p>缺失代表尚未评测或无法定义，不代表零分。</p>
+      </div>
+      <div class="coverage-grid">
+        <article class="card"><span class="tag">环境已准备</span><h3>STATE</h3><p>官方代码与隔离 CPU 环境已安装；本项目尚未完成 STATE 训练或评测。上图为作者保存结果。</p></article>
+        <article class="card"><span class="tag">未完成</span><h3>两种新 Epi-C3</h3><p>共享 RNA 基础模型仍在训练；新调控网络分支及严格同细胞三模态分支尚无正式扰动预测成绩。至少三个合格三模态细胞系仍待核实。</p></article>
+        <article class="card"><span class="tag">待共同评测</span><h3>论文其余基线</h3><p>PerturbMean、ContextMean、Linear、GEARS、scVI、CPA 和 scGPT architecture 尚未与新模型及 STATE 共同冻结划分并评测。</p></article>
+      </div>
+      <p class="note">完成共享训练与数据暴露审计后，应冻结训练、验证和低代表性情境测试划分，统一基因轴、对照、预处理和预测细胞数；保存单细胞预测，使用同一版本的 cell-eval 与差异表达设置，并报告每项有效条件数及不确定性。不能用不同划分的分数拼成排行榜。</p>
+      <div class="alert" role="note">
+        <strong>预训练测试暴露风险：</strong>现有 Tahoe 元数据中，论文 5 个测试情境的测试条件精确匹配到 8,133,621 条源记录。原计划的第二阶段若完整消费其 92,090,669 条合格 Tahoe 记录，按集合大小的保守下界，至少 4,599,956 条会属于这些测试条件。本快照核查时第二阶段仍在等待；这不是已发生的训练记录，记录数也不是去重细胞数。现有隔离只保护旧试算身份，不能证明论文测试集被隔离。若按原计划续训，不能将所得基础模型当作对该论文测试条件完全未暴露；公平比较需要另行隔离并审计训练数据。
+        <a href="tahoe-state-exposure.json">查看聚合审计与输入哈希 ↗</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell">Epi-C3 · 研究中的静态快照 · 不用于临床决策</div></footer>
+</body>
+</html>

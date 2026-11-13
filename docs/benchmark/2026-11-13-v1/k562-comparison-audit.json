@@ -1,0 +1,15 @@
+{
+  "format": "epi-c3-posthoc-legacy-k562-independent-audit-v1",
+  "status": "complete",
+  "summary_sha256": "8c8dcd3979edcd526fdce2c48d0797e2599127266b953861ca540704b98aa1f0",
+  "audit_script_sha256": "610378feaa986abfe1b2126eb2a591988ba113e522d04432e9b8bed2a4b677fd",
+  "targets": 347,
+  "genes": 1861,
+  "checked_finite_target_metrics": 15268,
+  "checked_undefined_target_metrics": 347,
+  "maximum_aggregate_absolute_difference": 2.7755575615628914e-17,
+  "limitations": [
+    "This is an independent arithmetic replay of the same saved population means, not biological replication.",
+    "It does not establish fair prior exposure, validate the original experimental design, or reproduce STATE."
+  ]
+}

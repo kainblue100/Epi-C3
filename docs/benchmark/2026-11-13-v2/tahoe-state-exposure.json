@@ -1,0 +1,64 @@
+{
+  "format": "epi-c3-tahoe-state-exposure-audit-v1",
+  "status": "complete",
+  "scope": "Prospective exposure under the existing planned stage-two Tahoe stream",
+  "stage2_has_been_run_by_this_audit": false,
+  "matching": "Exact sample condition string and unambiguous cell-line metadata; aliases are not expanded.",
+  "source_rows": 95624334,
+  "planned_eligible_stage2_rows": 92090669,
+  "source_rows_not_eligible_for_stage2": 3533665,
+  "matched_official_test_rows": 8133621,
+  "minimum_matched_rows_in_planned_eligible_stream": 4599956,
+  "contexts": [
+    {
+      "context": "C32",
+      "test_condition_entries": 777,
+      "unique_test_conditions": 735,
+      "matched_unique_test_conditions": 735,
+      "matched_source_rows": 1218727
+    },
+    {
+      "context": "HOP62",
+      "test_condition_entries": 778,
+      "unique_test_conditions": 736,
+      "matched_unique_test_conditions": 736,
+      "matched_source_rows": 2075793
+    },
+    {
+      "context": "HepG2/C3A",
+      "test_condition_entries": 778,
+      "unique_test_conditions": 736,
+      "matched_unique_test_conditions": 736,
+      "matched_source_rows": 813838
+    },
+    {
+      "context": "Hs 766T",
+      "test_condition_entries": 778,
+      "unique_test_conditions": 736,
+      "matched_unique_test_conditions": 735,
+      "matched_source_rows": 1502381
+    },
+    {
+      "context": "PANC-1",
+      "test_condition_entries": 778,
+      "unique_test_conditions": 736,
+      "matched_unique_test_conditions": 735,
+      "matched_source_rows": 2522882
+    }
+  ],
+  "interpretation": "The minimum follows from set cardinalities, not a row-level intersection. It applies if the planned stage-two stream consumes all eligible rows; these are row occurrences, not deduplicated biological cells.",
+  "limitations": [
+    "This is a prospective data-exposure audit, not proof that stage two has started or finished.",
+    "Exact matching can miss equivalent condition strings or aliases and is therefore conservative.",
+    "The lower bound does not identify which matched rows are eligible or establish their uniqueness.",
+    "The historical isolation audit protects listed legacy evaluation identities, not this official split.",
+    "Independent cross-source duplicates and prior stage-one exposure are not audited here."
+  ],
+  "source_sha256": {
+    "metadata_plan": "71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031",
+    "isolation_audit": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+    "official_split": "eac16fb06052dec9d6842dfae04d5ca693b847e3432f719a975adce205707783",
+    "cell_line_metadata": "67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d",
+    "sample_metadata": "33167f0ce28cff8357c503cda67d1c7fea200bff6918ee1de3c4f3549175b9d3"
+  }
+}

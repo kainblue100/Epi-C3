@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Epi-C3 旧模型与 GEARS 的后验探索，以及 STATE 比较的未完成状态。">
+  <title>Epi-C3 | 扰动预测比较快照</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="comparison-data.js"></script>
+  <script defer src="report.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../">EPI<span>.</span>C3 <small>RESEARCH ATLAS</small></a>
+      <nav aria-label="页面导航">
+        <a href="#results">当前结果</a>
+        <a href="#coverage">方法状态</a>
+        <a href="#protocol">评估口径</a>
+        <a href="../../dashboard/2026-11-12-v22/">项目全貌 ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero shell">
+      <p class="eyebrow">BENCHMARK / 2026.11.13 / STATIC SNAPSHOT</p>
+      <h1>扰动预测比较，<br><em>先把边界说清楚。</em></h1>
+      <p class="lead">已在同一份旧 K562 测试参考上，对 Epi-C3 早期群体模型、适配版 GEARS 和简单基线进行探索性比较。两种新模型与 STATE 的正式同协议评测尚未完成。</p>
+      <div class="alert" role="note">
+        <strong>不是 STATE 论文排行榜。</strong> 这是单一 K562 细胞系内的留出靶点实验，测试结果曾被查看；它不同于论文中的低代表性细胞情境泛化，也不能据此判断新模型优于 STATE。
+      </div>
+      <div class="hero-links">
+        <a class="button" href="#results">查看比较图 <span aria-hidden="true">↘</span></a>
+        <a href="../../dashboard/2026-11-12-v22/">查看完整研究仪表盘 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="stats shell" aria-label="比较范围">
+      <div><strong>347</strong><span>已查看过的测试靶点</span></div>
+      <div><strong>1,860</strong><span>每靶点评分基因，排除靶点</span></div>
+      <div><strong>1</strong><span>细胞系 · K562</span></div>
+      <div><strong>0</strong><span>已完成的 STATE 同协议结果</span></div>
+    </section>
+
+    <section class="shell section" id="results">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / SHARED LEGACY REFERENCE</p><h2>旧模型与 GEARS</h2></div>
+        <p>相同参考、基因轴和输入对照；不同方法的先验、训练和种子数并不相同，因此这是后验探索，不是公平盲测。</p>
+      </div>
+      <figure class="figure-card">
+        <img src="legacy-k562-comparison.svg" alt="旧 K562 群体均值比较图：四种旧 Epi-C3 变体、适配 GEARS、训练均值和无效应基线的平均表达 MSE、响应 Pearson 与扰动区分度。STATE 和其他指定模型没有在此评测。">
+        <figcaption>
+          <span>原创比较图 · 群体均值指标 · 数值轴截断，请读取点旁数值</span>
+          <span><a href="legacy-k562-comparison.svg">SVG</a> <a href="legacy-k562-comparison.png">PNG</a> <a href="legacy-k562-comparison.pdf">PDF</a></span>
+        </figcaption>
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <caption>同一旧测试集的逐靶点宏平均；各 Epi-C3 值为三个响应种子的宏平均</caption>
+          <thead><tr><th scope="col">方法</th><th scope="col">均值 MSE ↓</th><th scope="col">响应 Pearson ↑</th><th scope="col">区分度 ↑</th><th scope="col">有效靶点 MSE / Pearson / 区分度</th><th scope="col">响应种子</th></tr></thead>
+          <tbody id="comparison-body"><tr><td colspan="6">正在读取本地数据；若未显示，请查看下方 JSON。</td></tr></tbody>
+        </table>
+      </div>
+      <p class="note">候选图与打乱图结果接近，且仅两个测试靶点有直接候选图源覆盖；目前不能证明图结构有效。训练均值基线在响应 Pearson 上高于这些旧模型。无效应预测的表达变化为常数，因此 Pearson <strong>未定义</strong>，不是零；其区分度不是“零分”，也不能证明模型学到了扰动。</p>
+      <p class="note">冻结计划中的训练、验证、测试靶点分别为 1,041、347、347 个且互不相交。GEARS 使用额外 GO 先验和已知留出靶点、仅一个种子；旧 Epi-C3 的三个响应种子共享一个编码器。对照和批次跨靶点复用；没有独立生物学重复或置信区间。预测和参考分别减去各自的输入对照与参考对照；简单基线没有训练种子。</p>
+      <div class="links">
+        <a href="k562-comparison.json">聚合数据 JSON ↗</a>
+        <a href="k562-comparison-audit.json">独立算术复核 ↗</a>
+        <a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-benchmark-v1">可复现代码 ↗</a>
+      </div>
+    </section>
+
+    <section class="shell section" id="coverage">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / COVERAGE</p><h2>哪些方法还没有分数</h2></div>
+        <p>没有运行或无法计算的项目保持缺失，不以零代替，也不从论文截图估数后合并排名。</p>
+      </div>
+      <div class="coverage-grid">
+        <article class="card"><span class="tag">未评测</span><h3>STATE</h3><p>用户已确认项目为非商业用途并授权运行；官方环境正在准备。当前尚无同协议结果，且两种新模型尚未训练完成；使用时仍须遵守适用许可。</p><a href="https://github.com/ArcInstitute/state/blob/main/MODEL_LICENSE.md">模型许可 ↗</a></article>
+        <article class="card"><span class="tag">未评测</span><h3>图中其他方法</h3><p>PerturbMean、ContextMean、Linear、scVI、CPA 和 scGPT architecture 均未在本对比的共同协议下评测。这里的训练均值不是论文中的 PerturbMean 或 ContextMean。</p></article>
+        <article class="card"><span class="tag">未完成</span><h3>两种新 Epi-C3</h3><p>共享 RNA 基础模型仍在训练；新调控网络分支和严格同细胞三模态分支尚无正式扰动预测成绩。上图是旧模型，不是这两个新模型。</p></article>
+      </div>
+      <p class="note">GEARS 已列在上图，但属于先前结果查看后增加的适配版；不能等同于论文原始运行。Parse-PBMC、Tahoe-100M 和其他 Replogle 细胞系的完整同协议比较均未完成。</p>
+      <div class="table-wrap">
+        <table>
+          <caption>与 STATE 的设计层面对照，不代表性能比较</caption>
+          <thead><tr><th scope="col">模型</th><th scope="col">输入与目标</th><th scope="col">当前状态</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">STATE</th><td>以细胞表达状态与扰动条件预测响应；论文评估涵盖化学、信号和遗传扰动。</td><td>已有公开方法；本项目尚未运行或在相同划分上评分。</td></tr>
+            <tr><th scope="row">新 Epi-C3 · 调控网络</th><td>共享 RNA 编码加候选基因调控网络与基因扰动，探索网络引导的联动预测。</td><td>原型，依赖未完成的共享基础模型，尚无正式扰动成绩。</td></tr>
+            <tr><th scope="row">新 Epi-C3 · 同细胞三模态</th><td>同一细胞的 RNA、ATAC 与染色质接触联合编码，加基因扰动及方向。</td><td>响应头未训练；至少三个合格、逐细胞配对的细胞系尚未核实。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="shell section" id="protocol">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / METRICS &amp; NEXT BENCHMARK</p><h2>指标怎么读</h2></div>
+        <p>下列 K562 指标参考图中的评测思路，但使用自定义群体均值算法；不是官方 cell-eval 结果。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">指标</th><th scope="col">本次定义与限制</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">均值表达 MSE</th><td>每个靶点去掉其自身基因后，对预测与参考的群体平均对数表达求均方误差，再对靶点取平均。越低越好。</td></tr>
+            <tr><th scope="row">响应 Pearson</th><td>对每个靶点分别计算预测均值减输入对照、参考均值减参考对照，在非靶点基因上求 Pearson，再对有效靶点取平均。常数向量未定义。</td></tr>
+            <tr><th scope="row">扰动区分度</th><td>预测响应与所有真实响应按欧氏距离排序，去掉对应靶点基因；分数为 1 减去零起始的平均并列名次除以靶点数。并列按平均名次处理，定义与官方实现不完全相同。</td></tr>
+            <tr><th scope="row">DE 与效应量</th><td>当前只保存了群体均值，无法据此计算逐细胞差异表达 P 值 AUPRC、logFC Spearman、DE 重叠或基于显著 DE 基因数的效应量 Spearman；这些均未计算。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="inset">
+        <h3>另一个独立的 Tahoe 小样本试算</h3>
+        <p>旧 Tahoe 模型曾使用官方 cell-eval 0.8.2 试算 9 个条件：平均表达 MSE 为 <strong>0.011904</strong>，无效应为 <strong>0.010371</strong>；响应 Pearson 分别为 <strong>-0.039125</strong> 和 <strong>-0.013795</strong>。每条件仅 5–10 个独立预测 parent，多个 DE 指标只有 1–3 个条件有效，或不具信息量。这是另一数据集和协议，不应与上图数值直接排名。</p>
+        <a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/cell-eval-summary.json">Tahoe 汇总与有效条件数 ↗</a>
+      </div>
+      <h3>正式比较需要满足</h3>
+      <p class="note">先完成两种新模型和训练数据暴露审计，再冻结统一训练、验证、低代表性情境测试划分、基因轴、对照与预处理；在各模型许可允许的前提下运行 STATE 及其他基线，保存单细胞预测，使用相同版本的官方 cell-eval 和差异表达设置，并报告有效条件数和独立重复。完成前不发布跨方法总排名。</p>
+      <div class="links">
+        <a href="https://github.com/ArcInstitute/state">STATE 官方仓库 ↗</a>
+        <a href="https://github.com/ArcInstitute/state/tree/main/state_preprint_toml_files">STATE 论文数据划分配置 ↗</a>
+        <a href="https://github.com/ArcInstitute/cell-eval">cell-eval 官方仓库 ↗</a>
+        <a href="https://github.com/snap-stanford/GEARS">GEARS 官方仓库 ↗</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell">Epi-C3 · 研究中的静态快照 · 不用于临床决策</div></footer>
+</body>
+</html>

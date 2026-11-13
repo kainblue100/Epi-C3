@@ -1,0 +1,350 @@
+{
+  "format": "epi-c3-posthoc-legacy-k562-comparison-v1",
+  "created_utc": "2026-11-13T01:23:17.686498+00:00",
+  "dataset": "Replogle K562 genetic perturbations",
+  "partition": "Previously examined held-out gene targets within one cell line",
+  "target_count": 347,
+  "gene_count": 1861,
+  "scored_genes_per_target": 1860,
+  "official_state_benchmark": false,
+  "official_cell_eval_result": false,
+  "metrics": {
+    "mse": "Macro mean per-target squared error of population mean log expression, excluding the targeted gene; lower is better.",
+    "delta_pearson": "Macro mean per-target Pearson correlation across non-target genes between predicted minus input-control and observed minus reference-control population means; constant vectors are undefined, not zero.",
+    "discrimination": "Per target, rank its predicted effect among all observed effects by Euclidean distance after excluding that target gene; score is 1 minus the zero-based mean tie rank divided by the number of targets. This custom tie-aware population-mean metric is not an official cell-eval result."
+  },
+  "inputs_sha256": {
+    "gears_means": "4facf0b2ddb4d581828d47385fd455577fa390a23fe374fc1f4eaf4a7dee0888",
+    "legacy_epi_means": "2bb86f50aa5cefe82c2858d581f083c1303031bf4b3a44769a3e22d4d635f367",
+    "reference_means": "87bd60f9a6f62be13b7c69635cdc76fe6285aec6f686eccd5cedadc15ba16d82"
+  },
+  "frozen_plan_sha256": "e22d57934f3f661361f266b350906eecaef875521f1686d1cd9ee1d9ea5d40da",
+  "script_sha256": "ba31dc46edd37737783d485a6cd6ae26b2db95f5757ad990ee341402c8571ff0",
+  "methods": [
+    {
+      "id": "legacy-epi-graph",
+      "label": "Legacy Epi-C3: candidate graph",
+      "prediction_runs": 3,
+      "seed_count": 3,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.015187104665245116,
+          "by_run": [
+            0.015194262232446092,
+            0.015166020786931675,
+            0.01520103097635758
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.08997343280384516,
+          "by_run": [
+            0.08876640221342212,
+            0.0926719462747027,
+            0.08848194992341066
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.565392398685591,
+          "by_run": [
+            0.5653813253162139,
+            0.565738441478627,
+            0.5650574292619321
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "legacy-epi-shuffled",
+      "label": "Legacy Epi-C3: shuffled graph",
+      "prediction_runs": 3,
+      "seed_count": 3,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.015193984647963033,
+          "by_run": [
+            0.015204086025084112,
+            0.01517244703848503,
+            0.015205420880319957
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.08985277798750047,
+          "by_run": [
+            0.08865475628209803,
+            0.09252545277674952,
+            0.08837812490365388
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.566045727478843,
+          "by_run": [
+            0.5659045420192843,
+            0.5664111486682889,
+            0.5658214917489557
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "legacy-epi-nodes",
+      "label": "Legacy Epi-C3: epigenomic nodes",
+      "prediction_runs": 3,
+      "seed_count": 3,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.015195956572086911,
+          "by_run": [
+            0.015208292984673829,
+            0.015173717824189152,
+            0.015205858907397757
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.08956869203741924,
+          "by_run": [
+            0.08802959399347406,
+            0.09196873563054611,
+            0.08870774648823757
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.5659709822355471,
+          "by_run": [
+            0.5658713219111527,
+            0.5663862335871903,
+            0.5656553912082983
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "legacy-rna",
+      "label": "Legacy Epi-C3: RNA only",
+      "prediction_runs": 3,
+      "seed_count": 3,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.015219834506276668,
+          "by_run": [
+            0.015223442567989739,
+            0.015177030233113283,
+            0.01525903071772698
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.08795613198571996,
+          "by_run": [
+            0.08593617594469058,
+            0.09173292232543338,
+            0.08619929768703594
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.5649383905411279,
+          "by_run": [
+            0.5654726806135754,
+            0.5655723409379698,
+            0.5637701500718384
+          ],
+          "finite_targets_by_run": [
+            347,
+            347,
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "gears",
+      "label": "GEARS, adapted",
+      "prediction_runs": 1,
+      "seed_count": 1,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.01583080899741956,
+          "by_run": [
+            0.01583080899741956
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.07916078458094884,
+          "by_run": [
+            0.07916078458094884
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.5606142397993505,
+          "by_run": [
+            0.5606142397993505
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "training-mean",
+      "label": "Training mean",
+      "prediction_runs": 1,
+      "seed_count": null,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.015711020985759664,
+          "by_run": [
+            0.015711020985759664
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": 0.1018411786348409,
+          "by_run": [
+            0.1018411786348409
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.5613035570430781,
+          "by_run": [
+            0.5613035570430781
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    },
+    {
+      "id": "no-effect",
+      "label": "No effect",
+      "prediction_runs": 1,
+      "seed_count": null,
+      "metrics": {
+        "mse": {
+          "mean_of_run_macros": 0.01604481739394287,
+          "by_run": [
+            0.01604481739394287
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        },
+        "delta_pearson": {
+          "mean_of_run_macros": null,
+          "by_run": [
+            null
+          ],
+          "finite_targets_by_run": [
+            0
+          ],
+          "total_targets": 347
+        },
+        "discrimination": {
+          "mean_of_run_macros": 0.5580313763921302,
+          "by_run": [
+            0.5580313763921302
+          ],
+          "finite_targets_by_run": [
+            347
+          ],
+          "total_targets": 347
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "The original validation and test outcomes were examined before the GEARS extension and this analysis.",
+    "This is target holdout within K562, not the STATE underrepresented-context benchmark.",
+    "GEARS uses a transductive public GO graph with held-out target identities and has one fitted seed.",
+    "Legacy Epi-C3 has three response seeds sharing one pretrained encoder; these are not biological replicates.",
+    "The candidate graph directly covers only two test targets; the shuffled graph is an important control.",
+    "Input controls and batches are reused across targets; prediction and reference controls differ.",
+    "Saved population means cannot establish single-cell distributions or differential-expression p values.",
+    "These are legacy models, not the incomplete shared-foundation GRN or same-cell trimodal branches.",
+    "STATE and the other image models were not evaluated in this comparison."
+  ]
+}

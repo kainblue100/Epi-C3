@@ -1,0 +1,1128 @@
+{
+  "format": "epi-c3-author-state-reference-v2",
+  "citation": "Adduri et al., Cell 189, 5914-5931 (2026), doi:10.1016/j.cell.2026.07.052",
+  "project_same_protocol_evaluation": false,
+  "article_figure_2_reproduction": false,
+  "scope": "Authors' saved CellEval v1 fewshot results; paired finite perturbations, equal-weight context means. Population SD was computed here across context means.",
+  "caveats": [
+    "These are authors' saved results, not an Epi-C3 experiment.",
+    "Parse has three matched contexts because the SE CD4 Memory result is missing; the paper reports four splits.",
+    "The original saved L1 field is not transformed to the paper's normalized rank.",
+    "HVG and SE runs are descriptive saved experiments with differing recipes, not a controlled causal comparison.",
+    "The requested non-STATE baselines and both new Epi-C3 branches are not included."
+  ],
+  "source": {
+    "repository": "arcinstitute/ST-HVG-Tahoe",
+    "revision": "ef2f1e13966a2a8f61fb3e8d178fae2b46aad195",
+    "updated": "2026-11-12",
+    "context_csv": "https://huggingface.co/arcinstitute/ST-HVG-Tahoe/resolve/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/benchmark/context_metrics.csv",
+    "dataset_csv": "https://huggingface.co/arcinstitute/ST-HVG-Tahoe/resolve/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/benchmark/dataset_metrics.csv",
+    "model_index": "https://huggingface.co/arcinstitute/ST-HVG-Tahoe/resolve/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/benchmark/model_index.json",
+    "author_recomputation": "https://huggingface.co/arcinstitute/ST-HVG-Tahoe/resolve/ef2f1e13966a2a8f61fb3e8d178fae2b46aad195/benchmark/recompute_benchmark.py",
+    "sha256": {
+      "contexts": "ad015f3bdc22079296cb1a892bc2b08fbdce3ccee7a9ae34ea9dca06b7aa740c",
+      "datasets": "81bd577d96dad435dfad7d9fe9e9e5434cfb9e41507276818603d85ba57dce75",
+      "index": "ce3532090837241d9253aa3cff5648e59cfa1e99faa57bfae74b9bbf1bc66f42"
+    }
+  },
+  "datasets": [
+    {
+      "id": "Tahoe",
+      "label": "Tahoe-100M\nChemical",
+      "panels": [
+        {
+          "metric": "discrimination_score_l1",
+          "title": "PDS L1 saved field",
+          "n_contexts": 5,
+          "n_pairs_total": 3674,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.9926169925356959,
+              "population_sd": 0.004386489247536933,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.9844305613401824,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9961238372900181,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.99193113980286,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9942931186079873,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.9963063056374315,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.9910837590308246,
+              "population_sd": 0.0052638228979354895,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.9813429589522884,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9951075940580314,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.9902596140497014,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9927122958026748,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.9959963322914268,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pearson_delta",
+          "title": "Pearson expression delta",
+          "n_contexts": 5,
+          "n_pairs_total": 3674,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.9240413868299886,
+              "population_sd": 0.014525510675033855,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.9194850343686598,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9499882125124639,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.9089057567776466,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9134204559712386,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.9284074745199336,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.9146581234133258,
+              "population_sd": 0.01633204916873012,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.9024356798959428,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9437077690904238,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.89993697759651,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9058115325158551,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.9213986579678973,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pr_auc",
+          "title": "DE significance AUPRC",
+          "n_contexts": 5,
+          "n_pairs_total": 3674,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.6774550912927475,
+              "population_sd": 0.05077715566201135,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.7033398371974091,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.7482538137181038,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.599669570930376,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.6458705676063502,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.6901416670114984,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.638578528064774,
+              "population_sd": 0.052142284191534466,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.6699354141168743,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.7111075505423959,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.5683719828662173,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.5912899806305242,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.6521877121678585,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_lfc_sig",
+          "title": "DE logFC Spearman",
+          "n_contexts": 5,
+          "n_pairs_total": 3673,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.6028817098759566,
+              "population_sd": 0.039694841449387355,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.5913510405800462,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.6783286130269106,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.5606225929502556,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.5879996135248682,
+                  "n_pairs": 734
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.5961066892977023,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.5811436783676414,
+              "population_sd": 0.04423099425801377,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.5574003976343209,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.6593396773729711,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.5254605316862905,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.5828021623042976,
+                  "n_pairs": 734
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.5807156228403269,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "overlap_at_N",
+          "title": "DE overlap at N",
+          "n_contexts": 5,
+          "n_pairs_total": 3674,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.5253708065372673,
+              "population_sd": 0.03358168608543244,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.5304362822000306,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.5775797126388662,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.4772135526003478,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.5045866892426732,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.5370377960044188,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.5156462429604352,
+              "population_sd": 0.04050543401162548,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.5471670896138301,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.5645049264974739,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.4658369961190195,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.46974669284232967,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.5309755097295225,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_sig",
+          "title": "DE-count Spearman",
+          "n_contexts": 5,
+          "n_pairs_total": 3674,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.9082772242406382,
+              "population_sd": 0.022755857097574404,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.8983714766258628,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9391024661715626,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.8710568368050493,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9130654552943669,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.919789886306349,
+                  "n_pairs": 734
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.9112632311031236,
+              "population_sd": 0.027900420657944323,
+              "by_context": [
+                {
+                  "context": "C32",
+                  "score": 0.8987271040953948,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HOP62",
+                  "score": 0.9414027362187108,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "HepG2-C3A",
+                  "score": 0.863150480260161,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "Hs 766T",
+                  "score": 0.9313332787999558,
+                  "n_pairs": 735
+                },
+                {
+                  "context": "PANC-1",
+                  "score": 0.9217025561413956,
+                  "n_pairs": 734
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "Parse",
+      "label": "Parse-PBMC\nSignaling",
+      "panels": [
+        {
+          "metric": "discrimination_score_l1",
+          "title": "PDS L1 saved field",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.9306278182448838,
+              "population_sd": 0.059744589004739466,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.9815296566077003,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.963579604578564,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.8467741935483872,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.9583766909469302,
+              "population_sd": 0.04050928545228252,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.9937565036420396,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.9797086368366286,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.9016649323621228,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pearson_delta",
+          "title": "Pearson expression delta",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.7956484508129859,
+              "population_sd": 0.007245286070790602,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.7979835267028501,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.8031210413863582,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.7858407843497491,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.8043842318878379,
+              "population_sd": 0.01627251740670286,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.7852953807000191,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.8027974376755376,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.8250598772879569,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pr_auc",
+          "title": "DE significance AUPRC",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.5264259235922019,
+              "population_sd": 0.13364022639410875,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.4078347798139188,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.4582786823100159,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.713164308652671,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.5659298082002592,
+              "population_sd": 0.13879095461615365,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.4232383545503181,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.520554691058332,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.7539963789921273,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_lfc_sig",
+          "title": "DE logFC Spearman",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.4473515750096375,
+              "population_sd": 0.03654586821266188,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.4205107948577533,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.4225217348149716,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.49902219535618764,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.42887677707268557,
+              "population_sd": 0.05148197427834037,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.4071986463503569,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.37952336367044653,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.49990832119725337,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "overlap_at_N",
+          "title": "DE overlap at N",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.426126455056955,
+              "population_sd": 0.12016378783335022,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.3439647495661524,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.3383814778115522,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.5960331377931605,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.4608289741259024,
+              "population_sd": 0.1293772538003696,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.3307292238710567,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.41446407492286236,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.637293623583788,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_sig",
+          "title": "DE-count Spearman",
+          "n_contexts": 3,
+          "n_pairs_total": 186,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.8479288901404288,
+              "population_sd": 0.025901312105496066,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.8755887467200646,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.8548959857645021,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.8133019379367198,
+                  "n_pairs": 62
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.8784277599635444,
+              "population_sd": 0.011456712500457518,
+              "by_context": [
+                {
+                  "context": "B_Intermediate_Memory",
+                  "score": 0.8863673578519209,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "B_Naive",
+                  "score": 0.8866893338370481,
+                  "n_pairs": 62
+                },
+                {
+                  "context": "CD14_Mono",
+                  "score": 0.8622265882016641,
+                  "n_pairs": 62
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "Replogle",
+      "label": "Replogle-Nadig\nGenetic",
+      "panels": [
+        {
+          "metric": "discrimination_score_l1",
+          "title": "PDS L1 saved field",
+          "n_contexts": 4,
+          "n_pairs_total": 4058,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.7504133491595628,
+              "population_sd": 0.019545801085775315,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.7788897287309985,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.7363546928827222,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.7576209360699406,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.72878803895459,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.7301929761412407,
+              "population_sd": 0.02349984976225507,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.7470249993001316,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.6898326547841125,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.7451121849600437,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.7388020655206752,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pearson_delta",
+          "title": "Pearson expression delta",
+          "n_contexts": 4,
+          "n_pairs_total": 4058,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.41324901860765717,
+              "population_sd": 0.04821575377412176,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.419532803589387,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.38064635526822754,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.3637575425557522,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.4890593730172618,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.36594078462506013,
+              "population_sd": 0.06603417321544065,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.37792182678994896,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.2962502158247391,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.3213907366369929,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.4682003592485596,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "pr_auc",
+          "title": "DE significance AUPRC",
+          "n_contexts": 4,
+          "n_pairs_total": 4058,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.30846915511402795,
+              "population_sd": 0.047291278092820244,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.299964186717739,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.27364019690186153,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.2721639073193609,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.3881083295171504,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.23933633991170927,
+              "population_sd": 0.06879825532558308,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.2478479097007596,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.16544212932131233,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.19698582629546338,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.34706949432930184,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_lfc_sig",
+          "title": "DE logFC Spearman",
+          "n_contexts": 4,
+          "n_pairs_total": 4057,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.4550794418357381,
+              "population_sd": 0.03780869050349404,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.4742419998688975,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.41575458990393527,
+                  "n_pairs": 1083
+                },
+                {
+                  "context": "k562",
+                  "score": 0.42272780869174087,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.5075933688783789,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.41752248458041574,
+              "population_sd": 0.06097418510668141,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.431568784556486,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.3378999806735058,
+                  "n_pairs": 1083
+                },
+                {
+                  "context": "k562",
+                  "score": 0.39470373415657417,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.505917438935097,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "overlap_at_N",
+          "title": "DE overlap at N",
+          "n_contexts": 4,
+          "n_pairs_total": 4058,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.2293502809044033,
+              "population_sd": 0.011539019192226482,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.2332812395804358,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.2192487921286332,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.21836313281333003,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.2465079590952141,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.1774998531900609,
+              "population_sd": 0.05021283599034472,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.19112808256366878,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.11765714583839412,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.14936966276296976,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.251844521595211,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        },
+        {
+          "metric": "de_spearman_sig",
+          "title": "DE-count Spearman",
+          "n_contexts": 4,
+          "n_pairs_total": 4058,
+          "scores": {
+            "X_hvg": {
+              "mean": 0.7600774554895282,
+              "population_sd": 0.04608803226176744,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.8044717954353456,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.7591865557093317,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.7911390911810001,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.6855123796324355,
+                  "n_pairs": 1061
+                }
+              ]
+            },
+            "X_state": {
+              "mean": 0.7354325468089641,
+              "population_sd": 0.04128521490198038,
+              "by_context": [
+                {
+                  "context": "hepg2",
+                  "score": 0.7711623827942213,
+                  "n_pairs": 945
+                },
+                {
+                  "context": "jurkat",
+                  "score": 0.7136970600623019,
+                  "n_pairs": 1084
+                },
+                {
+                  "context": "k562",
+                  "score": 0.7782896719493523,
+                  "n_pairs": 968
+                },
+                {
+                  "context": "rpe1",
+                  "score": 0.6785810724299807,
+                  "n_pairs": 1061
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
