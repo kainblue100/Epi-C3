@@ -1,0 +1,16 @@
+{
+  "assay": "LiMCA",
+  "accession": "GSE240128",
+  "reported_human_cell_lines": ["GM12878", "K562", "eHAP", "BJ"],
+  "reported_same_cell_modalities": ["RNA", "chromatin contacts"],
+  "strict_rna_atac_contact_eligible": false,
+  "decision": "Potential RNA-contact auxiliary data only, pending source-file and cell-pair verification; do not count as a verified same-cell RNA-ATAC-contact cell line.",
+  "reason": "The paper describes LiMCA as RNA and 3D genome co-profiling; METATAC is a separate accessibility assay. It does not establish a matched ATAC measurement for the same LiMCA cell-line cells.",
+  "source_file_cell_pairing_verified": false,
+  "source_dataset_downloaded": false,
+  "sources": [
+    "https://doi.org/10.1038/s41592-024-02239-0",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11166570/",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE240128"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "format": "epi-c3-shared-stage2-dispatch-snapshot-v1",
+  "state": "running",
+  "stage": "waiting-for-stage1",
+  "started_at_utc": "2026-11-12T16:38:08.665159+00:00",
+  "snapshot_at_utc": "2026-11-12T16:39:35.362493+00:00",
+  "stage1_plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "preflight_sha256": "39c0557507ff1b54c8e0525108df3f03197253b70826059c81ec7551ee5579de",
+  "guarded_file_count": 19,
+  "dispatcher_sha256": "8ae26244197f370f114bb8938b3ce6a2f594ed70e8c604d7ac21a018dc84dfb4",
+  "minimum_free_gib": 204,
+  "limitations": [
+    "A static snapshot, not a live monitor.",
+    "Only the first batch from each source was checked; independent model quality and all cross-source exclusions remain unverified."
+  ]
+}

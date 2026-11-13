@@ -1,0 +1,43 @@
+{
+  "format": "epi-c3-norman-residual-comparison-figure-v4",
+  "state": "complete",
+  "fixed_score_sha256": "ccdf9a8e5327ec626537285aa8c51b504827426ebfb7f63fa3ea318eab9dc4c1",
+  "selected_score_sha256": "b676867c498734188085022644b7ff859a085b1f2a0b22acc3a4c74f89f32591",
+  "independent_metric_audit_sha256": "a40d4b5312ca3f026cf5b332b7d57fae51194869ba86dc49ef900714227a571e",
+  "graph_build_sha256": "cb1776a528c86b7e70efaeda4f521d017c739671170a174ee75948365ac91ec7",
+  "old_figure_state_sha256": "3dd415e3474a3066513d0b686e9066b03e95961941b99ff3cda3cfd47a342ed8",
+  "extractor_sha256": "4de97503eee9e22280fdaf2c0c115fd3945c88625654ac52955719c7ecdfecae",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "marker_check_sha256": "efd2ff4d8ce511236d1abf73ba58d43d0e78af9dc511e36b1493af291a7f5287",
+  "script_sha256": "2ee90a37bb4abfa26886624bae9a9ab5d0871dc7ba9899f073955282985d3683",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "condition-graph-differences.csv": "85d7448a50311471e7e8330a5f9ba8b2a0333af3d8eab05f45df584050f809da",
+    "figure-09-norman-graph.pdf": "3663f41702034361b21f856b611b303a58647783830e8cc3a406c7df805b9b00",
+    "figure-09-norman-graph.png": "caf5a4caf735d3e23bdc397c72cd329bc6e01d8a3ce776271ed612f2f6f9014a",
+    "figure-09-norman-graph.svg": "f10ddf18f01b679fd0b2166ffc810f5c3e57673a823bad2fd24c778b7188ad98",
+    "graph-contrasts.csv": "39a94d0bbe785f75e46936cc5e7d5b2ec199f76ef63e18ea292a8b2cf7919cd2",
+    "graph-coverage.csv": "6986a7696299a90023757160e367e1e15990b5a218866a2e8fd72219b0a3af7a",
+    "summary-mse.csv": "68d3c2468c240883042fbeda6c27c6f45b5f8fd8ae9a41ede8da4b05929a102f"
+  },
+  "condition_count": 44,
+  "seen_counts": {
+    "seen0": 4,
+    "seen1": 28,
+    "seen2": 12
+  },
+  "flow_seeds": [
+    314159,
+    271828,
+    161803
+  ],
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The original test results were already observed.",
+    "Flow seeds share one representation and are not biological replicates.",
+    "The two graphs have sparse direct coverage and only 30.65% of edges changed.",
+    "The prior metric audit recomputed MSE and delta Pearson, not DE or distribution metrics.",
+    "Bulk epigenomic assays are unpaired; candidate edges are not causal evidence."
+  ]
+}

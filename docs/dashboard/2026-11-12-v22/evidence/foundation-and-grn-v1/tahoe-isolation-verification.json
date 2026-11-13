@@ -1,0 +1,21 @@
+{
+  "format": "tahoe-foundation-isolation-verification-v1",
+  "state": "complete",
+  "audit_sha256": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+  "script_sha256": "84554682c3451bd8605e83d858110bc62c07ed9a41941679786f5a8ca3cea31b",
+  "files_checked": 3388,
+  "source_rows_checked": 95624334,
+  "row_groups_scanned": 8016,
+  "row_groups_pruned": 90236,
+  "protected_unique": 6213,
+  "protected_eligible_rows": 5027,
+  "validation_unique": 32,
+  "validation_eligible_rows": 32,
+  "eligible_training_rows": 92090669,
+  "per_identity_counts_match": true,
+  "limitations": [
+    "The same frozen source plan and chemistry normalizer are used as in the original audit.",
+    "Parquet sample statistics and frozen file size/mtime are trusted as described by the original audit.",
+    "Only explicitly inventoried historical evaluation artifacts are protected."
+  ]
+}

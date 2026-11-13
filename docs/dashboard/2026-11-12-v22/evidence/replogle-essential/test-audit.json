@@ -1,0 +1,24 @@
+{
+  "format": "epi-c3-replogle-essential-test-audit-v1",
+  "state": "complete",
+  "protocol_sha256": "acf5915613c340a5b37cecf9f67eb4fe468e2ee5d285efba322535baa5aff1a8",
+  "plan_sha256": "ce9b45d308e49bf7b60a02562c1aa8dc755454550265aead558699a2eec9b583",
+  "samples_sha256": "6d105099f1a80234d0f00003ab89a3bad9b602927ea14518c36a79e69b5d79ff",
+  "freeze_sha256": "52b70a974a85acf10bc0a7a930b6e8924fb4007d700571eaa58286a26061ad31",
+  "selection_audit_sha256": "7ede0be29a33b0f9b74a1bee216e805295406228ff0975cc6b14ae87ba0229be",
+  "prediction_state_sha256": "684af54859d00371e715f19a9b780f022454c2a2d6b933474cfd891c92eb6e51",
+  "reference_state_sha256": "ca4b23d5cedcc16d0d891ee4bd65d57b4072210abef867036c393049b8c7a078",
+  "score_sha256": "ca8d989354ba147d59f93b9d0de560962fc6fe3133ad5bdfa54e6083c5a953c7",
+  "script_sha256": "34274ce8da2adbc923a3649fbe77efc21e5072dde6fd44828c6dc0fea132c8a0",
+  "checked_method_target_pairs": 381,
+  "maximum_absolute_mse_difference": 1.481954715193412e-09,
+  "zero_strength_counts_equal_no_effect": true,
+  "zero_strength_log_values_equal_no_effect": true,
+  "macro_mse_float64": {
+    "no-effect": 0.026259366558388994,
+    "training-mean": 0.024611227145975086,
+    "c3-selected": 0.026259366558388994
+  },
+  "independent_method": "Float64 cell normalization from count samples and algebraic removal of the targeted-gene squared residual; log-space baseline uses its stored values.",
+  "official_challenge_score": false
+}

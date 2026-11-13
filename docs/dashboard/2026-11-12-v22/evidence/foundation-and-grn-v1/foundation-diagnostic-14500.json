@@ -1,0 +1,94 @@
+{
+  "status": "complete",
+  "scope": "early-stage1-read-only-diagnostic",
+  "snapshot_sha256": "f28885d6a7cb5d424c9588c80ebff2d9a1a87f1917a8aebc8b0d2b451577c34c",
+  "plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "updates": 14500,
+  "trained_cells": {
+    "arc": 8968,
+    "orion-HCT116": 255769,
+    "orion-HEK293T": 325129,
+    "tabula": 78968
+  },
+  "before_training": {
+    "arc": {
+      "cells": 32,
+      "masked_measured_entries": 115678,
+      "masked_detected_entries": 56661,
+      "masked_all_mse": 0.22220675647258759,
+      "masked_detected_mse": 0.24854998290538788,
+      "latent_std_mean": 0.14666420221328735,
+      "latent_dimensions_std_gt_0_1": 60
+    },
+    "orion-HCT116": {
+      "cells": 32,
+      "masked_measured_entries": 246443,
+      "masked_detected_entries": 27885,
+      "masked_all_mse": 0.13449519872665405,
+      "masked_detected_mse": 0.7636146545410156,
+      "latent_std_mean": 0.1295817494392395,
+      "latent_dimensions_std_gt_0_1": 60
+    },
+    "orion-HEK293T": {
+      "cells": 32,
+      "masked_measured_entries": 247247,
+      "masked_detected_entries": 41337,
+      "masked_all_mse": 0.12963293492794037,
+      "masked_detected_mse": 0.5053248405456543,
+      "latent_std_mean": 0.13130341470241547,
+      "latent_dimensions_std_gt_0_1": 59
+    },
+    "tabula": {
+      "cells": 32,
+      "masked_measured_entries": 388610,
+      "masked_detected_entries": 25009,
+      "masked_all_mse": 0.08570119738578796,
+      "masked_detected_mse": 0.9832231402397156,
+      "latent_std_mean": 0.1509653478860855,
+      "latent_dimensions_std_gt_0_1": 64
+    }
+  },
+  "at_snapshot": {
+    "arc": {
+      "cells": 32,
+      "masked_measured_entries": 115678,
+      "masked_detected_entries": 56661,
+      "masked_all_mse": 0.14082632958889008,
+      "masked_detected_mse": 0.2280759960412979,
+      "latent_std_mean": 0.7513721585273743,
+      "latent_dimensions_std_gt_0_1": 64
+    },
+    "orion-HCT116": {
+      "cells": 32,
+      "masked_measured_entries": 246443,
+      "masked_detected_entries": 27885,
+      "masked_all_mse": 0.03206250071525574,
+      "masked_detected_mse": 0.1753852814435959,
+      "latent_std_mean": 0.9494929909706116,
+      "latent_dimensions_std_gt_0_1": 64
+    },
+    "orion-HEK293T": {
+      "cells": 32,
+      "masked_measured_entries": 247247,
+      "masked_detected_entries": 41337,
+      "masked_all_mse": 0.03584812581539154,
+      "masked_detected_mse": 0.11748196929693222,
+      "latent_std_mean": 0.999361515045166,
+      "latent_dimensions_std_gt_0_1": 64
+    },
+    "tabula": {
+      "cells": 32,
+      "masked_measured_entries": 388610,
+      "masked_detected_entries": 25009,
+      "masked_all_mse": 0.0555478073656559,
+      "masked_detected_mse": 0.6578497290611267,
+      "latent_std_mean": 0.8742663860321045,
+      "latent_dimensions_std_gt_0_1": 64
+    }
+  },
+  "limitations": [
+    "Only 32 fixed validation cells per source; Arc and Orion are not donor-disjoint.",
+    "Masked reconstruction and latent variance do not establish perturbation prediction quality.",
+    "Tahoe and other requested datasets have not yet trained this shared foundation."
+  ]
+}

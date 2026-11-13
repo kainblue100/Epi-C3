@@ -1,0 +1,89 @@
+{
+  "format": "epi-c3-gwps-gears-validation-score-v1",
+  "state": "complete",
+  "partition": "validation",
+  "smoke": false,
+  "targets": 347,
+  "genes": 1861,
+  "no_effect_macro_mse": 0.015696999837037037,
+  "training_mean_log_expression_macro_mse": 0.015413684036939861,
+  "candidates": [
+    {
+      "strength": 0.0,
+      "macro_mse": 0.015696999837037037,
+      "projected_negative_entry_fraction": 0.0
+    },
+    {
+      "strength": 0.25,
+      "macro_mse": 0.015579112682648643,
+      "projected_negative_entry_fraction": 0.15999155591895814
+    },
+    {
+      "strength": 0.5,
+      "macro_mse": 0.015540209063124916,
+      "projected_negative_entry_fraction": 0.15999155591895814
+    },
+    {
+      "strength": 0.75,
+      "macro_mse": 0.015580288978465855,
+      "projected_negative_entry_fraction": 0.15999155591895814
+    },
+    {
+      "strength": 1.0,
+      "macro_mse": 0.015699352428671456,
+      "projected_negative_entry_fraction": 0.15999155591895814
+    }
+  ],
+  "validation_selected_strength": 0.5,
+  "cross_fit": {
+    "macro_mse": 0.015540209063124916,
+    "targets_better_than_no_effect": 190,
+    "targets_better_than_training_mean_log_expression": 130,
+    "selections": [
+      {
+        "fold": 0,
+        "targets": 70,
+        "strength": 0.5,
+        "fitting_macro_mse": 0.015441472823321254,
+        "heldout_macro_mse": 0.015930922469205116
+      },
+      {
+        "fold": 1,
+        "targets": 70,
+        "strength": 0.5,
+        "fitting_macro_mse": 0.01509244582724286,
+        "heldout_macro_mse": 0.01731207215368677
+      },
+      {
+        "fold": 2,
+        "targets": 69,
+        "strength": 0.5,
+        "fitting_macro_mse": 0.01545248752229709,
+        "heldout_macro_mse": 0.015893637879793542
+      },
+      {
+        "fold": 3,
+        "targets": 69,
+        "strength": 0.5,
+        "fitting_macro_mse": 0.01584906506929662,
+        "heldout_macro_mse": 0.014295832690433143
+      },
+      {
+        "fold": 4,
+        "targets": 69,
+        "strength": 0.5,
+        "fitting_macro_mse": 0.015863608248014652,
+        "heldout_macro_mse": 0.014237238434148885
+      }
+    ]
+  },
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The original validation and test outcomes were examined before this GEARS extension.",
+    "The transductive GEARS graph uses held-out target identities and a public 2026 GO snapshot.",
+    "Only one GEARS seed was fitted; Epi-C3 has three flow seeds sharing one representation.",
+    "Cross-fitted target folds reuse controls and batches and are not independent biological replicates.",
+    "GEARS and the training-mean comparator predict log expression, not direct count distributions."
+  ]
+}

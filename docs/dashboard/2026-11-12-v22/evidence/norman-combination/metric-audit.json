@@ -1,0 +1,35 @@
+{
+  "format": "epi-c3-norman-combination-independent-metric-audit-v1",
+  "state": "complete",
+  "protocol_sha256": "bb8b35bd4a1937005f88545d40fd5e25c26d92a6cd39264eacb09f077963f4f8",
+  "samples_sha256": "06c3d3b42c04f32150deaec4362ec6a7885c7ccd0ccb1035e445ba7f3867a8d0",
+  "plan_sha256": "ddac5b431c8dc2957d5552d62e56ab0b6a7d9a8eda0ce5c0f885642222e7fa58",
+  "freeze_sha256": "9345e4959fec6867c295300e298f9b852a68ff7a4e5c25a09f1643f45dbff998",
+  "script_sha256": "c6e9de75efebeee7fbdfd3a10ad946405eb589cc4b11f4df277519c805e45da5",
+  "verified": {
+    "validation_candidates": 10,
+    "selected_model": "c3-v2",
+    "selected_strength": 0.75,
+    "no-effect": {
+      "conditions": 44,
+      "seen0": 4,
+      "seen1": 28,
+      "seen2": 12
+    },
+    "additive-training-singles": {
+      "conditions": 44,
+      "seen0": 4,
+      "seen1": 28,
+      "seen2": 12
+    },
+    "c3-selected": {
+      "conditions": 44,
+      "seen0": 4,
+      "seen1": 28,
+      "seen2": 12
+    },
+    "test_score_sha256": "40af5777f91511a2bfae3bb1c308e52691f656f57be6dbc0b9a59cb7f2554a77"
+  },
+  "scope": "Independently recomputed all validation selection MSEs and test mean-expression MSE/delta Pearson; DE, Spearman and distribution metrics were not independently recomputed.",
+  "official_challenge_score": false
+}

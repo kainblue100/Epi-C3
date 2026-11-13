@@ -1,0 +1,67 @@
+{
+  "format": "epi-c3-k562-reference-network-audit-v1",
+  "status": "complete",
+  "reference_network_id": "RN119",
+  "reference_network_url": "https://scmogrndb.psu.edu/RN_TSV/RN119.tsv",
+  "reference_network_sha256": "4728ba5e1dab724671c6051a90f8af298515e5005bc48834070f99811fb4be20",
+  "frozen_plan_sha256": "e22d57934f3f661361f266b350906eecaef875521f1686d1cd9ee1d9ea5d40da",
+  "candidate_graph_manifest_sha256": "edbf309cf0c91b2c1a6f813416cc52c3324b618bd17c1aadb25134390bdc498b",
+  "candidate_graph_edges_sha256": "a601fb795aee31688da7b49dce094c67d70760e03e13138046ce3353fd2713e4",
+  "reference_catalog_rows": 29298,
+  "reference": {
+    "rows": 29298,
+    "catalog_row_count_matches": true,
+    "activation_rows": 15165,
+    "repression_rows": 14133,
+    "duplicate_identical_rows": 0,
+    "unique_directed_gene_pairs": 26642,
+    "pairs_with_both_signs": 2656,
+    "unique_regulators": 25,
+    "unique_targets": 9416
+  },
+  "frozen_axis_comparison": {
+    "genes": 1861,
+    "reference_regulators_on_axis": 8,
+    "reference_unique_edges_both_ends_on_axis": 157,
+    "conflicting_edges_both_ends_on_axis": 70,
+    "candidate_graph_edges": 4141,
+    "shared_regulators": 1,
+    "exact_directed_gene_pair_overlap": 0,
+    "overlapping_pairs_with_both_signs": 0
+  },
+  "frozen_target_partitions": {
+    "train": {
+      "frozen_targets": 1041,
+      "reference_regulators_in_partition": 6,
+      "reference_unique_edges_from_partition": 4231,
+      "graph_source_targets": 2,
+      "graph_source_targets_with_reference_edges": 0,
+      "reference_edges_from_graph_source_targets": 0
+    },
+    "validation": {
+      "frozen_targets": 347,
+      "reference_regulators_in_partition": 1,
+      "reference_unique_edges_from_partition": 1473,
+      "graph_source_targets": 2,
+      "graph_source_targets_with_reference_edges": 0,
+      "reference_edges_from_graph_source_targets": 0
+    },
+    "test": {
+      "frozen_targets": 347,
+      "reference_regulators_in_partition": 1,
+      "reference_unique_edges_from_partition": 99,
+      "graph_source_targets": 2,
+      "graph_source_targets_with_reference_edges": 0,
+      "reference_edges_from_graph_source_targets": 0
+    }
+  },
+  "used_for_training_or_evaluation": false,
+  "limitations": [
+    "This is a post-hoc exact, case-sensitive gene-symbol comparison; aliases and reference-gene versions were not harmonized.",
+    "Opposite labels for the same pair may reflect heterogeneous source experiments; they cannot be silently assigned a single regulatory sign.",
+    "Reference target overlap does not by itself prove leakage, but underlying experiments and benchmark overlap must be audited before use.",
+    "Candidate edges and reference labels do not establish direct causal regulation.",
+    "The local reference checksum is not an independently supplied source checksum; usage and redistribution rights remain to be verified."
+  ],
+  "script_sha256": "4c4bc975e4e61c9c8d669a2fec4971ac3d4d68c20f724f9d041257e2961fb5a3"
+}

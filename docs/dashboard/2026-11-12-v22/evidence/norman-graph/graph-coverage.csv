@@ -1,0 +1,7 @@
+partition,stratum,covered,conditions
+validation,seen0,0,10
+validation,seen1,1,22
+validation,seen2,2,12
+test,seen0,2,4
+test,seen1,6,28
+test,seen2,3,12

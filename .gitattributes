@@ -1,0 +1,3 @@
+# Preserve snapshot bytes so their published SHA-256 manifests remain valid.
+/releases/2026-11-12-foundation-v13/** -text
+/docs/dashboard/2026-11-12-v22/** -text

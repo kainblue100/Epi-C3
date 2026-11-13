@@ -1,0 +1,21 @@
+{
+  "dataset": "GSE267117",
+  "decision": "exclude from strictly same-cell RNA-ATAC-contact training",
+  "reason": "The dataset authors state that the cell-line RNA and DNA libraries were generated in different batches and are not matched at the individual-cell level.",
+  "author_source_url": "https://github.com/DiaoLab/scHiCAR/blob/2ece10efca321d73e21046e9c8426c0b2d3c1f3e/GEO_datasets.md",
+  "author_source_commit": "2ece10efca321d73e21046e9c8426c0b2d3c1f3e",
+  "author_source_git_blob": "a1250a0ae5250284e11032b0a836e37e1b4e32a6",
+  "independent_geo_evidence": {
+    "dna_sample_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8260157&targ=self&form=text&view=full",
+    "dna_sample_batch": "batch1",
+    "rna_sample_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8260189&targ=self&form=text&view=full",
+    "rna_sample_batch": "batch2"
+  },
+  "prior_interpretation_correction": "The failure to match a small barcode prefix was not merely an unresolved barcode conversion. The authors explicitly establish that the released cell-line modalities are unpaired, so a sequence transformation must not be used to manufacture matches.",
+  "method_scope": "scHiCAR can measure the modalities in the same cell in other experiments; this decision concerns the released GSE267117 cell-line dataset.",
+  "other_candidate": {
+    "accession": "GSE305439",
+    "description": "Mouse brain tissue has separately released RNA, ATAC fragments and contact files; it is not a cell-line dataset and does not satisfy the user's multiple-cell-line requirement.",
+    "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE305439&targ=self&form=text&view=full"
+  }
+}

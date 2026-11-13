@@ -1,0 +1,31 @@
+{
+  "format": "epi-c3-stage1-parameter-audit-v1",
+  "status": "complete",
+  "scope": "incomplete-stage1-not-a-full-foundation",
+  "model_config": {
+    "n_genes": 63079,
+    "latent_dim": 64,
+    "hidden_dim": 128,
+    "mask_probability": 0.2,
+    "teacher_decay": 0.99,
+    "variance_weight": 5.0,
+    "covariance_weight": 0.1,
+    "regularization_view": "unmasked",
+    "epi_feature_dim": 0,
+    "epi_graph_propagation": false
+  },
+  "plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "recovery_sha256": "ade3c4f3c9ef9ea0a5c8c6647ec2737948b7fa479c08336a521386057c269fad",
+  "recovery_updates": 5000,
+  "checkpoint_loaded_strictly": true,
+  "model_trainable_at_construction": 16373966,
+  "model_frozen_at_construction": 8091008,
+  "representation_optimizer_parameters": 16316174,
+  "trainable_not_in_representation_optimizer": 57792,
+  "nonparameter_buffer_elements": 0,
+  "limitations": [
+    "Counts are specific to this gene axis and configuration, not a performance comparison.",
+    "Trainable construction parameters include the unused flow module.",
+    "The representation optimizer does not train a perturbation flow."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "format": "epi-c3-datlinger-four-method-figure-audit-v2",
+  "state": "complete",
+  "figure_manifest_sha256": "78a86f066f73d86e6b5decc89f22da08ceb060caa68bcdfe8945fe59277b7cd5",
+  "source_score_sha256": "4993a61cde931acba28c2f66c16e4910ddce89679e361b36b240862f75c53bb7",
+  "independent_metric_audit_sha256": "8776d814d35ccaeca2503b8ad050c4b4165e98efa396cc5292733df0be4db2cd",
+  "source_table_sha256": "6123ed5c433ac3deb26cd7be82c1bccd51bfc1f02ed90b733c6131a056e459b6",
+  "script_sha256": "d0ead148b9525a96ab4b5cab28f44cd189e4a427f5c213dc4b01dcf774842465",
+  "saved_score_checks": {
+    "targets": 4,
+    "methods": 4,
+    "method_target_rows": 16,
+    "saved_values_compared": 64,
+    "independently_recomputed_metrics": [
+      "mean expression MSE",
+      "delta Pearson"
+    ],
+    "distribution_metrics_independently_recomputed": false
+  },
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 161.29,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 70,
+    "font_sizes_pt": [
+      5.1,
+      5.6,
+      6.1,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2857
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "official_challenge_score": false,
+  "scope": "Saved score and prior independent mean-metric audit cross-check, plus selected format checks; not journal certification.",
+  "limitations": [
+    "The original targets and scores were previously examined.",
+    "The prior metric audit did not independently recompute distribution metrics or refit models.",
+    "Controls are shared; different wells and four targets do not establish biological replication."
+  ]
+}

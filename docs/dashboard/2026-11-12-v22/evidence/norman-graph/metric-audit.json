@@ -1,0 +1,37 @@
+{
+  "format": "epi-c3-norman-residual-comparison-independent-audit-v1",
+  "state": "complete",
+  "inputs_sha256": {
+    "protocol": "bb8b35bd4a1937005f88545d40fd5e25c26d92a6cd39264eacb09f077963f4f8",
+    "samples": "06c3d3b42c04f32150deaec4362ec6a7885c7ccd0ccb1035e445ba7f3867a8d0",
+    "validation_reference": "4245111b6dbc46b92773c5454dc30788a2abe0e646597d81ee36a5c27b31a8ab",
+    "test_reference": "a119e4077596981b21c60c5cfb2881b0d49d604fe0434b2a644ec89ac2a30b77",
+    "validation_prediction_state": "04beb7e8107491d12e09b5989558490dd461cda5574d929775d1ee702a77f2be",
+    "validation_freeze": "3206e3fc35460415d56548bf4c4e6f0ac665c9edb951c1e75cde7e35b5dfafcf",
+    "selected_prediction_state": "08db9b7968cf11d55cd8c0c8c7c77c2c4e163cf55ad4d755bec0c2d8434e5c6c",
+    "fixed_prediction_state": "32b07c845e30948e78432e39f79367a8265d2b4becaef980875db388d7bc1668",
+    "selected_score": "b676867c498734188085022644b7ff859a085b1f2a0b22acc3a4c74f89f32591",
+    "fixed_score": "ccdf9a8e5327ec626537285aa8c51b504827426ebfb7f63fa3ea318eab9dc4c1",
+    "old_score": "40af5777f91511a2bfae3bb1c308e52691f656f57be6dbc0b9a59cb7f2554a77"
+  },
+  "selected_strengths_independently_recomputed": {
+    "rna-only": 0.5,
+    "epi-nodes-only": 1.0,
+    "rna-real-graph": 0.75,
+    "epi-real-graph": 0.75,
+    "epi-shuffled-graph": 1.0
+  },
+  "max_validation_objective_absolute_difference": 1.3877787807814457e-17,
+  "scored_method_condition_pairs_checked": 1672,
+  "max_test_mse_absolute_difference": 5.551115123125783e-17,
+  "max_test_delta_pearson_absolute_difference": 0.0,
+  "baseline_and_gears_seen_strata_match_prior_scores": true,
+  "identical_common_strength_one_model_predictions": 6,
+  "script_sha256": "83af256e50a72d9f48c685c7a3075346184735573c1abc188279b033528ff592",
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "not_audited": [
+    "Delta Spearman, distribution metrics and DE metrics are not independently recomputed here.",
+    "Independent arithmetic audit does not establish biological causality or generalization."
+  ]
+}

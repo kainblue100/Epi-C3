@@ -1,5 +1,17 @@
 # C3-VCell prototype
 
+## Latest research snapshots
+
+- [Interactive research dashboard, v22](https://kainblue100.github.io/Epi-C3/)
+- [Dashboard source and evidence](docs/dashboard/2026-11-12-v22/)
+- [Shared RNA foundation and two-branch prototypes, v13](releases/2026-11-12-foundation-v13/)
+- [Preliminary manuscript draft, v30](docs/dashboard/2026-11-12-v22/manuscripts/epi-c3-manuscript-draft-v30.md)
+
+The dashboard is a timestamped static snapshot, not live training status.
+The shared foundation and both perturbation branches remain incomplete; no
+raw single-cell datasets, private identities, or trained weights are included
+in these snapshots. Dataset and external-model licenses apply separately.
+
 **Research status:** in a sample- and target-disjoint HCT116 experiment,
 all three calibrated model arms selected zero perturbation response. The
 epigenomic prior has not been shown to improve predictive accuracy, and the

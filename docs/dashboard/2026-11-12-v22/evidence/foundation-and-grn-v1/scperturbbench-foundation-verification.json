@@ -1,0 +1,36 @@
+{
+  "format": "epi-c3-scperturbbench-foundation-verification-v1",
+  "state": "complete",
+  "source_audit_sha256": "94514a5c47b48f4fe273d588609a29e97f4d122401d05c57575e73e65f445a22",
+  "private_sha256": "c0427496272cfdf93f32c37ad57e1d50acc863eaa2f01a1c5e518ef6410fd604",
+  "foundation_snapshot_sha256": "f28885d6a7cb5d424c9588c80ebff2d9a1a87f1917a8aebc8b0d2b451577c34c",
+  "verification_script_sha256": "d605c55ddc568eb1131480cce70900a780df07e22557a26dbbb582a19c72abcf",
+  "sources": {
+    "KHP": {
+      "training_controls_streamed": 9354,
+      "validation_controls": 32,
+      "batches_streamed": 195,
+      "mapped_training_count_sum": 38616734.0,
+      "directly_reconstructed_rows": 5,
+      "measured_gene_count": 4992,
+      "cursor_reproduced_first_batch": true,
+      "readonly_representation_loss_finite": true
+    },
+    "CMO": {
+      "training_controls_streamed": 1419,
+      "validation_controls": 32,
+      "batches_streamed": 30,
+      "mapped_training_count_sum": 5380355.0,
+      "directly_reconstructed_rows": 5,
+      "measured_gene_count": 5000,
+      "cursor_reproduced_first_batch": true,
+      "readonly_representation_loss_finite": true
+    }
+  },
+  "training_updates": 0,
+  "limitations": [
+    "The same frozen mapping and row plan are used; five source rows per dataset were independently reconstructed.",
+    "A finite read-only loss is an input-compatibility check, not an estimate of prediction accuracy.",
+    "Within-source protected-row checks do not prove cross-dataset identity or donor independence."
+  ]
+}

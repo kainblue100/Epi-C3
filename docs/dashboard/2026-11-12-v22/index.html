@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Epi-C3 数据类型、模型参数与内部探索性评估的静态交互研究仪表盘。">
+  <meta name="color-scheme" content="light">
+  <title>Epi-C3 | 虚拟细胞研究图谱</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="snapshot-data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Epi-C3 返回顶部">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>EPI<span class="brand-dot">.</span>C3 <small>RESEARCH ATLAS</small></span>
+      </a>
+      <nav class="site-nav" aria-label="页面导航">
+        <a href="#data">数据</a>
+        <a href="#foundation">进度</a>
+        <a href="#model">模型</a>
+        <a href="#evaluation">比较</a>
+        <a href="#architecture">架构</a>
+      </nav>
+      <span class="header-status"><span aria-hidden="true"></span> RESEARCH IN PROGRESS</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> VIRTUAL CELL / RESEARCH SNAPSHOT</div>
+        <h1 id="hero-title">从数据先验<br>到<span>细胞状态。</span></h1>
+        <p class="hero-description">从共享 RNA 基础表征出发，探索调控网络与同细胞多组学两条扰动建模路线。项目仍在研究中，数据和结果均按来源及评估口径标注。</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#data">探索数据 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#evaluation">查看模型比较 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="snapshot-label"><span class="status-pulse" aria-hidden="true"></span> 静态快照 <strong>2026.11.12</strong><span> / </span> 非实时监控</div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-top"><span>THE CELL AS A SYSTEM</span><span>01 — 03</span></div>
+        <svg class="network-art" viewBox="0 0 540 330" fill="none">
+          <defs>
+            <radialGradient id="cellGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#83bea9" stop-opacity=".25"></stop>
+              <stop offset="1" stop-color="#83bea9" stop-opacity="0"></stop>
+            </radialGradient>
+            <linearGradient id="thread" x1="30" x2="510" y1="150" y2="180">
+              <stop stop-color="#d7ac73" stop-opacity=".1"></stop>
+              <stop offset=".5" stop-color="#d1e4d7" stop-opacity=".9"></stop>
+              <stop offset="1" stop-color="#d7ac73" stop-opacity=".25"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="270" cy="164" r="152" fill="url(#cellGlow)"></circle>
+          <circle cx="270" cy="164" r="103" stroke="#a9d2c0" stroke-opacity=".22"></circle>
+          <circle cx="270" cy="164" r="78" stroke="#a9d2c0" stroke-opacity=".5" stroke-dasharray="3 7"></circle>
+          <circle cx="270" cy="164" r="51" fill="#cee4d6" fill-opacity=".09" stroke="#c9e3d4" stroke-opacity=".75"></circle>
+          <path d="M37 99C105 102 139 139 219 154M42 220C109 215 160 194 222 173M320 156C387 138 419 102 501 99M319 173C379 193 422 221 500 217" stroke="url(#thread)" stroke-width="1.25"></path>
+          <path d="M94 111L130 82L161 117L202 91L220 154M96 208L134 236L168 209L204 235L222 173M320 155L352 104L390 129L430 92L460 108M319 173L357 220L396 193L428 237L467 215" stroke="#8ebcab" stroke-opacity=".32" stroke-width="1"></path>
+          <circle cx="96" cy="110" r="5" fill="#e1ae76"></circle><circle cx="130" cy="82" r="3" fill="#a5cebc"></circle>
+          <circle cx="161" cy="117" r="4" fill="#a5cebc"></circle><circle cx="202" cy="91" r="3" fill="#a5cebc"></circle>
+          <circle cx="96" cy="208" r="5" fill="#d39a78"></circle><circle cx="134" cy="236" r="3" fill="#a5cebc"></circle>
+          <circle cx="168" cy="209" r="4" fill="#a5cebc"></circle><circle cx="204" cy="235" r="3" fill="#a5cebc"></circle>
+          <circle cx="352" cy="104" r="3" fill="#a5cebc"></circle><circle cx="390" cy="129" r="4" fill="#a5cebc"></circle>
+          <circle cx="430" cy="92" r="3" fill="#a5cebc"></circle><circle cx="460" cy="108" r="5" fill="#e1ae76"></circle>
+          <circle cx="357" cy="220" r="3" fill="#a5cebc"></circle><circle cx="396" cy="193" r="4" fill="#a5cebc"></circle>
+          <circle cx="428" cy="237" r="3" fill="#a5cebc"></circle><circle cx="467" cy="215" r="5" fill="#d39a78"></circle>
+          <circle cx="270" cy="164" r="8" fill="#e0b781"></circle>
+          <circle cx="242" cy="143" r="3" fill="#d2eadb"></circle><circle cx="288" cy="144" r="4" fill="#d2eadb"></circle>
+          <circle cx="249" cy="184" r="4" fill="#d2eadb"></circle><circle cx="292" cy="181" r="3" fill="#d2eadb"></circle>
+        </svg>
+        <div class="visual-bottom"><span>OBSERVED DATA</span><span>LATENT STATE</span><span>PREDICTED RESPONSE</span></div>
+        <p class="visual-note">示意图 · 候选先验不是已验证的因果调控</p>
+      </div>
+    </section>
+
+    <section class="metric-band shell" aria-label="K562 冻结实验摘要">
+      <div class="metric"><span class="metric-number">1,989,578</span><span class="metric-label">K562 来源矩阵细胞记录</span><span class="metric-note">8,248 个来源基因</span></div>
+      <div class="metric"><span class="metric-number">159,349</span><span class="metric-label">表征训练细胞</span><span class="metric-note">K562 冻结训练集</span></div>
+      <div class="metric"><span class="metric-number">1,861</span><span class="metric-label">冻结模型基因轴</span><span class="metric-note">潜状态 64 维</span></div>
+      <div class="metric"><span class="metric-number">0.016045</span><span class="metric-label">测试宏 MSE</span><span class="metric-note">Epi-C3 选择零强度，等于无效应</span></div>
+    </section>
+
+    <section class="section shell foundation-section" id="foundation" aria-labelledby="foundation-title">
+      <div class="section-heading">
+        <div><p class="section-index">00 / SHARED FOUNDATION</p><h2 id="foundation-title">先学习细胞状态，<br><em>再学习扰动响应。</em></h2></div>
+        <p class="section-intro">这是版本发布时保存的静态训练快照，不是实时监控。第一阶段仅覆盖 Arc、整理版 Tabula 和 Orion；尚不能作为完整基础模型使用。</p>
+      </div>
+      <div class="foundation-grid">
+        <article class="foundation-card foundation-primary">
+          <div class="foundation-card-top"><span class="overline">RNA FOUNDATION / STAGE 1</span><span class="foundation-tag">未完成</span></div>
+          <h3>共享表达表征</h3>
+          <p>统一人类基因轴并显式区分未测量与零表达。当前使用四个来源流，按受保护的划分交错训练。</p>
+          <progress id="foundation-progress" value="0" max="1" aria-label="第一阶段已处理的训练记录占计划记录比例"></progress>
+          <strong id="foundation-progress-text">读取快照…</strong>
+          <div class="foundation-meta"><span><b id="foundation-genes">—</b> 基因特征</span><span><b id="foundation-updates">—</b> 次更新</span></div>
+          <small>状态记录时间：<time id="foundation-time" datetime="2026-11-12T17:27:54Z">2026-11-12 17:27:54 UTC</time></small>
+        </article>
+        <article class="foundation-card">
+          <div class="foundation-card-top"><span class="overline">BRANCH A / REGULATORY GRAPH</span><span class="foundation-tag">原型</span></div>
+          <h3>调控网络路线</h3>
+          <p>把表观测量汇总为候选基因图，再与共享 RNA 状态和扰动条件结合。既有后验实验尚不能证明图结构提升。</p>
+          <a class="evidence-link" href="#grn-review">查看独立评分复核 ↗</a>
+        </article>
+        <article class="foundation-card">
+          <div class="foundation-card-top"><span class="overline">BRANCH B / SAME-CELL MULTIOME</span><span class="foundation-tag">数据待核实</span></div>
+          <h3>同细胞联合编码路线</h3>
+          <p>目标是多个细胞系中逐细胞配对的 RNA、ATAC 与接触数据。LiMCA 报告了四个人源细胞系的 RNA 与接触共测，但未证实同一细胞还有配对 ATAC；当前尚未核实至少三个合格三模态细胞系。</p>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/schicar-pairing-evidence.json">查看不配对数据排除证据 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/limca-screening-evidence.json">查看 LiMCA 数据筛选 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/sc-mo-grn-dataset-screen-v1.json">查看 SC-MO-GRN-DB 数据筛选 ↗</a>
+        </article>
+      </div>
+      <p class="benchmark-note">Tahoe 旧的单来源表征任务与此共享基础模型是不同训练；新版 Tahoe 读取器尚未接入共享训练。记录数不是跨数据集去重后的细胞数，状态不会自动刷新。</p>
+      <details class="resource-details" id="trimodal-response">
+        <summary><span><span class="overline">BRANCH B / RESPONSE PROTOTYPE</span><strong>同细胞三模态：扰动响应头原型</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">新增未训练的基因扰动响应头，将共享 RNA 编码与同一细胞的 ATAC、接触表征融合，再输入扰动基因及抑制或激活方向，输出带测量掩码的逐基因 log1p(CPM) 预测。当前仅为研究原型，并非 STATE，也没有真实数据性能结果。</p>
+        <p class="benchmark-note">前向检查要求 RNA / ATAC / 接触身份一致、每细胞有观测接触，并限制使用人类基因轴；元数据一致不证明原始实验真正配对，仍须独立核实来源及矩阵行顺序。完整训练集合须另行验证至少三个细胞系。群体均值损失不把对照与处理细胞虚构成逐一配对；它要求使用同一测量基因面板，并由调用方核实细胞系、条件、数据划分和归一化一致性。CPM 为相对量，排除扰动靶点也不能消除其对文库分母的影响。合成数据优化不代表生物学准确性，群体均值误差也不能替代 cell-eval。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/epi_c3_trimodal_response_v1.py">扰动响应原型代码 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/test_epi_c3_trimodal_response_v1.py">合成验证代码 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="foundation-diagnostic">
+        <summary><span><span class="overline">FOUNDATION / INTERIM DIAGNOSTIC</span><strong>基础表征：已保存检查点的遮盖重建</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">对 14,500 次更新的只读检查点进行重建诊断，并在同一保存检查点上重复得到相同结果；该检查点早于上方 26,250 次更新的状态快照。每个来源仅使用 32 个固定验证细胞；表格比较训练初始与此检查点在遮盖且有检测信号的基因上的误差。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">各来源遮盖且检测到的基因的归一化表达 MSE</caption>
+            <thead><tr><th scope="col">来源</th><th scope="col">初始 MSE ↓</th><th scope="col">14,500 次更新 MSE ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arc</th><td class="numeric-cell" data-label="初始 MSE ↓">0.248550</td><td class="numeric-cell" data-label="14,500 次更新 MSE ↓">0.228076</td></tr>
+              <tr><th scope="row">Tabula 整理版</th><td class="numeric-cell" data-label="初始 MSE ↓">0.983223</td><td class="numeric-cell" data-label="14,500 次更新 MSE ↓">0.657850</td></tr>
+              <tr><th scope="row">Orion HCT116</th><td class="numeric-cell" data-label="初始 MSE ↓">0.763615</td><td class="numeric-cell" data-label="14,500 次更新 MSE ↓">0.175385</td></tr>
+              <tr><th scope="row">Orion HEK293T</th><td class="numeric-cell" data-label="初始 MSE ↓">0.505325</td><td class="numeric-cell" data-label="14,500 次更新 MSE ↓">0.117482</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">误差在 log1p(CPM 10,000) 空间计算。原训练和上表使用完整已测基因的总文库量，其中包含被遮盖基因的计数；因此输入保留了被遮盖部分的总量信息。该检查点四个来源的 64 个潜在维度均有大于 0.1 的样本标准差，但方差存在不等于学到了有用的细胞状态；Arc 和 Orion 的验证并非供体独立。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">同一检查点中完整文库与仅可见基因文库归一化的比较</caption>
+            <thead><tr><th scope="col">来源</th><th scope="col">完整文库 MSE ↓</th><th scope="col">仅可见文库 MSE ↓</th><th scope="col">潜在表征平均绝对变化</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arc</th><td class="numeric-cell" data-label="完整文库 MSE ↓">0.228076</td><td class="numeric-cell" data-label="仅可见文库 MSE ↓">0.250596</td><td class="numeric-cell" data-label="潜在表征平均绝对变化">0.755</td></tr>
+              <tr><th scope="row">Tabula 整理版</th><td class="numeric-cell" data-label="完整文库 MSE ↓">0.657850</td><td class="numeric-cell" data-label="仅可见文库 MSE ↓">0.634651</td><td class="numeric-cell" data-label="潜在表征平均绝对变化">0.795</td></tr>
+              <tr><th scope="row">Orion HCT116</th><td class="numeric-cell" data-label="完整文库 MSE ↓">0.175385</td><td class="numeric-cell" data-label="仅可见文库 MSE ↓">0.172557</td><td class="numeric-cell" data-label="潜在表征平均绝对变化">0.987</td></tr>
+              <tr><th scope="row">Orion HEK293T</th><td class="numeric-cell" data-label="完整文库 MSE ↓">0.117482</td><td class="numeric-cell" data-label="仅可见文库 MSE ↓">0.120975</td><td class="numeric-cell" data-label="潜在表征平均绝对变化">0.896</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">仅可见文库是对原模型的更严格输入消融，不是重新训练，可能带来输入分布偏移；评价目标仍按完整文库计算。其误差变化方向不一致，但潜在表征明显受归一化口径影响。小样本重建不能证明扰动预测、泛化能力或训练已完成。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/foundation-diagnostic-14500.json">检查点诊断 JSON ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-foundation-diagnostic.py">诊断脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/foundation-masked-library-audit-v1.json">遮盖归一化消融 JSON ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-foundation-masked-library-v1.py">归一化消融脚本 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="balanced-continuation">
+        <summary><span><span class="overline">CONTINUAL TRAINING / QUEUED</span><strong>第二阶段：审计门控与来源回放</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">实验性续训器计划将 Tahoe 合格新记录与此前来源的回放暴露量控制在约 1:1，回放来源按各自合格记录数分配。2026-11-12 16:39:35 UTC 的排队快照显示，它正在等待第一阶段完成并释放训练锁；还需通过检查点、来源哈希、诊断和磁盘空间门控才能启动。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">第二阶段真实输入流的首批只读预检</caption>
+            <thead><tr><th scope="col">来源</th><th scope="col">计划合格记录</th><th scope="col">预检首批记录</th><th scope="col">已测基因特征</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arc</th><td class="numeric-cell" data-label="计划合格记录">108,808</td><td class="numeric-cell" data-label="预检首批记录">48</td><td class="numeric-cell" data-label="已测基因特征">18,080</td></tr>
+              <tr><th scope="row">Tabula 整理版</th><td class="numeric-cell" data-label="计划合格记录">998,796</td><td class="numeric-cell" data-label="预检首批记录">48</td><td class="numeric-cell" data-label="已测基因特征">60,606</td></tr>
+              <tr><th scope="row">Orion HCT116</th><td class="numeric-cell" data-label="计划合格记录">3,260,365</td><td class="numeric-cell" data-label="预检首批记录">14</td><td class="numeric-cell" data-label="已测基因特征">38,606</td></tr>
+              <tr><th scope="row">Orion HEK293T</th><td class="numeric-cell" data-label="计划合格记录">4,335,720</td><td class="numeric-cell" data-label="预检首批记录">13</td><td class="numeric-cell" data-label="已测基因特征">38,606</td></tr>
+              <tr><th scope="row">Tahoe</th><td class="numeric-cell" data-label="计划合格记录">92,090,669</td><td class="numeric-cell" data-label="预检首批记录">16</td><td class="numeric-cell" data-label="已测基因特征">62,710</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">此次使用实际续训代码构建了五个真实输入流，仅检查首批数值、测量掩码及游标重放，未进行优化更新，也未检查全部表达记录。回放是重复暴露，不是新增独立细胞；批大小不同意味着记录数平衡并不等于梯度或优化步数平衡。此静态快照时尚未进行真实第二阶段训练，仍须评估遗忘、表征质量和未盘点的跨来源重复。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/stage2-source-preflight.json">实际输入流只读预检 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/stage2-dispatch-snapshot.json">排队状态快照 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/check-rna-foundation-stage2-preflight-v1.py">预检代码 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/wait-rna-foundation-stage2-v1.py">排队门控代码 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/balanced-real-source-smoke.json">真实来源回放检查 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/smoke-balanced-replay-live-stage1-v1.py">回放检查脚本 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="benchmark-control-sources">
+        <summary><span><span class="overline">ADDITIONAL RNA / CONTROL CANDIDATES</span><strong>补充表达来源：先隔离，再考虑续训</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">已完整扫描 scPerturbBench 的 KHP 和 CMO 计数层，并对已冻结的候选对照流进行真实数据读取及只读基础模型兼容性检查。两者尚未用于共享基础模型训练。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">KHP 和 CMO 候选对照来源与基因映射</caption>
+            <thead><tr><th scope="col">来源</th><th scope="col">训练候选对照</th><th scope="col">验证对照</th><th scope="col">映射基因</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">KHP</th><td class="numeric-cell" data-label="训练候选对照">9,354</td><td class="numeric-cell" data-label="验证对照">32</td><td class="numeric-cell" data-label="映射基因">4,992 / 5,000</td></tr>
+              <tr><th scope="row">CMO</th><td class="numeric-cell" data-label="训练候选对照">1,419</td><td class="numeric-cell" data-label="验证对照">32</td><td class="numeric-cell" data-label="映射基因">5,000 / 5,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">KHP 已排除全部 23,898 条 CD8T 记录，包含既有评价的输入与参考；CMO 保留一名供体的 4,853 条记录。两者的所有非对照记录暂不纳入；KHP 八个基因名存在歧义而未映射，未测基因不视为表达零。基因面板可能在全数据上选定，跨数据集细胞、供体和药物身份仍未完全核对；只读有限损失不代表预测准确，也未产生训练更新。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/scperturbbench-foundation-audit.json">来源与留出审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/scperturbbench-foundation-verification.json">读取与只读兼容性复核 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/prepare-scperturbbench-foundation-v1.py">审计脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/verify-scperturbbench-foundation-v1.py">复核脚本 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="charm-pairing">
+        <summary><span><span class="overline">CHARM / TRIMODAL IDENTITY AUDIT</span><strong>同细胞候选数据：805 个三模态身份匹配</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">GSE303006 的一组小鼠 mESC 样本中，RNA、mESC 质控记录、ATAC 和接触文件有 805 个直接匹配身份。全部 958 个内层文件均已通过 gzip 完整性检查，并完成逐条格式及坐标审计。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">CHARM mESC 三模态身份审计</caption>
+            <thead><tr><th scope="col">项目</th><th scope="col">数量或状态</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">RNA 基因 × 细胞列</th><td class="numeric-cell" data-label="数量或状态">41,020 × 959</td></tr>
+              <tr><th scope="row">RNA / QC / ATAC 直接身份交集</th><td class="numeric-cell" data-label="数量或状态">805</td></tr>
+              <tr><th scope="row">ATAC 片段行</th><td class="numeric-cell" data-label="数量或状态">50,879,408</td></tr>
+              <tr><th scope="row">超出整数容差的 RNA 值</th><td class="numeric-cell" data-label="数量或状态">501,341</td></tr>
+              <tr><th scope="row">含至少一条接触记录的文件身份</th><td class="numeric-cell" data-label="数量或状态">958</td></tr>
+              <tr><th scope="row">完整读取并通过 gzip 校验的接触文件</th><td class="numeric-cell" data-label="数量或状态">958</td></tr>
+              <tr><th scope="row">首个文件已检查接触记录</th><td class="numeric-cell" data-label="数量或状态">2,192,041</td></tr>
+              <tr><th scope="row">全量接触坐标审计</th><td data-label="数量或状态">完成 · 1,607,375,529 条记录</td></tr>
+              <tr><th scope="row">805 个匹配身份的接触记录</th><td data-label="数量或状态">1,406,651,183 条记录</td></tr>
+              <tr><th scope="row">染色体声明集合</th><td data-label="数量或状态">2 种 · 是否包含 chrY 不同</td></tr>
+              <tr><th scope="row">RNA / QC / ATAC / 接触身份交集</th><td class="numeric-cell" data-label="数量或状态">805</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">外层接触归档与全部内层 gzip 的 CRC 均通过完整性检查；本地 SHA-256 仅绑定已下载文件，并非来源提供的独立校验。首个文件的结果不能外推至其余文件；后续全量审计在既定九列格式、声明及 pairs 一基坐标检查中未发现异常。全量共出现两种染色体声明集合，另抽查 51 个文件头发现差异为是否包含 chrY，其全量频率和原因尚未确定。数据生产工具的具体坐标实现仍未独立核实，染色体长度与 mm10 一致不证明参考序列完全一致；审计也不证明接触唯一性、比对质量或实验配对。RNA 的分数值来自作者的多重映射分配，不能静默四舍五入；805 个匹配身份的 ATAC 片段行数均不等于 QC 表的可及性计数，统计口径尚未核实，QC 组蛋白标签与来源说明也不一致。小鼠数据不能直接混入人类基因轴；身份匹配不是实验复现，一组小鼠样本也不满足至少三个细胞系的要求。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-mesc-trimodal-audit.json">三模态身份审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-inner-gzip-audit-v1.json">接触文件完整性审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-coordinate-first-file-probe-v1.json">首个接触文件坐标检查 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-contact-coordinate-audit-v1.json">全量接触坐标审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-contact-header-probe-v1.json">染色体声明抽查 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-charm-contact-header-probe-v1.py">声明抽查脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-charm-contacts-coordinates-v1.py">全量坐标审计脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-charm-inner-gzip-v1.py">完整性审计脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/charm-mesc-rna-atac-audit.json">早期部分身份审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-charm-mesc-pairing-v1.py">审计脚本 ↗</a>
+          <a class="evidence-link" href="https://doi.org/10.1038/s41586-026-10322-z" rel="noopener noreferrer">CHARM 论文 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="sc-mo-grn-screen">
+        <summary><span><span class="overline">REFERENCE NETWORK / DATASET SCREEN</span><strong>候选调控网络与三模态标签复核</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">SC-MO-GRN-DB 列出 K562 的 ChIP、基因敲除及组合参考网络；它们仅是候选，原始来源、使用许可和与冻结评价的重叠尚未核对，未用于模型训练或评价。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">数据库候选网络及三模态标签复核</caption>
+            <thead><tr><th scope="col">目录条目</th><th scope="col">公开目录记录与原研究限制</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">RN117 / RN118</th><td data-label="公开目录记录与原研究限制">K562 目录分别列出 1,435,720 / 236,425 条边；目录数字尚未独立核验。</td></tr>
+              <tr><th scope="row">RN119 · 参考网络</th><td data-label="公开目录记录与原研究限制">完整文件为 29,298 行、26,642 个唯一有向基因对，其中 2,656 对同时标记激活和抑制。</td></tr>
+              <tr><th scope="row">RN119 · 冻结轴对照</th><td data-label="公开目录记录与原研究限制">1,861 基因轴内有 157 个唯一基因对，其中 70 对存在相反标签；与现有 4,141 条候选边的精确有向交集为 0。</td></tr>
+              <tr><th scope="row">DS010</th><td data-label="公开目录记录与原研究限制">原研究分别并行测量 RNA、ATAC 与 Hi-C 并计算整合，未证实三项测量来自同一细胞。</td></tr>
+              <tr><th scope="row">DS011</th><td data-label="公开目录记录与原研究限制">原研究有同细胞 RNA / ATAC，但 Hi-C 来自 bulk 群体，不是同细胞三模态。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">基因符号仅作区分大小写的精确匹配，未统一别名。相反标签可能来自不同实验，不能静默合并为单一调控方向。RN119 与测试靶点存在重叠但尚未查明原始实验，重叠本身不能证明数据泄漏；该网络未用于训练或评价。目录中多种模态同时出现不意味着逐细胞配对，候选图边也不能自动视为直接因果调控。</p>
+        <p class="benchmark-note">新版 GRN 原型损失显式要求对照和处理条件的测量掩码，仅比较共同测量的非靶点基因；这修正了缺失值口径，但不是预测准确度提升或已完成模型训练的证据。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/sc-mo-grn-dataset-screen-v1.json">来源筛选与原文链接 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/k562-reference-network-audit-v1.json">RN119 聚合审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-k562-reference-network-v1.py">RN119 审计脚本 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/epi_c3_gene_grn_v1.py">测量掩码损失代码 ↗</a>
+          <a class="evidence-link" href="https://scmogrndb.psu.edu/browse.php" rel="noopener noreferrer">数据库目录 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details" id="tahoe-isolation">
+        <summary><span><span class="overline">TAHOE / HELD-OUT IDENTITY AUDIT</span><strong>评估细胞隔离：覆盖全部来源分片</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">审计了 3,388 个分片的 95,624,334 条来源记录，保护 6,213 个已盘点的历史评估身份；独立代码逐身份复核了重叠计数。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">Tahoe 新读取器的训练记录排除审计</caption>
+            <thead><tr><th scope="col">筛选步骤</th><th scope="col">记录数</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">旧筛选下合格记录</th><td class="numeric-cell" data-label="记录数">92,095,728</td></tr>
+              <tr><th scope="row">其中受保护的历史评估记录</th><td class="numeric-cell" data-label="记录数">5,027</td></tr>
+              <tr><th scope="row">另行保留的表征验证记录</th><td class="numeric-cell" data-label="记录数">32</td></tr>
+              <tr><th scope="row">新版读取器预计训练记录</th><td class="numeric-cell" data-label="记录数">92,090,669</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">这些重叠来自较早的 demo 评价划分；九条件 interim cell-eval 的参考与输入对照在旧筛选下均为零重叠。新读取器在真实批次中排除了受保护记录，但尚未用于共享训练；旧单来源任务及其权重没有被修改。审计只覆盖列出的历史评价，不保证所有跨数据集重复或其他 benchmark 已隔离。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/tahoe-isolation-audit.json">全分片隔离审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/tahoe-isolation-verification.json">逐身份独立复核 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/tahoe-overlap-summary.json">各评价划分重叠 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/tahoe-loader-smoke.json">真实读取器验证 ↗</a>
+        </div>
+      </details>
+    </section>
+
+    <section class="section shell" id="data" aria-labelledby="data-title">
+      <div class="section-heading">
+        <div><p class="section-index">01 / DATA LANDSCAPE</p><h2 id="data-title">看见数据，<br><em>也看见边界。</em></h2></div>
+        <p class="section-intro">单细胞记录、染色质接触和甲基化测量的单位不同。我们分开呈现数量，并保留缺失与来源限制。</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="card-heading">
+          <div><span class="overline">INTERACTIVE DISTRIBUTION</span><h3 id="chart-title">已记录的单细胞来源规模</h3><p id="chart-description">五个来源矩阵的记录数；仅展示已核验矩阵维度的来源。</p></div>
+          <div class="select-wrap"><label for="chart-select">选择统计口径</label><select id="chart-select"></select></div>
+        </div>
+        <div class="chart-body">
+          <div class="donut-container">
+            <svg id="donut" viewBox="0 0 220 220" aria-hidden="true"></svg>
+            <div class="donut-center" aria-live="polite" aria-atomic="true"><span id="donut-value">—</span><small id="donut-label">来源记录合计（未去重）</small></div>
+          </div>
+          <div class="legend-area">
+            <div class="legend-heading"><span>分类 / 点击聚焦</span><button id="chart-reset" type="button">显示全部</button></div>
+            <div id="chart-legend" class="chart-legend" aria-label="图表分类"></div>
+            <p class="chart-note" id="chart-note"></p>
+          </div>
+        </div>
+      </div>
+      <noscript><p class="notice">交互图表和数据表需要启用 JavaScript；页面不使用外部脚本或网络请求。</p></noscript>
+
+      <div class="subheading"><div><p class="overline">DATA MODALITIES</p><h3>每种数据，独立计量</h3></div><p>仅显示当前能溯源的数值</p></div>
+      <div class="modality-grid" id="modality-grid"></div>
+
+      <details class="resource-details">
+        <summary><span><span class="overline">DATA SOURCES</span><strong>原始数据资源与下载状态</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">下载、使用和训练规模是不同概念。以下为离线快照，不会自动更新；链接仅在主动点击时打开。</p>
+        <div class="resource-list" id="resource-list"></div>
+      </details>
+    </section>
+
+    <section class="section section-tinted" id="model" aria-labelledby="model-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="section-index">02 / MODEL SPECIFICATION</p><h2 id="model-title">模型的大小，<br><em>要按同一口径看。</em></h2></div>
+          <p class="section-intro">参数均从实际检查点重载统计。K562 与 KHP 的基因轴不同；数值只适用于所列配置，不代表各方法的通用规模或性能排名。</p>
+        </div>
+        <div class="config-strip" aria-label="K562 模型超参数">
+          <div><small>基因轴</small><strong>1,861</strong></div>
+          <div><small>潜状态维度</small><strong>64</strong></div>
+          <div><small>隐藏维度</small><strong>128</strong></div>
+          <div><small>批次大小</small><strong>64</strong></div>
+          <div><small>表征 / flow 步数</small><strong>1,500 / 1,500</strong></div>
+          <div><small>学习率</small><strong>0.001</strong></div>
+        </div>
+        <div class="table-card">
+          <div class="table-title"><div><p class="overline">MODEL COMPARISON</p><h3>模型参数与当前状态</h3></div><span class="scope-pill">已检查的实验配置</span></div>
+          <div class="table-scroll">
+            <table class="data-table model-table">
+              <caption class="sr-only">Epi-C3 和其他方法的参数统计、适配范围与状态</caption>
+              <thead><tr><th scope="col">模型</th><th scope="col">对照 / 配置</th><th scope="col">初始化时可训练参数</th><th scope="col">flow 优化器参数</th><th scope="col">状态</th></tr></thead>
+              <tbody id="model-body"></tbody>
+            </table>
+          </div>
+          <p class="table-footnote">表中为重建模型时 PyTorch 模块内可训练参数；冻结参数和 buffer 未计入。K562 Epi-C3 有 255,104 个冻结 EMA teacher 参数；KHP Epi-C3 有 656,896 个，并有模块外 64 维条件向量，后者计入 KHP 的 flow 优化器数。Epi-C3 参数含不一定用于推理的 predictor。</p>
+          <p class="table-footnote">共享基础模型的 16,373,966 个可训练构造参数中，16,316,174 个属于第一阶段表征优化器；其余 57,792 个 flow 参数尚未训练。参数审计使用另一个同配置检查点，因此更新次数与上方进度快照可不同。</p>
+          <p class="table-footnote">KHP 的三个模型采用同一案例和基因轴，但架构及训练设置不同；scVIDR 另有未计入表格的两来源回归适配。旧版 scvi 对其非整数表达输入发出警告，该输入遵循本次明确记录的 log1p(CPM) 适配协议。GEARS 使用额外 GO 先验；参数量不是性能指标。</p>
+          <div class="reference-links">
+            <a class="evidence-link" href="evidence/parameters-audit.json">K562 Epi-C3 参数审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/model-parameters/c3-khp.json">KHP Epi-C3 审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/model-parameters/gears-k562.json">K562 GEARS 审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/model-parameters/scgen-khp.json">KHP scGen 审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/model-parameters/scvidr-khp.json">KHP scVIDR 审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/model-parameters/audit-parameters.py">查看审计脚本 ↗</a>
+            <a class="evidence-link" href="evidence/foundation-and-grn-v1/foundation-parameters.json">共享基础模型参数审计 JSON ↗</a>
+            <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-foundation-parameters.py">共享模型参数审计脚本 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="evaluation" aria-labelledby="evaluation-title">
+      <div class="section-heading">
+        <div><p class="section-index">03 / EVALUATION</p><h2 id="evaluation-title">比较模型，<br><em>而不是混合协议。</em></h2></div>
+        <p class="section-intro">不同实验使用不同数据、划分与指标。切换查看同一实验内的对照；这些结果不是官方排行榜。</p>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-header">
+          <div><p class="overline">INTERNAL EXPLORATORY RESULTS</p><h3 id="benchmark-title">K562 全基因组 CRISPRi</h3><p id="benchmark-subtitle">347 个测试靶点 · 内部冻结划分</p></div>
+          <div class="tabs" role="tablist" aria-label="选择评估实验" id="benchmark-tabs"></div>
+        </div>
+        <div class="table-scroll" id="benchmark-panel" role="tabpanel" tabindex="0">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only" id="benchmark-caption">K562 内部实验对照</caption>
+            <thead id="benchmark-head"></thead><tbody id="benchmark-body"></tbody>
+          </table>
+        </div>
+        <p id="benchmark-note" class="benchmark-note"></p>
+      </div>
+      <details class="resource-details" id="grn-review">
+        <summary><span><span class="overline">GRN / INDEPENDENT ARITHMETIC AUDIT</span><strong>调控图后验结果：真实图与打乱图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">347 个测试靶点、三个共享同一预训练编码器的响应头种子；14,574 条测试逐靶点评分和验证强度网格已从保存的均值独立复算。下表来自已经观察过结果的内部群体均值实验，并非新共享基础模型或盲测结果。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">调控图探索结果，测试靶点宏平均 MSE</caption>
+            <thead><tr><th scope="col">方法</th><th scope="col">测试靶点宏 MSE ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">真实候选图</th><td class="numeric-cell" data-label="测试靶点宏 MSE ↓">0.015187105</td></tr>
+              <tr><th scope="row">打乱候选图</th><td class="numeric-cell" data-label="测试靶点宏 MSE ↓">0.015193985</td></tr>
+              <tr><th scope="row">仅表观节点</th><td class="numeric-cell" data-label="测试靶点宏 MSE ↓">0.015195957</td></tr>
+              <tr><th scope="row">RNA-only</th><td class="numeric-cell" data-label="测试靶点宏 MSE ↓">0.015219835</td></tr>
+              <tr><th scope="row">训练均值</th><td class="numeric-cell" data-label="测试靶点宏 MSE ↓">0.015711021</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">真实图减打乱图仅 −0.00000688；194 个靶点真实图误差较低、153 个较高，只有两个测试靶点有直接图源覆盖。打乱对照较弱且样本不构成独立生物学重复，因此不能据此宣称图结构有效。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">真实图的邻居方向复算：三个共享编码器种子的正确数</caption>
+            <thead><tr><th scope="col">图源靶点</th><th scope="col">候选邻居</th><th scope="col">可评价方向</th><th scope="col">真实图正确数 · 三种子</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">SPI1</th><td class="numeric-cell" data-label="候选邻居">795</td><td class="numeric-cell" data-label="可评价方向">353</td><td class="numeric-cell" data-label="真实图正确数 · 三种子">193 / 199 / 205</td></tr>
+              <tr><th scope="row">ZNF318</th><td class="numeric-cell" data-label="候选邻居">19</td><td class="numeric-cell" data-label="可评价方向">3</td><td class="numeric-cell" data-label="真实图正确数 · 三种子">3 / 2 / 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">邻居 MSE 与方向覆盖、正确数等 52 行已独立复算。方向仅在观测变化绝对值至少 0.1 的基因上计算，预测变化包含训练均值基线；ZNF318 仅有三个可评价邻居，不能支持可靠的方向泛化或因果结论。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">两个图源靶点的候选邻居均值表达误差，三个共享编码器种子的平均</caption>
+            <thead><tr><th scope="col">图源靶点</th><th scope="col">候选邻居</th><th scope="col">真实图邻居 MSE ↓</th><th scope="col">打乱图邻居 MSE ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">SPI1</th><td class="numeric-cell" data-label="候选邻居">795</td><td class="numeric-cell" data-label="真实图邻居 MSE ↓">0.017085039</td><td class="numeric-cell" data-label="打乱图邻居 MSE ↓">0.016842428</td></tr>
+              <tr><th scope="row">ZNF318</th><td class="numeric-cell" data-label="候选邻居">19</td><td class="numeric-cell" data-label="真实图邻居 MSE ↓">0.012248853</td><td class="numeric-cell" data-label="打乱图邻居 MSE ↓">0.011857416</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">这两个靶点的真实图候选邻居 MSE 均高于打乱图；三个种子共享一个编码器，两个靶点也不是生物学重复。邻居按真实候选图定义，结果仅作后验描述，不能推断因果或统计显著性。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/grn-audit.json">逐靶点评分审计 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/grn-neighbor-audit.json">邻居方向独立复算 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-grn-neighbors.py">邻居复算代码 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/grn-full-score-audit.json">完整评分与验证网格复算 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/audit-grn-full-scores-v1.py">完整复算代码 ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/grn-target-differences.csv">逐靶点真实图减打乱图 ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">CELL-EVAL / POST-HOC TAHOE PILOT</span><strong>官方 cell-eval 的探索性复核</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">对旧的部分训练 Tahoe 模型和无效应基线进行真实单细胞级分析；九个药物条件。使用 cell-eval 0.8.2，不是官方排行榜，也不是新基础模型或两种最终模型的成绩。</p>
+        <div class="table-scroll">
+          <table class="data-table benchmark-table">
+            <caption class="sr-only">Tahoe 旧模型的九条件 cell-eval 平均指标</caption>
+            <thead><tr><th scope="col">方法</th><th scope="col">平均表达 MSE ↓</th><th scope="col">Delta MSE ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">旧模型</th><td class="numeric-cell" data-label="平均表达 MSE ↓">0.011904</td><td class="numeric-cell" data-label="Delta MSE ↓">0.025102</td></tr>
+              <tr><th scope="row">无效应</th><td class="numeric-cell" data-label="平均表达 MSE ↓">0.010371</td><td class="numeric-cell" data-label="Delta MSE ↓">0.023368</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-note">每条件只有 5–10 个独立预测 parent；多个差异表达指标未定义。无效应在这两项误差上较低，不应将未定义指标当作零或模型成功。独立复核了五项表达指标，未重算包内差异表达统计。</p>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/cell-eval-summary.json">cell-eval 汇总 JSON ↗</a>
+          <a class="evidence-link" href="evidence/foundation-and-grn-v1/cell-eval-audit.json">表达指标复算 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">POST-HOC K562 COMPARISON</span><strong>查看 GEARS 测试图与审计</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">图中测试误差按靶点平均；GEARS 使用额外公开 GO 先验和已知留出靶点，是观察原始结果后加入的单种子内部比较。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img src="assets/k562-gears-test.svg" alt="K562 后验 GEARS 图：验证选择强度 0.5；测试宏 MSE 中，训练均值低于 GEARS，GEARS 低于无效应。靶点间共享控制。">
+          <figcaption><span>FIGURE 18 <strong>GEARS K562 · 后验内部比较</strong></span><a href="assets/k562-gears-test.svg">打开矢量 SVG ↗</a><a href="assets/k562-gears-test.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/gears-k562/test-summary.json">测试结果 JSON ↗</a>
+          <a class="evidence-link" href="evidence/gears-k562/test-audit.json">评分复算审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/gears-k562/validation-summary.json">验证结果 JSON ↗</a>
+          <a class="evidence-link" href="evidence/gears-k562/selection.json">验证选择记录 JSON ↗</a>
+          <a class="evidence-link" href="evidence/gears-k562/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/gears-k562/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">TAHOE PILOT</span><strong>查看 Tahoe 药物响应诊断图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">9 个药物条件的部分训练、非盲测诊断；在 7 个条件中，完整 flow 的均值表达误差大于无效应。输入及参考对照复用，条件不是独立生物重复。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/tahoe-diagnostic.svg" alt="Tahoe 诊断图：九个药物条件的均值表达误差、响应相关性和配对误差差值；比较完整 flow 与无效应。">
+          <figcaption><span>FIGURE 02 <strong>Tahoe · 部分训练内部诊断</strong></span><a href="assets/tahoe-diagnostic.svg">打开矢量 SVG ↗</a><a href="assets/tahoe-diagnostic.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/tahoe-pilot/condition-metrics.csv">条件级指标 CSV ↗</a>
+          <a class="evidence-link" href="evidence/tahoe-pilot/metric-audit.json">矩阵指标复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/tahoe-pilot/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/tahoe-pilot/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">KHP FOUR-METHOD COMPARISON</span><strong>查看 KHP 迁移对照图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">图中为原始四方法的十条件内部比较；目标细胞对照可用且参考对照复用。分数表已与原始汇总核对，但本次图稿审计未独立重算细胞级指标或重新训练模型。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/khp-transfer.svg" alt="KHP CD8 T 细胞迁移图：四种方法的配对均值表达误差、响应相关性和每基因分布距离。">
+          <figcaption><span>FIGURE 03 <strong>KHP · 四方法内部对照</strong></span><a href="assets/khp-transfer.svg">打开矢量 SVG ↗</a><a href="assets/khp-transfer.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/khp-four-method/condition-metrics.csv">条件级指标 CSV ↗</a>
+          <a class="evidence-link" href="evidence/khp-four-method/figure-audit.json">图稿与分数核对 JSON ↗</a>
+          <a class="evidence-link" href="evidence/khp-four-method/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">DATLINGER HELD-OUT GENES</span><strong>查看 Datlinger 留出基因对照图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">四个留出基因的内部比较，目标和对照来自不同孔且对照被复用；C3 为 RNA-only，GEARS 使用额外 GO 先验及适配。均值误差和响应相关性已从保存预测独立重算，分布距离未独立重算。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/datlinger-test.svg" alt="Datlinger 留出基因图：无效应、训练均值、C3 和适配 GEARS 的均值表达误差、响应相关性及分布距离。">
+          <figcaption><span>FIGURE 04 <strong>Datlinger · 留出基因内部对照</strong></span><a href="assets/datlinger-test.svg">打开矢量 SVG ↗</a><a href="assets/datlinger-test.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/datlinger/gene-metrics.csv">基因级指标 CSV ↗</a>
+          <a class="evidence-link" href="evidence/datlinger/metric-audit.json">均值指标复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/datlinger/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/datlinger/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">NORMAN COMBINATION TEST</span><strong>查看 Norman 留出组合对照图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">44 个留出组合按训练靶点暴露分为 seen0/1/2；图中比较无效应、训练单靶加性基线和 RNA-only C3。均值误差和响应相关性已从保存预测独立重算，但没有重新拟合模型；对照复用，技术组不是独立生物重复。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/norman-combination.svg" alt="Norman 留出组合图：按训练暴露分层比较无效应、训练单靶加性基线与 C3 RNA-only 的均值表达误差和响应相关性。">
+          <figcaption><span>FIGURE 05 <strong>Norman · 留出组合内部对照</strong></span><a href="assets/norman-combination.svg">打开矢量 SVG ↗</a><a href="assets/norman-combination.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/norman-combination/condition-metrics.csv">条件级指标 CSV ↗</a>
+          <a class="evidence-link" href="evidence/norman-combination/metric-audit.json">均值指标复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/norman-combination/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/norman-combination/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">NORMAN GRAPH ABLATION</span><strong>查看 Norman 图先验消融</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">这是观察测试结果后的内部比较。共同强度下真实图与打乱图的误差差异很小，尚不能证明图先验收益；图仅改变 30.65% 的边，三个 flow 种子共享一个表征模型，表观数据来自未配对 bulk 测量。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/norman-graph.svg" alt="Norman 图先验消融：比较各实验臂的均值表达误差、真实图与打乱图差异、强度校准及图对靶点的直接覆盖。">
+          <figcaption><span>FIGURE 09 <strong>Norman · 后验图先验消融</strong></span><a href="assets/norman-graph.svg">打开矢量 SVG ↗</a><a href="assets/norman-graph.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/norman-graph/summary-mse.csv">分层误差 CSV ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/condition-graph-differences.csv">组合级差值 CSV ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/graph-contrasts.csv">强度对照 CSV ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/graph-coverage.csv">图覆盖 CSV ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/metric-audit.json">均值指标复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/norman-graph/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <details class="resource-details">
+        <summary><span><span class="overline">REPLOGLE ESSENTIAL-GENE TEST</span><strong>查看 K562 必需基因留出测试</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <p class="details-intro">127 个留出测试靶点；RNA-only C3 在验证集选择零强度，预测与无效应完全相同。训练均值在 82/127 个测试靶点误差更低；这是单种子、同一文库的内部评估，不是外部盲测或官方成绩。对照可以复用，源矩阵原始计数来源未独立证实。</p>
+        <figure class="architecture-figure benchmark-figure">
+          <img loading="lazy" src="assets/replogle-essential.svg" alt="Replogle K562 必需基因内部测试：验证选择零强度；按靶点比较 C3、无效应与训练均值的均值表达误差。">
+          <figcaption><span>FIGURE 14 <strong>Replogle · 必需基因内部测试</strong></span><a href="assets/replogle-essential.svg">打开矢量 SVG ↗</a><a href="assets/replogle-essential.pdf">下载矢量 PDF ↗</a></figcaption>
+        </figure>
+        <div class="reference-links">
+          <a class="evidence-link" href="evidence/replogle-essential/per-target.csv">靶点级误差 CSV ↗</a>
+          <a class="evidence-link" href="evidence/replogle-essential/validation-strength.csv">验证强度 CSV ↗</a>
+          <a class="evidence-link" href="evidence/replogle-essential/test-audit.json">测试误差复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/replogle-essential/selection-audit.json">验证选择复算 JSON ↗</a>
+          <a class="evidence-link" href="evidence/replogle-essential/figure-audit.json">图稿审计 JSON ↗</a>
+          <a class="evidence-link" href="evidence/replogle-essential/figure-manifest.json">图稿清单 JSON ↗</a>
+        </div>
+      </details>
+      <div class="interpretation">
+        <div><span>01</span><strong>零强度不是成功预测</strong><p>K562 各臂的输出与无效应相同，不能由此宣称学到了扰动效应。</p></div>
+        <div><span>02</span><strong>候选联系不是因果边</strong><p>表观测量主要来自未配对 bulk 数据；弱打乱和少数图源测试靶点限制结论。</p></div>
+        <div><span>03</span><strong>跨表不能直接排名</strong><p>不同实验的基因轴、对照和归一化不同；scVIDR 为明确标注的后验适配。</p></div>
+      </div>
+    </section>
+
+    <section class="section section-architecture" id="architecture" aria-labelledby="architecture-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="section-index">04 / ARCHITECTURE</p><h2 id="architecture-title">模型与流程，<br><em>放在同一张图里。</em></h2></div>
+          <p class="section-intro">先训练共享 RNA 表征，再分别开发调控网络和同细胞联合编码分支；虚线表示待完成步骤，并非已经训练或验证的模型。</p>
+        </div>
+        <figure class="architecture-figure">
+          <img src="assets/architecture-v2.svg" alt="共享 RNA 基础模型与两条扰动分支的架构和流程：调控网络分支、严格同细胞 RNA 与 ATAC 及接触联合编码分支，以及留出评估。">
+          <figcaption><span>FIGURE 01 <strong>Shared foundation · two research branches</strong></span><a href="assets/architecture-v2.svg">打开可编辑矢量 SVG <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+        <details class="resource-details">
+          <summary><span><span class="overline">EARLIER CONFIGURATION</span><strong>查看此前的单分支架构图</strong></span><span class="details-icon" aria-hidden="true">+</span></summary>
+        <figure class="architecture-figure">
+          <img src="assets/architecture.svg" alt="Epi-C3 模型架构与端到端流程：计数感知编码、教师学生表征、条件潜空间运输、解码和可选表观图先验；右侧显示数据准备、划分、训练、选择、预测与评估。">
+          <figcaption><span>LEGACY FIGURE <strong>Earlier architecture &amp; workflow</strong></span><a href="assets/architecture.pdf">下载可编辑 PDF <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+        </details>
+      </div>
+    </section>
+
+    <section class="section shell evidence-section" id="sources" aria-labelledby="sources-title">
+      <div><p class="section-index">05 / PROVENANCE</p><h2 id="sources-title">来源与说明</h2><p>网页依据 v30 工作稿、冻结实验和注明范围的审计整理。研究仍在进行，未经外部独立验证，不应视为完整模型发布或投稿结论。</p><p><a href="manuscripts/epi-c3-manuscript-draft-v30.md">打开 v30 论文工作稿 ↗</a> · <a href="manuscripts/epi-c3-manuscript-draft-v29.md">上一版 v29 ↗</a></p></div>
+      <div class="evidence-panel">
+        <details><summary>数值口径与快照证据</summary><div class="evidence-content">
+          <p>参数统计来自对四个 K562 模型臂、各三个种子的严格检查点加载；构造时参数量与 flow 阶段优化器参数分开计算。浏览器中所有数据均为本地静态快照，不会连接服务器。</p>
+          <dl><dt>参数审计 SHA-256</dt><dd class="hash">df9fcc0a1224f99ff12394e4f9da67357740dfcaf048f465bed10f1cb8518631</dd><dt>v30 工作稿 SHA-256</dt><dd class="hash">933ece34333c5409a2bec984af07096baa526a931bc1d281bb311ef74853ae62</dd><dt>数据快照审计 SHA-256</dt><dd class="hash">a9d6d915911968d36e35c4abf28a1410a8612e488bb816149dae7c2cc72a124f</dd><dt>架构图 SVG SHA-256</dt><dd class="hash">7acd6f875b43ccf608d720071aaba8367bd2aeb88b5067c248bdae81b658a8eb</dd></dl>
+          <p><a href="evidence/snapshot-audit-v2.json">查看数据快照审计 JSON ↗</a></p>
+          <p><a href="evidence/tahoe-representation-snapshot.json">查看 Tahoe 表征训练状态快照 JSON ↗</a>（独立于较早的数据快照审计）</p>
+          <p><a href="evidence/foundation-and-grn-v1/foundation-state.json">查看共享基础模型状态快照 JSON ↗</a>（2026-11-12 17:11:31 UTC；未完成）</p>
+          <p>原始单细胞数据不包含在本网页中。数据资源和论文链接仅供用户主动访问；不同来源的数据许可和访问限制应分别审查。</p>
+        </div></details>
+        <details><summary>参考资料</summary><div class="evidence-content reference-links">
+          <a href="https://doi.org/10.1126/sciadv.aed3414" target="_blank" rel="noopener noreferrer">单细胞扰动模型比较 · Science Advances ↗</a>
+          <a href="https://doi.org/10.1038/s41422-024-01034-y" target="_blank" rel="noopener noreferrer">GeneCompass · Cell Research ↗</a>
+          <a href="https://doi.org/10.1038/s42256-026-01286-w" target="_blank" rel="noopener noreferrer">知识驱动的药物响应预测 · Nature Machine Intelligence ↗</a>
+          <a href="https://doi.org/10.1016/j.cell.2022.05.013" target="_blank" rel="noopener noreferrer">Replogle genome-scale Perturb-seq · Cell ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.7041849" target="_blank" rel="noopener noreferrer">scPerturb 数据集 ↗</a>
+        </div></details>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span>EPI.C3 <small>RESEARCH ATLAS</small></span><span>静态研究快照 · 非官方基准成绩 · 2026.11.12</span><a href="#top">返回顶部 ↑</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "format": "epi-c3-tahoe-interim-diagnostic-figure-v5",
+  "state": "complete",
+  "source_figure_state_sha256": "d3a692dbd512f5e497b5c38bc8f2cdade3f083b3815ae4b7172ea567beaa2045",
+  "source_table_sha256": "058e5246273ca1345f7e47113dc741b5f8371d35253b29fee8947a7e7204a7d6",
+  "independent_metric_audit_sha256": "d48877f46319267f1286eb3c847cfeb4276f8bc42aea1454e2767951e68f1c25",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "script_sha256": "3352a361ceb0fb658c8aeb33347d34700487f892772925af1644dd109067aa73",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "condition-metrics.csv": "058e5246273ca1345f7e47113dc741b5f8371d35253b29fee8947a7e7204a7d6",
+    "figure-02-tahoe-interim-diagnostic.pdf": "3e16798638207e2ac1b47f9b624fe719f55973198bec88225aeef573f4ddf965",
+    "figure-02-tahoe-interim-diagnostic.png": "7aa49b0b1a26a0f2d7293049fd03dfad1bf4ce056d999cffb038f620ab628e31",
+    "figure-02-tahoe-interim-diagnostic.svg": "dbdbbafbb85167c66a7895a5d16de68126b17c6f48718a41e185a957d348de16"
+  },
+  "conditions": 9,
+  "genes": 62710,
+  "matched_plates": 7,
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The same nine cases and underlying matrices were previously examined.",
+    "Partial representation and flow training used no epigenomic prior.",
+    "Input controls are reused; conditions are not independent biological replicates.",
+    "Shared reference controls affect delta correlations.",
+    "This is not an external blind or official challenge test."
+  ]
+}

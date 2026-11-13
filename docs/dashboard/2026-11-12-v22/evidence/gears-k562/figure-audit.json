@@ -1,0 +1,48 @@
+{
+  "format": "epi-c3-replogle-gwps-gears-figure-audit-v5",
+  "state": "complete",
+  "figure_manifest_sha256": "f797e14fa601917bfe1620042b68cc113b4a191dbc532c188bc7327f5c1b5259",
+  "score_state_sha256": "b48e7676a361196f9499a2704fbaa6475ae40a2291da87b71d53408168d25a24",
+  "test_audit_sha256": "edc95005298065ccb87af533765b4c0bbd19a5f2714444edf87d68f5ff207ff5",
+  "smoke_replay_sha256": "e8b2e0aa18362a0f003cfc06bef238950de4ced0a7cb6f076b3b2aa542a09475",
+  "script_sha256": "2ff467e47ec8c4e981f1f8f2827727c4c1bfa041e03ae9b192504097750bf152",
+  "test_target_mse_values_checked": 1041,
+  "validation_candidates_checked": 5,
+  "gears_macro_mse": 0.01583080899741956,
+  "no_effect_macro_mse": 0.01604481739394287,
+  "training_mean_macro_mse": 0.015711020985759664,
+  "gears_targets_better_than_no_effect": 191,
+  "gears_targets_better_than_training_mean": 130,
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 158.75,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 66,
+    "font_sizes_pt": [
+      5.1,
+      5.2,
+      5.3,
+      5.7,
+      6.2,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2812
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "scope": "Saved score tables, replay provenance and selected format checks; not journal certification.",
+  "limitations": [
+    "The score audit recomputes from saved means, not from individual GEARS outputs.",
+    "The smoke replay uses the same implementation and is not independent biological validation.",
+    "The result is post hoc, uses an extra public GO prior, and has one GEARS seed.",
+    "A visual or accessibility review cannot be replaced by these format checks."
+  ]
+}

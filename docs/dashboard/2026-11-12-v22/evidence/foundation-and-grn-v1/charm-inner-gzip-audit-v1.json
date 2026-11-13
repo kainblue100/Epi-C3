@@ -1,0 +1,16 @@
+{
+  "format": "epi-c3-charm-inner-gzip-integrity-v1",
+  "status": "complete",
+  "archive_name": "GSM9115541_mesc.pairs.tar.gz",
+  "archive_bytes": 15566903371,
+  "archive_sha256": "33ba340f3f19415e12738839dd14b46204c8b83f84c23434194b2f76f109cc00",
+  "inner_gzip_streams_verified": 958,
+  "inner_uncompressed_bytes": 63171389329,
+  "limitations": [
+    "All inner gzip streams were read to EOF, validating their gzip CRC and length.",
+    "The archive hash is local and is not an independent source-provided digest.",
+    "This integrity check does not validate all contact records, coordinates, or biological pairing."
+  ],
+  "pairing_audit_sha256": "6ea045d9edd0ab97c977ef4142c590f32c414dffb4ec0a1fcc13e3a2cdac8ef1",
+  "script_sha256": "fcc372c7e42cfa13f4f510322c5af5538f4e01c04bfd7b814b09b2073f1f4a33"
+}

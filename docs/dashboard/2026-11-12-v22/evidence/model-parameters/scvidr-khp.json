@@ -1,0 +1,20 @@
+{
+  "format": "epi-c3-model-parameter-audit-v1",
+  "state": "complete",
+  "count_definition": "PyTorch named parameters with requires_grad immediately after the trained model is reconstructed; frozen parameters and buffers are counted separately. Separately learned adapters are identified.",
+  "not_a_model_performance_comparison": true,
+  "audit_script_sha256": "5900b577f58aaef0517d16b07357275abca9d308de8fb7ad47b24d0a17cb95e5",
+  "method": "scVIDR",
+  "source_commit": "bcb6a96c85cddc4eef052be739c122efb737fe0e",
+  "comparison": "KHP case-01 post-hoc",
+  "genes": 5000,
+  "training_rows": 2000,
+  "checkpoint_sha256": "7a2273f107e29fa5e111e56f2b3adeda1b399d07b7b2658fd7ca74c077e5e05c",
+  "parameter_tensors": 26,
+  "trainable_at_construction": 10049800,
+  "frozen_at_construction": 0,
+  "nonparameter_buffer_elements": 16405,
+  "separate_two_source_regression_excluded": true,
+  "checkpoint_values_verified": true,
+  "preprocessing_warning": "The legacy scvi setup emits a generic warning for non-integer X. The upstream scVIDR preprocessing also feeds normalized log expression to the model."
+}

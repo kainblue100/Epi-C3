@@ -1,0 +1,24 @@
+{
+  "format": "epi-c3-gwps-gears-test-score-v1",
+  "state": "complete",
+  "partition": "test",
+  "targets": 347,
+  "genes": 1861,
+  "gears_validation_selected_strength": 0.5,
+  "gears_macro_mse": 0.01583080899741956,
+  "no_effect_macro_mse": 0.01604481739394287,
+  "training_mean_log_expression_macro_mse": 0.015711020985759664,
+  "gears_targets_better_than_no_effect": 191,
+  "gears_targets_better_than_training_mean": 130,
+  "gears_negative_projection_fraction": 0.1591930615685067,
+  "c3_selected_arms_equal_no_effect": true,
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The original validation and test outcomes were examined before the GEARS extension.",
+    "The transductive GEARS graph uses held-out target identities and a public GO snapshot.",
+    "Only one GEARS seed was fitted; Epi-C3 has three flow seeds sharing one representation.",
+    "Inputs reuse controls and batches; this is not an independent donor or biological replicate.",
+    "GEARS and the training-mean comparator predict log expression, not direct count distributions."
+  ]
+}

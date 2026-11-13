@@ -1,0 +1,21 @@
+{
+  "format": "epi-c3-model-parameter-audit-v1",
+  "state": "complete",
+  "count_definition": "PyTorch named parameters with requires_grad immediately after the trained model is reconstructed; frozen parameters and buffers are counted separately. Separately learned adapters are identified.",
+  "not_a_model_performance_comparison": true,
+  "audit_script_sha256": "5900b577f58aaef0517d16b07357275abca9d308de8fb7ad47b24d0a17cb95e5",
+  "method": "GEARS",
+  "comparison": "K562 GWPS post-hoc",
+  "genes": 1861,
+  "perturbation_identities": 1735,
+  "hidden_dim": 64,
+  "decoder_hidden_dim": 16,
+  "training_steps": 12000,
+  "checkpoint_sha256": "0df5e8dc2944ef89d88537311e50151911f96c4f3b5e5c85862236bb27fb0114",
+  "source_commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "parameter_tensors": 51,
+  "trainable_at_construction": 759567,
+  "frozen_at_construction": 0,
+  "nonparameter_buffer_elements": 1547,
+  "checkpoint_values_verified": true
+}

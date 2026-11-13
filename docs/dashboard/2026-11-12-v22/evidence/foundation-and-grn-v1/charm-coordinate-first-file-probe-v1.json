@@ -1,0 +1,21 @@
+{
+  "format": "epi-c3-charm-coordinate-first-file-probe-v1",
+  "status": "complete",
+  "scope": "first contact member only; not a full-archive coordinate audit",
+  "records_checked": 2192041,
+  "declared_chromosomes": 20,
+  "header_problems": 0,
+  "record_findings": {},
+  "reference_assembly": "GRCm38/mm10",
+  "reference_sha256": "55463d59f400b2c8260d100f4b521800ee773fa9711fe3f6dad9c7887db2574f",
+  "reference_url": "https://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/mm10.chrom.sizes",
+  "coordinate_convention": "1-based closed point positions",
+  "format_url": "https://pairtools.readthedocs.io/en/latest/formats.html",
+  "script_sha256": "e513ed06369ad651f6970527516fd3ce21c554f5891b6d9de6449cb4c4de14ab",
+  "limitations": [
+    "This probe does not establish the quality of the remaining 957 contact files.",
+    "The source archive SHA-256 was not recomputed during this first-member probe; a prior full integrity audit recorded a local hash.",
+    "A producer-specific coordinate convention has not been independently established; matching chromosome lengths do not prove sequence identity.",
+    "These checks do not prove biological pairing, contact uniqueness, mapping quality, row sorting, assay completeness or model validity."
+  ]
+}

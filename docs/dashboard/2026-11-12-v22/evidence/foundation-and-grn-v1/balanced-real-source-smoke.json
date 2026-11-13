@@ -1,0 +1,38 @@
+{
+  "format": "epi-c3-balanced-real-source-smoke-v1",
+  "state": "complete",
+  "stage1_plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "gene_axis_sha256": "838861a3896bc5f068f60a974eb83d785a75bd2a58efedc34beee166e9e83d31",
+  "script_sha256": "6132d0d419e0b4777265034ae44810ca13f6ecea83ba7a0c53188c35825a7ff6",
+  "sources": {
+    "arc": {
+      "first_batch_rows": 48,
+      "second_batch_rows": 48,
+      "measured_genes": 18080,
+      "initial_and_checkpoint_replay_exact": true
+    },
+    "orion-HCT116": {
+      "first_batch_rows": 14,
+      "second_batch_rows": 46,
+      "measured_genes": 38606,
+      "initial_and_checkpoint_replay_exact": true
+    },
+    "orion-HEK293T": {
+      "first_batch_rows": 13,
+      "second_batch_rows": 46,
+      "measured_genes": 38606,
+      "initial_and_checkpoint_replay_exact": true
+    },
+    "tabula": {
+      "first_batch_rows": 48,
+      "second_batch_rows": 48,
+      "measured_genes": 60606,
+      "initial_and_checkpoint_replay_exact": true
+    }
+  },
+  "limitations": [
+    "Only two batches per stage-one source were compared; this is not a full replay epoch.",
+    "This is a read-only source smoke test, not balanced model training or a quality evaluation.",
+    "Tahoe is covered separately by its frozen isolation audit and real-stream replay smoke."
+  ]
+}

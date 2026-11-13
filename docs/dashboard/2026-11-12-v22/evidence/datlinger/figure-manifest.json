@@ -1,0 +1,38 @@
+{
+  "format": "epi-c3-datlinger-four-method-figure-v2",
+  "state": "complete",
+  "source_score_sha256": "4993a61cde931acba28c2f66c16e4910ddce89679e361b36b240862f75c53bb7",
+  "independent_metric_audit_sha256": "8776d814d35ccaeca2503b8ad050c4b4165e98efa396cc5292733df0be4db2cd",
+  "source_figure_state_sha256": "a4dc5ee9e9f46d8a6d14f9b02aee21a41bde546d9c80915af9df90b31abf7393",
+  "source_table_sha256": "6123ed5c433ac3deb26cd7be82c1bccd51bfc1f02ed90b733c6131a056e459b6",
+  "extractor_sha256": "3c99943e5f3912ef4f39527f2d4582a12133d2480e442e9c3615a1123a705796",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "marker_check_sha256": "efd2ff4d8ce511236d1abf73ba58d43d0e78af9dc511e36b1493af291a7f5287",
+  "script_sha256": "af7f115c82e02cd7b07acf63e72658e46d0c29661dacc5a7692abf9e13ade787",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "figure-04-datlinger-test.pdf": "6da4bfcb599c70d444cb6844aae733a22b3cee3f1abe8055b63db6e89171f2fe",
+    "figure-04-datlinger-test.png": "306a608dd6293e8e22c27107047d518aa938efaa185972e63d6f09bbbffe5994",
+    "figure-04-datlinger-test.svg": "0d3937ab1937f6fa0311eabe3877407dcd1615335e22a9a11b1f6d146497806c",
+    "gene-metrics.csv": "6123ed5c433ac3deb26cd7be82c1bccd51bfc1f02ed90b733c6131a056e459b6"
+  },
+  "targets": [
+    "DOK2",
+    "EGR1",
+    "FOS",
+    "LAT"
+  ],
+  "methods": [
+    "no-effect",
+    "training-mean",
+    "c3-rna-only",
+    "gears-adapted"
+  ],
+  "official_challenge_score": false,
+  "limitations": [
+    "The same test targets and original scores were previously examined.",
+    "MSE and delta Pearson were independently recomputed; distribution metrics were not.",
+    "Target and control cells came from different wells; shared controls preclude biological-replicate inference.",
+    "GEARS uses extra public GO and a batch-graph adaptation; C3 is RNA-only."
+  ]
+}

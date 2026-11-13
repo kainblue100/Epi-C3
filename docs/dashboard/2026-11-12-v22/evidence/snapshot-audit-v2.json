@@ -1,0 +1,52 @@
+{
+  "format": "epi-c3-dashboard-snapshot-audit-v2",
+  "captured_at_utc": "2026-11-12T09:32:00.750775+00:00",
+  "arc": {
+    "source_cells": 221273,
+    "source_genes": 18080,
+    "train_cells": 198701,
+    "plan_sha256": "25a7c350d9d50f7205dbf0283b0dcb03fbd18581318873584b574fa592dd2093",
+    "complete_state_sha256": "fa5a29d7f5dd2a3c7ef85352ea60d3de6398478e33a7f121eefedae67f0e44b0"
+  },
+  "orion": {
+    "hct116": {
+      "trained_rows": 3373853,
+      "epochs": 1,
+      "state_sha256": "0dd9913974216a545a052d61813aef9b0fa0d906b50234839667da321cadd1e6"
+    },
+    "hek293t": {
+      "trained_rows": 4487649,
+      "epochs": 1,
+      "state_sha256": "5f5fb38ab130d3c2f79a728c6cef80451811e78d886472d51b73bfdfe9bb3f30"
+    }
+  },
+  "tahoe": {
+    "state": "running",
+    "stage": "representation",
+    "trained_rows": 11388487,
+    "expected_rows_per_epoch": 92095728,
+    "updated_at_utc": "2026-11-12T09:28:58.771158+00:00",
+    "state_sha256": "33c3d90c8364cab41c90a54eb70c06ad9b725e51b1e4c191bbd0daeed2bc7bf5"
+  },
+  "k562_assays": {
+    "atac_accession": "ENCFF855PCP",
+    "atac_peak_rows": 172732,
+    "atac_file_sha256": "47a71eaac0bfbad586a14d89971398c8922bf8864b5eeab4cb58d37ae925e0e9",
+    "selected_tf_chip_tracks": [
+      "CBFA2T3",
+      "CEBPB",
+      "EGR1",
+      "FOXA1",
+      "JUN",
+      "SPI1",
+      "ZNF318"
+    ],
+    "selected_tf_chip_manifest_sha256": "596cd4f73f876547e6c1807928179b2b94a47360bc53331dedd8227ec8af4666"
+  },
+  "notes": [
+    "Arc matrix dimensions were independently checked with h5py; source row totals are not deduplicated across datasets.",
+    "Orion rows are separate representation-training runs, not a deduplicated total.",
+    "Tahoe is a timestamped state snapshot, not live monitoring or a count of unique cells.",
+    "K562 ATAC and TF ChIP assays are unpaired bulk measurements and candidate regulatory evidence."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "format": "epi-c3-dashboard-parameters-v1",
+  "state": "complete",
+  "scope": "Internal genome-wide K562 CRISPRi frozen 1,861-gene configuration, not every Epi-C3 model.",
+  "count_definition": "Counts are obtained from PyTorch named parameters after strict checkpoint loading. Trainable-at-construction excludes the frozen EMA teacher; buffers and input graph values are not parameters. The flow optimizer contains only velocity and, when present, the epigenetic adapter. Predictor parameters are included in the architecture count even though they are not all used for inference.",
+  "training_cells": 159349,
+  "training_targets": 1041,
+  "representation_steps": 1500,
+  "flow_steps": 1500,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "arms": [
+    {
+      "arm": "rna-only",
+      "model_trainable_at_construction": 579722,
+      "frozen_teacher_parameters": 255104,
+      "total_parameters_including_teacher": 834826,
+      "nonparameter_buffer_elements": 0,
+      "flow_optimizer_parameters": 57792,
+      "genes": 1861,
+      "latent_dim": 64,
+      "hidden_dim": 128,
+      "epi_feature_dim": 0,
+      "seeds_checked": 3
+    },
+    {
+      "arm": "epi-nodes-only",
+      "model_trainable_at_construction": 584842,
+      "frozen_teacher_parameters": 255104,
+      "total_parameters_including_teacher": 839946,
+      "nonparameter_buffer_elements": 26054,
+      "flow_optimizer_parameters": 62912,
+      "genes": 1861,
+      "latent_dim": 64,
+      "hidden_dim": 128,
+      "epi_feature_dim": 7,
+      "seeds_checked": 3
+    },
+    {
+      "arm": "epi-real-graph",
+      "model_trainable_at_construction": 584842,
+      "frozen_teacher_parameters": 255104,
+      "total_parameters_including_teacher": 839946,
+      "nonparameter_buffer_elements": 26054,
+      "flow_optimizer_parameters": 62912,
+      "genes": 1861,
+      "latent_dim": 64,
+      "hidden_dim": 128,
+      "epi_feature_dim": 7,
+      "seeds_checked": 3
+    },
+    {
+      "arm": "epi-shuffled-graph",
+      "model_trainable_at_construction": 584842,
+      "frozen_teacher_parameters": 255104,
+      "total_parameters_including_teacher": 839946,
+      "nonparameter_buffer_elements": 26054,
+      "flow_optimizer_parameters": 62912,
+      "genes": 1861,
+      "latent_dim": 64,
+      "hidden_dim": 128,
+      "epi_feature_dim": 7,
+      "seeds_checked": 3
+    }
+  ],
+  "model_source_sha256": "d22568a921afcfc43a26a00f39e423d265b12c4f4ace8afce29169cf0d846cda",
+  "trainer_source_sha256": "ca215ee75e9452f739e5ea85eda1d111227fefd472db72c0ccaa9876bcc378c0",
+  "script_sha256": "49ad7c6d0e927263deb564cb2b561b5198602a7d41bb816ac9d5d07c82d94126",
+  "official_challenge_score": false
+}

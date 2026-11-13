@@ -1,0 +1,37 @@
+{
+  "format": "epi-c3-replogle-gwps-gears-test-figure-v4",
+  "state": "complete",
+  "selection_sha256": "373a7d7a319de3225049e65f91ffd20ca567fa17efb6a270b6429bcda7054c6b",
+  "validation_summary_sha256": "3c35d10eeb652ea87f186537cc281e03b763f6b72cbf4a5389427e82162107ab",
+  "validation_audit_sha256": "d968e651b9f21a4848da7aecf43260304d8806a2b0a66f8ff6ee201ec1f2de99",
+  "test_pipeline_state_sha256": "1d92a3240ce73b038c73ab8384b6124c41ce7f794205ea5d5c13c0141751c1b3",
+  "test_prediction_state_sha256": "c0c4d6b8313f7c84dc07275954f9a1b8a4f6532a493084d375f823f6fe3401fb",
+  "test_score_state_sha256": "b48e7676a361196f9499a2704fbaa6475ae40a2291da87b71d53408168d25a24",
+  "test_summary_sha256": "cdbfd82ffbd7d987dab31b51fe8e553e36c265d1db007112b67fd197977a4d09",
+  "test_audit_sha256": "edc95005298065ccb87af533765b4c0bbd19a5f2714444edf87d68f5ff207ff5",
+  "test_score_arrays_sha256": "d878136228172dee8feee51402ea5903507c2e50f44058995de6b721e7b16ea5",
+  "test_per_target_sha256": "c8dd220b327597a0f57345b8f2b643bb7599f024346cfce979bf7aa28c10bce3",
+  "script_sha256": "bddd66c1b5eb69954b350db5868aa7725a583a9ae08a2028064309a0906606cd",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "training_checkpoint_sha256": "0df5e8dc2944ef89d88537311e50151911f96c4f3b5e5c85862236bb27fb0114",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "figure-18-replogle-gwps-gears-posthoc.pdf": "c7e366eeb12b7f7d0ae72d0f0d49b4c313017d0c0dea916ef765d311ef5bc2af",
+    "figure-18-replogle-gwps-gears-posthoc.png": "486d31500b826db9f5ad93847ef18649d2d106e4bfb4103959dff93e0de21b0b",
+    "figure-18-replogle-gwps-gears-posthoc.svg": "02a885b4aa3273d63d9e12639562306a557ad5c248ef9fd26c5bd95241424473",
+    "test-per-target.csv": "c8dd220b327597a0f57345b8f2b643bb7599f024346cfce979bf7aa28c10bce3",
+    "validation-candidates.csv": "43ab8b248a80aa31677d8b362fe3d91edbce8d570b5988fa8f3a3cfb372ed4f3"
+  },
+  "targets": 347,
+  "genes": 1861,
+  "selected_strength": 0.5,
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The original validation and test outcomes were examined before the GEARS extension.",
+    "GEARS uses known held-out target identities and a public GO snapshot absent from C3.",
+    "Only one GEARS seed was fitted; Epi-C3 flow seeds share one representation.",
+    "Controls and batches are reused; the analysis is not an independent biological replicate.",
+    "GEARS and the training-mean comparator predict log expression, not direct count distributions."
+  ]
+}

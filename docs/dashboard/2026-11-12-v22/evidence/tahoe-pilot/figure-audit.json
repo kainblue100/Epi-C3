@@ -1,0 +1,44 @@
+{
+  "format": "epi-c3-tahoe-interim-figure-audit-v1",
+  "state": "complete",
+  "figure_manifest_sha256": "da297c8abe3ec6152f9edb572b216213663cf4139767f35868c01055107e4782",
+  "independent_metric_audit_sha256": "d48877f46319267f1286eb3c847cfeb4276f8bc42aea1454e2767951e68f1c25",
+  "source_table_sha256": "058e5246273ca1345f7e47113dc741b5f8371d35253b29fee8947a7e7204a7d6",
+  "script_sha256": "6c3e7ba94c0be38b91cdc1d64e0c5974664086c90d17816a2ca536fa5af6aac0",
+  "saved_rows_checked": {
+    "conditions": 9,
+    "mse_values": 18,
+    "correlation_values": 18
+  },
+  "independent_matrix_metric_values_recomputed": 45,
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 157.48,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 60,
+    "font_sizes_pt": [
+      5.1,
+      5.3,
+      5.6,
+      6.1,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2790
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "scope": "Source scores, provenance and selected format checks; not journal certification.",
+  "limitations": [
+    "The same cases and underlying matrices were previously examined.",
+    "The numerical audit is not an independent model fit or biological repeat.",
+    "Control reuse, partial training, and reference-control noise limit interpretation."
+  ]
+}

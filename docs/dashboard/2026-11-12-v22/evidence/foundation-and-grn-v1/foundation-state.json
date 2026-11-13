@@ -1,0 +1,59 @@
+{
+  "status": "running",
+  "updated_at_utc": "2026-11-12T17:27:54.394429+00:00",
+  "plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "trained_cells": {
+    "arc": 15544,
+    "orion-HCT116": 456634,
+    "orion-HEK293T": 595090,
+    "tabula": 143342
+  },
+  "expected_cells": {
+    "arc": 108808,
+    "tabula": 998796,
+    "orion-HCT116": 3260365,
+    "orion-HEK293T": 4335720
+  },
+  "updates": 26250,
+  "singleton_updates": 0,
+  "diagnostics_before": {
+    "arc": {
+      "cells": 32,
+      "masked_measured_entries": 115678,
+      "masked_detected_entries": 56661,
+      "masked_all_mse": 0.22220675647258759,
+      "masked_detected_mse": 0.24854998290538788,
+      "latent_std_mean": 0.14666420221328735,
+      "latent_dimensions_std_gt_0_1": 60
+    },
+    "orion-HCT116": {
+      "cells": 32,
+      "masked_measured_entries": 246443,
+      "masked_detected_entries": 27885,
+      "masked_all_mse": 0.13449519872665405,
+      "masked_detected_mse": 0.7636146545410156,
+      "latent_std_mean": 0.1295817494392395,
+      "latent_dimensions_std_gt_0_1": 60
+    },
+    "orion-HEK293T": {
+      "cells": 32,
+      "masked_measured_entries": 247247,
+      "masked_detected_entries": 41337,
+      "masked_all_mse": 0.12963293492794037,
+      "masked_detected_mse": 0.5053248405456543,
+      "latent_std_mean": 0.13130341470241547,
+      "latent_dimensions_std_gt_0_1": 59
+    },
+    "tabula": {
+      "cells": 32,
+      "masked_measured_entries": 388610,
+      "masked_detected_entries": 25009,
+      "masked_all_mse": 0.08570119738578796,
+      "masked_detected_mse": 0.9832231402397156,
+      "latent_std_mean": 0.1509653478860855,
+      "latent_dimensions_std_gt_0_1": 64
+    }
+  },
+  "diagnostics_after": null,
+  "scope": "incomplete-stage1-not-a-full-foundation"
+}

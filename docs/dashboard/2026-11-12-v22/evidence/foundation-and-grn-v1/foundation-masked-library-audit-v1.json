@@ -1,0 +1,85 @@
+{
+  "format": "epi-c3-foundation-masked-library-audit-v1",
+  "status": "complete",
+  "scope": "read-only-small-validation-diagnostic",
+  "updates": 14500,
+  "snapshot_sha256": "f28885d6a7cb5d424c9588c80ebff2d9a1a87f1917a8aebc8b0d2b451577c34c",
+  "plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "previous_diagnostic_sha256": "3eb9d160ad743ca8c26c72964b6bdd293f5d1c7c21433d4b9244482dd6e0f7d4",
+  "original_stage1_script_sha256": "84e177cac2131ece79529f1c85ee16eb36bc7582d566c81dc7234e3a26953230",
+  "original_model_code_sha256": "d22568a921afcfc43a26a00f39e423d265b12c4f4ace8afce29169cf0d846cda",
+  "audit_script_sha256": "f950812ea6c6fd22a465eda6183c28ca60e60ba1d514a5db3be14935ab5228a2",
+  "sources": {
+    "arc": {
+      "cells": 32,
+      "masked_measured_entries": 115678,
+      "masked_detected_entries": 56661,
+      "full_library": {
+        "masked_all_mse": 0.14082632958889008,
+        "masked_detected_mse": 0.2280759960412979
+      },
+      "visible_only_library": {
+        "masked_all_mse": 0.163315087556839,
+        "masked_detected_mse": 0.25059574842453003
+      },
+      "mean_absolute_latent_change_between_protocols": 0.7546612620353699,
+      "max_full_library_latent_change_after_hidden_input_alteration": 3.8404223918914795,
+      "visible_only_latent_unchanged_after_hidden_input_alteration": true
+    },
+    "orion-HCT116": {
+      "cells": 32,
+      "masked_measured_entries": 246443,
+      "masked_detected_entries": 27885,
+      "full_library": {
+        "masked_all_mse": 0.03206250071525574,
+        "masked_detected_mse": 0.1753852814435959
+      },
+      "visible_only_library": {
+        "masked_all_mse": 0.03194560110569,
+        "masked_detected_mse": 0.17255717515945435
+      },
+      "mean_absolute_latent_change_between_protocols": 0.987300455570221,
+      "max_full_library_latent_change_after_hidden_input_alteration": 3.0937278270721436,
+      "visible_only_latent_unchanged_after_hidden_input_alteration": true
+    },
+    "orion-HEK293T": {
+      "cells": 32,
+      "masked_measured_entries": 247247,
+      "masked_detected_entries": 41337,
+      "full_library": {
+        "masked_all_mse": 0.03584812581539154,
+        "masked_detected_mse": 0.11748196929693222
+      },
+      "visible_only_library": {
+        "masked_all_mse": 0.037375740706920624,
+        "masked_detected_mse": 0.12097509950399399
+      },
+      "mean_absolute_latent_change_between_protocols": 0.8959372043609619,
+      "max_full_library_latent_change_after_hidden_input_alteration": 3.776881694793701,
+      "visible_only_latent_unchanged_after_hidden_input_alteration": true
+    },
+    "tabula": {
+      "cells": 32,
+      "masked_measured_entries": 388610,
+      "masked_detected_entries": 25009,
+      "full_library": {
+        "masked_all_mse": 0.0555478073656559,
+        "masked_detected_mse": 0.6578497290611267
+      },
+      "visible_only_library": {
+        "masked_all_mse": 0.05670366436243057,
+        "masked_detected_mse": 0.6346510648727417
+      },
+      "mean_absolute_latent_change_between_protocols": 0.7950767874717712,
+      "max_full_library_latent_change_after_hidden_input_alteration": 3.304840087890625,
+      "visible_only_latent_unchanged_after_hidden_input_alteration": true
+    }
+  },
+  "limitations": [
+    "The original training and reported diagnostic normalize using the complete measured library, including the masked genes.",
+    "Visible-only normalization is a stricter input ablation applied to a model trained with full-library normalization; it is not a retrained model.",
+    "The ground-truth log1p(CPM 10000) targets use the complete measured library for evaluation, not as strict-model input.",
+    "Each source contributes 32 fixed validation cells; Arc and Orion are not donor-disjoint.",
+    "Results do not establish perturbation prediction, biological generalization or a completed foundation model."
+  ]
+}

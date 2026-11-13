@@ -1,0 +1,73 @@
+{
+  "format": "epi-c3-charm-mesc-pairing-audit-v1",
+  "state": "partial-no-contact-archive",
+  "dataset": "GSE303006",
+  "biosample": "SAMN49739633",
+  "cell_line_label": "mESC",
+  "species": "Mus musculus",
+  "genome_assembly": "GRCm38",
+  "audit_script_sha256": "31d22b07fa4e1dd63c8938d69dd17c118e439f12a988038c9d1baceee71a9c28",
+  "inputs": {
+    "rna": {
+      "name": "GSM9115533_mesc.RNAcounts.gene.total.format.tsv.gz",
+      "bytes": 5802934,
+      "sha256": "196566981184a240d7fe2d58934d3de7e2ef9a5ea128be28a03a2b0065dbb11c"
+    },
+    "qc": {
+      "name": "GSE303006_charm_metadata_qcpass.tsv.gz",
+      "bytes": 244398,
+      "sha256": "ac01ce8338472a7d5293a6149574abe4a3c12c0e23a0012c8d99993a23d85fec"
+    },
+    "atac": {
+      "name": "GSM9115537_mesc.atac.fragment.tsv.gz",
+      "bytes": 463990568,
+      "sha256": "344b903c8626b12436bd1d3a46baea575bfec8e38941e36111e30a4411caeb83"
+    }
+  },
+  "rna": {
+    "cells": 959,
+    "genes": 41020,
+    "entries": 39338180,
+    "nonzero_entries": 5083755,
+    "fractional_entries": 501341,
+    "fractional_tolerance": 1e-06,
+    "cells_with_positive_expression": 959
+  },
+  "qc": {
+    "all_qc_cells": 5070,
+    "mesc_qc_cells": 805,
+    "mesc_histone_labels_in_qc": {
+      "H3K27ac": 805
+    }
+  },
+  "atac": {
+    "fragment_rows": 50879408,
+    "cells_with_fragments": 959
+  },
+  "contacts": null,
+  "overlap": {
+    "rna_positive_and_qc": 805,
+    "rna_positive_qc_and_atac": 805,
+    "rna_positive_qc_atac_and_contacts": null,
+    "atac_cells_in_qc": 805,
+    "atac_fragment_count_equals_qc": 0
+  },
+  "final_training_ready": false,
+  "limitations": [
+    "These are direct identifier intersections for one source-labelled mouse mESC sample, not three independently verified cell lines.",
+    "The public RNA matrix uses fractional multimapping assignments; noninteger values must not be silently rounded for an integer-count model.",
+    "The current shared RNA foundation uses a human gene axis; a validated mouse-specific axis or explicit cross-species mapping is required.",
+    "Identifier agreement and the authors' same-cell protocol do not independently verify every physical cell or reproduce the original experiment.",
+    "The mESC QC table's histone label differs from the mESC H3K27me3 sample description; the histone field was not used for pairing.",
+    "Local SHA-256 values bind the examined files; no independent source-provided digest was available for these processed files."
+  ],
+  "source_urls": [
+    "https://doi.org/10.1038/s41586-026-10322-z",
+    "https://www.ebi.ac.uk/ena/browser/api/xml/PRJNA1284811",
+    "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200303006&retmode=json",
+    "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE303nnn/GSE303006/suppl/GSE303006_file_format_README.txt",
+    "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE303nnn/GSE303006/suppl/GSE303006_feature_README.tsv"
+  ],
+  "private_identity_file": "identities.private.json",
+  "private_identity_sha256": "16dfca3e3933ae8bf7cfe2bd07f8d014fa2ba8d52f1795867427ccc53dc081cf"
+}

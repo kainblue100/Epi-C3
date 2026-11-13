@@ -1,0 +1,22 @@
+{
+  "format": "epi-c3-gwps-gears-test-audit-v1",
+  "state": "complete",
+  "selection_sha256": "373a7d7a319de3225049e65f91ffd20ca567fa17efb6a270b6429bcda7054c6b",
+  "prediction_state_sha256": "c0c4d6b8313f7c84dc07275954f9a1b8a4f6532a493084d375f823f6fe3401fb",
+  "score_state_sha256": "b48e7676a361196f9499a2704fbaa6475ae40a2291da87b71d53408168d25a24",
+  "reference_means_sha256": "87bd60f9a6f62be13b7c69635cdc76fe6285aec6f686eccd5cedadc15ba16d82",
+  "script_sha256": "c2f2c2d97fb8db6f8efa35620814e2b05f13a3fa24300590d81e35bf6c54ebae",
+  "independent_helper_sha256": "ffd1fa7dbff12bb398b1a2b088219a9e6dc51ec1aa9d9c082c885eb8ae877744",
+  "target_scores_recomputed": 1041,
+  "maximum_absolute_difference": 0.0,
+  "selected_strength": 0.5,
+  "gears_macro_mse": 0.01583080899741956,
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The audit recomputes scores from saved means, not from individual GEARS outputs.",
+    "It does not independently reconstruct the GEARS graph, predictions, or biological uncertainty.",
+    "Validation and test results were examined before the GEARS extension.",
+    "The model uses a transductive public GO prior and only one GEARS seed."
+  ]
+}

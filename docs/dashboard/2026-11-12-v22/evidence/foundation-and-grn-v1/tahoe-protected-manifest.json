@@ -1,0 +1,67 @@
+{
+  "format": "tahoe-protected-identities-v1",
+  "state": "complete",
+  "metadata_plan_sha256": "71129febc6a31a9f2e7c58a45227b232fc39a8f1eb54419e876d844a41e86031",
+  "interim_protocol_sha256": "13bec274a1bd510cd925b588744eb27dbf140590f7b045719d9c40a3bd7dcb70",
+  "interim_state_sha256": "6e656a182c9178df064e693cbe2393d96e26684357c6a99157f3b1a7fbc48eb9",
+  "smoke_metadata_sha256": "3d1e531b73ae8f8209b267b84fab1a6b5c0f3db9d7f0e395b018d264f3f0dafd",
+  "identity_helper_sha256": "92a3bcd7dc5dcb1fd8b93367b0d0d1ad433d5d1e5d1b20007fbae476761e8ca4",
+  "script_sha256": "897d3ec924eb32f7a963bfd0c6c9c182a7d7f14f35cf01067364954c51633116",
+  "private_file": "identities.private.json",
+  "private_sha256": "fdd127d55046c288d4598bc0d767df8cddd8f27a19a75a3bbf7de2ceddc28efc",
+  "protected_unique_identities": 6213,
+  "legacy_identities_with_source_provenance": 5207,
+  "modern_unique_identities": 1010,
+  "evaluation_artifacts": [
+    {
+      "label": "tahoe-demo-multidose/reference",
+      "sha256": "bf94d810dc0e064c27dce486f2cf557af813508260bef5f3fc0b41aa170ac814",
+      "identities": 3336
+    },
+    {
+      "label": "tahoe-demo-multidose/input_controls",
+      "sha256": "de272960cb860c4c8aff323f3e3873b938dc782eeb70504a7631e5ed8b4cea34",
+      "identities": 336
+    },
+    {
+      "label": "tahoe-demo-plate4/reference",
+      "sha256": "b843ce1e3bf85ce32d5cdc47a34325e46f452fd7205c8476aa1f982e2aa43d19",
+      "identities": 1650
+    },
+    {
+      "label": "tahoe-demo-plate4/input_controls",
+      "sha256": "e1574a7f3f6ec665a44c815d7d671e0a1c71cee7c4866e5efd2af52ffccea099",
+      "identities": 150
+    },
+    {
+      "label": "interim/reference",
+      "sha256": "9982bef49bdf4dc6cb701c76063ac64e831598b1e25ae59c539e2f21b5414874",
+      "identities": 868
+    },
+    {
+      "label": "interim/input_controls",
+      "sha256": "fbc95adde97846aebe7587f223b175323dfa06011004254ee693c4f5ef802998",
+      "identities": 103
+    },
+    {
+      "label": "smoke/reference",
+      "sha256": "c169a346175f156232f43b05fda76da53e94a7080d163763d90db60a8c0f7d61",
+      "identities": 33
+    },
+    {
+      "label": "smoke/input_controls",
+      "sha256": "e7919d24a151aa269afa857fe4174b7267ba97017aeb8d8c3867d3492a3ba6fb",
+      "identities": 6
+    }
+  ],
+  "derived_reference_rows_covered": 1736,
+  "modern_source_shards_checked": 514,
+  "row_groups_scanned": 761,
+  "row_groups_pruned_by_sample_statistics": 14145,
+  "source_integrity": "Frozen size and mtime checked; LFS digests were verified during download.",
+  "notes": [
+    "Private sample and barcode components are retained only for source-isolation auditing.",
+    "Derived reference subsets are checked against the protected interim reference.",
+    "A later full-shard scan must confirm all protected and validation overlaps before training."
+  ]
+}

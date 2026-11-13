@@ -1,0 +1,32 @@
+{
+  "format": "epi-c3-khp-four-method-figure-v4",
+  "state": "complete",
+  "source_summary_sha256": "12de865285a058b000c62dc4ed6fefe82d358aca47edfc3cfa1e2e3ec1b4a88f",
+  "source_figure_state_sha256": "8121ee0b54d22beb43ee95940b2b547ca6b440406c7623abcb28d01b4503af93",
+  "source_table_sha256": "036b6679c33c3696c95cb5c5ad3dcf158d4b667e4859e1e5c2dbee84505eb0f5",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "script_sha256": "efd2ff4d8ce511236d1abf73ba58d43d0e78af9dc511e36b1493af291a7f5287",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "condition-metrics.csv": "036b6679c33c3696c95cb5c5ad3dcf158d4b667e4859e1e5c2dbee84505eb0f5",
+    "figure-03-khp-transfer.pdf": "4bf32d68a2b41314209776f69e2c2f5dbae9004ed05250d4e8e1d7c5de2bbb84",
+    "figure-03-khp-transfer.png": "58f73587f2d19f94149d958e89c4a88fdf37d70f4fc369c4ee619445ff75502a",
+    "figure-03-khp-transfer.svg": "659a774e7a89c37b18dd6b5b1692dd41ca44f67a92f022938ebffb4b984444f9"
+  },
+  "conditions": 10,
+  "methods": [
+    "no_effect",
+    "source_mean_additive",
+    "c3_rna_only",
+    "scgen"
+  ],
+  "official_challenge_score": false,
+  "limitations": [
+    "The same cases and scores were previously examined.",
+    "Target controls were available during fitting and prediction.",
+    "Separate reference controls are reused across conditions.",
+    "Missing donor/batch matching precludes independent biological-replicate inference.",
+    "The source gene axis may reflect held-out cells.",
+    "This redraw checks score-table provenance, not independent metric recomputation."
+  ]
+}

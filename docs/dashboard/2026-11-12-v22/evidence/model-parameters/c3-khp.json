@@ -1,0 +1,22 @@
+{
+  "format": "epi-c3-model-parameter-audit-v1",
+  "state": "complete",
+  "count_definition": "PyTorch named parameters with requires_grad immediately after the trained model is reconstructed; frozen parameters and buffers are counted separately. Separately learned adapters are identified.",
+  "not_a_model_performance_comparison": true,
+  "audit_script_sha256": "5900b577f58aaef0517d16b07357275abca9d308de8fb7ad47b24d0a17cb95e5",
+  "method": "Epi-C3 RNA-only",
+  "comparison": "KHP case-01",
+  "genes": 5000,
+  "latent_dim": 64,
+  "hidden_dim": 128,
+  "training_rows": 2000,
+  "checkpoint_sha256": "23ab2273c0233dfdae112d4278fe155b09e5fca72017606b6e9e29da2b4be95a",
+  "model_source_sha256": "d22568a921afcfc43a26a00f39e423d265b12c4f4ace8afce29169cf0d846cda",
+  "parameter_tensors": 37,
+  "trainable_at_construction": 1389584,
+  "frozen_at_construction": 656896,
+  "nonparameter_buffer_elements": 0,
+  "separate_learned_condition_vector_parameters": 64,
+  "flow_optimizer_parameters_including_condition": 57856,
+  "checkpoint_values_verified": true
+}

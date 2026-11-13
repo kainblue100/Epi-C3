@@ -1,0 +1,57 @@
+{
+  "format": "tahoe-foundation-overlap-summary-v1",
+  "state": "complete",
+  "audit_sha256": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+  "verification_sha256": "7888533ba24b8859709e323f8ab69202b4a4bf3a50e163510817b06e93cede19",
+  "progress_private_sha256": "b1702b0532820eac73d9ede092c40c3e8a477af1bf376f0affd0403cb35ec6fb",
+  "script_sha256": "7680f7dcc2627a4ed9d665a464127525a02990362d0aa2a416fdd4ac22fb99bf",
+  "unique_eligible_protected_identities": 5027,
+  "eligible_protected_rows": 5027,
+  "evaluations": [
+    {
+      "evaluation": "tahoe-demo-multidose/reference",
+      "unique_identities": 3336,
+      "eligible_rows_under_old_filter": 3268
+    },
+    {
+      "evaluation": "tahoe-demo-multidose/input_controls",
+      "unique_identities": 336,
+      "eligible_rows_under_old_filter": 271
+    },
+    {
+      "evaluation": "tahoe-demo-plate4/reference",
+      "unique_identities": 1650,
+      "eligible_rows_under_old_filter": 1623
+    },
+    {
+      "evaluation": "tahoe-demo-plate4/input_controls",
+      "unique_identities": 150,
+      "eligible_rows_under_old_filter": 124
+    },
+    {
+      "evaluation": "interim/reference",
+      "unique_identities": 868,
+      "eligible_rows_under_old_filter": 0
+    },
+    {
+      "evaluation": "interim/input_controls",
+      "unique_identities": 103,
+      "eligible_rows_under_old_filter": 0
+    },
+    {
+      "evaluation": "smoke/reference",
+      "unique_identities": 33,
+      "eligible_rows_under_old_filter": 0
+    },
+    {
+      "evaluation": "smoke/input_controls",
+      "unique_identities": 6,
+      "eligible_rows_under_old_filter": 0
+    }
+  ],
+  "notes": [
+    "Evaluation splits may overlap, so their counts must not be added.",
+    "Eligibility under the old filter does not prove that a particular training snapshot already consumed a row.",
+    "This assessment covers explicitly inventoried artifacts, not every possible benchmark or cross-dataset duplicate."
+  ]
+}

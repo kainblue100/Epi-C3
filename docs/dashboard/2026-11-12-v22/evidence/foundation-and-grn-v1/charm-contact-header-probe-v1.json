@@ -1,0 +1,70 @@
+{
+  "format": "epi-c3-charm-contact-header-probe-v1",
+  "status": "complete",
+  "sampled_files": 51,
+  "sample_limit": 100,
+  "declared_sets_found": 2,
+  "groups": [
+    {
+      "chromosomes": [
+        "chr1",
+        "chr10",
+        "chr11",
+        "chr12",
+        "chr13",
+        "chr14",
+        "chr15",
+        "chr16",
+        "chr17",
+        "chr18",
+        "chr19",
+        "chr2",
+        "chr3",
+        "chr4",
+        "chr5",
+        "chr6",
+        "chr7",
+        "chr8",
+        "chr9",
+        "chrX"
+      ],
+      "sampled_files": 50
+    },
+    {
+      "chromosomes": [
+        "chr1",
+        "chr10",
+        "chr11",
+        "chr12",
+        "chr13",
+        "chr14",
+        "chr15",
+        "chr16",
+        "chr17",
+        "chr18",
+        "chr19",
+        "chr2",
+        "chr3",
+        "chr4",
+        "chr5",
+        "chr6",
+        "chr7",
+        "chr8",
+        "chr9",
+        "chrX",
+        "chrY"
+      ],
+      "sampled_files": 1
+    }
+  ],
+  "archive_name": "GSM9115541_mesc.pairs.tar.gz",
+  "archive_bytes": 15566903371,
+  "archive_sha256_from_full_audit": "33ba340f3f19415e12738839dd14b46204c8b83f84c23434194b2f76f109cc00",
+  "limitations": [
+    "Only the first sampled headers were inspected; group counts are not archive-wide frequencies.",
+    "The archive hash is inherited from the earlier full audit, not independently recomputed by this probe.",
+    "The reason for differences in declared chromosomes is not established."
+  ],
+  "full_audit_sha256": "07b6a4ec3c86c13cfcf4af688d4d95a9a969d37524c6b1aafec2fc6a8fa1b723",
+  "script_sha256": "f3d04fabaf83954c10c6c977353370ea72982ba24f6e2713ce788c3e1f20b3ef"
+}

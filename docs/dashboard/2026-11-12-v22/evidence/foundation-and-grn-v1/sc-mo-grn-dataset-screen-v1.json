@@ -1,0 +1,51 @@
+{
+  "format": "epi-c3-sc-mo-grn-dataset-screen-v1",
+  "status": "completed-literature-and-catalog-screen",
+  "database": "SC-MO-GRN-DB",
+  "database_url": "https://scmogrndb.psu.edu/browse.php",
+  "paper_doi": "10.1016/j.isci.2026.115323",
+  "triple_assay_candidates": [
+    {
+      "database_id": "DS010",
+      "catalog_modalities": "scRNA/scATAC/scHiC",
+      "species": "mouse",
+      "primary_doi": "10.1186/s13059-021-02432-w",
+      "primary_source": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8474932/fullTextXML",
+      "finding": "The original study describes parallel sci-RNA, sci-ATAC and sci-Hi-C assays and computational integration; same-cell three-assay pairing is not established.",
+      "eligible_as_same_cell_trimodal": false
+    },
+    {
+      "database_id": "DS011",
+      "catalog_modalities": "scRNA/scATAC/HiC",
+      "species": "mouse",
+      "primary_doi": "10.1016/j.celrep.2022.111219",
+      "primary_source": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9644345/fullTextXML",
+      "finding": "The study describes same-cell RNA/ATAC multiome but Hi-C prepared from a bulk population, not same-cell contact measurements.",
+      "eligible_as_same_cell_trimodal": false
+    }
+  ],
+  "k562_reference_network_candidates": [
+    {
+      "database_id": "RN117",
+      "catalog_evidence": "ChIPSeq",
+      "catalog_edges": 1435720
+    },
+    {
+      "database_id": "RN118",
+      "catalog_evidence": "KO",
+      "catalog_edges": 236425
+    },
+    {
+      "database_id": "RN119",
+      "catalog_evidence": "ChIPSeqandKO",
+      "catalog_edges": 29298
+    }
+  ],
+  "limitations": [
+    "The database catalog describes candidate networks, not necessarily causal or independently measured direct regulatory edges.",
+    "No candidate network was used for training or evaluation in this screening.",
+    "Original network provenance, redistribution and usage rights, and overlap with frozen evaluation data remain to be established.",
+    "The listed catalog edge counts have not been independently verified by fully downloading the source networks.",
+    "The absence of confirmed three-assay pairing does not disqualify an appropriate separately labelled auxiliary use."
+  ]
+}

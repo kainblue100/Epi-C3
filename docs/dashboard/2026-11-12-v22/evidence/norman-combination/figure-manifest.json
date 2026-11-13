@@ -1,0 +1,38 @@
+{
+  "format": "epi-c3-norman-combination-figure-v2",
+  "state": "complete",
+  "source_score_sha256": "40af5777f91511a2bfae3bb1c308e52691f656f57be6dbc0b9a59cb7f2554a77",
+  "independent_metric_audit_sha256": "54f9115900d97d2081f2b1d269f9b572a3da782d13ec6812eda14bb710f3001d",
+  "source_figure_state_sha256": "8bcbfd5b0e2ef3a43a35db76bb1a6858f4519ddc5089bcf9c26cad45a277c4be",
+  "source_table_sha256": "94eb2ad7569b40c74710b3fe1607dbf34e9ca3cfd3abc153deab697818891a44",
+  "extractor_sha256": "da8fc3a39c20724ef3f8c38b9c020fdb039751852670e312581e642f7564ca02",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "marker_check_sha256": "efd2ff4d8ce511236d1abf73ba58d43d0e78af9dc511e36b1493af291a7f5287",
+  "script_sha256": "eebfe385182dec3f4379c33721b4eab0aef6762bf161bf161338f519a14cc8c2",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "condition-metrics.csv": "94eb2ad7569b40c74710b3fe1607dbf34e9ca3cfd3abc153deab697818891a44",
+    "figure-05-norman-combination.pdf": "23fbdc7431034235fee74992e7fc95d8c4cc0f18d5247da1010357a876911481",
+    "figure-05-norman-combination.png": "ad958e603f97a32ead10e8c3fa9b3040c40dffebee03a2259646f2a6866bdef2",
+    "figure-05-norman-combination.svg": "2933f310b603f08f0e75616f044f13020fe3e13746b9c9dd5e5dd4ff80ad436a"
+  },
+  "case_count": 44,
+  "seen_counts": {
+    "0": 4,
+    "1": 28,
+    "2": 12
+  },
+  "methods": [
+    "no-effect",
+    "additive-training-singles",
+    "c3-selected"
+  ],
+  "official_challenge_score": false,
+  "limitations": [
+    "The same test conditions and original scores were previously examined.",
+    "MSE and delta Pearson were independently recomputed; distribution metrics were not.",
+    "Controls are reused and technical gemgroups are not biological replicates.",
+    "The count-like source matrix has not been independently proven raw.",
+    "No GEARS or STATE comparison is shown in this figure."
+  ]
+}

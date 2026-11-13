@@ -1,0 +1,43 @@
+{
+  "format": "epi-c3-replogle-essential-selection-audit-v1",
+  "state": "complete",
+  "protocol_sha256": "acf5915613c340a5b37cecf9f67eb4fe468e2ee5d285efba322535baa5aff1a8",
+  "plan_sha256": "ce9b45d308e49bf7b60a02562c1aa8dc755454550265aead558699a2eec9b583",
+  "samples_sha256": "6d105099f1a80234d0f00003ab89a3bad9b602927ea14518c36a79e69b5d79ff",
+  "prediction_state_sha256": "aa4445922c410e0191026aa58fb8458b22ab7a7eede33b056fe381a384994049",
+  "reference_state_sha256": "0cdf6ff307277e5bc3fa4838042e91f28597de9a2bc07e47b5c6c0b9cc446bc6",
+  "freeze_sha256": "52b70a974a85acf10bc0a7a930b6e8924fb4007d700571eaa58286a26061ad31",
+  "script_sha256": "7dfd26f922fe084a522db58cf24ef10665ce401cff9f63d8001bc1b6eacdc2bb",
+  "checked_candidate_target_pairs": 635,
+  "maximum_absolute_mse_difference": 3.1467219802072677e-09,
+  "selected_strength": 0.0,
+  "objectives": [
+    {
+      "strength": 0.0,
+      "objective_float64": 0.027499257074814425,
+      "objective_float32_selection": 0.027499257167568736
+    },
+    {
+      "strength": 0.25,
+      "objective_float64": 0.027820262724268848,
+      "objective_float32_selection": 0.027820262781890683
+    },
+    {
+      "strength": 0.5,
+      "objective_float64": 0.028325593739527716,
+      "objective_float32_selection": 0.028325593793201768
+    },
+    {
+      "strength": 0.75,
+      "objective_float64": 0.029000497960951388,
+      "objective_float32_selection": 0.02900049791230839
+    },
+    {
+      "strength": 1.0,
+      "objective_float64": 0.029847826834353813,
+      "objective_float32_selection": 0.029847826817849907
+    }
+  ],
+  "independent_method": "Float64 cell normalization from count samples and algebraic removal of the targeted-gene squared residual.",
+  "test_treatment_expression_used": false
+}

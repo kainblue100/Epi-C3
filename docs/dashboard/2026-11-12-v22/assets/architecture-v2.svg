@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1090" viewBox="0 0 1600 1090" role="img" aria-labelledby="title description">
+  <title id="title">Shared RNA foundation and two virtual-cell research branches</title>
+  <desc id="description">An incomplete RNA foundation is trained on aligned expression records. Future branches combine its cell representation with a candidate regulatory graph or strictly same-cell RNA, accessibility and contact data. The workflow ends with held-out single-cell evaluation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L8 4L0 8Z" fill="#728f83"/></marker>
+    <marker id="future-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L8 4L0 8Z" fill="#b98362"/></marker>
+    <style>
+      .title{font:700 29px 'Segoe UI',Arial,sans-serif;fill:#173a39}
+      .subtitle{font:15px 'Segoe UI',Arial,sans-serif;fill:#668078}
+      .letter{font:700 25px 'Segoe UI',Arial,sans-serif;fill:#0f6b66}
+      .section{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#274f47;letter-spacing:.8px}
+      .box-title{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#214a42}
+      .box-text{font:14px 'Segoe UI',Arial,sans-serif;fill:#637e74}
+      .tiny{font:13px 'Segoe UI',Arial,sans-serif;fill:#718980}
+      .tag{font:700 12px 'Segoe UI',Arial,sans-serif;fill:#985f3e;letter-spacing:.5px}
+      .number{font:700 13px 'Segoe UI',Arial,sans-serif;fill:#0f6b66}
+      .box{fill:#fff;stroke:#cbded2;stroke-width:1.5}
+      .future{fill:#fff;stroke:#c89a7b;stroke-width:1.5;stroke-dasharray:6 5}
+      .flow{fill:none;stroke:#728f83;stroke-width:2;marker-end:url(#arrow)}
+      .planned{fill:none;stroke:#b98362;stroke-width:2;stroke-dasharray:6 5;marker-end:url(#future-arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="1090" fill="#fff"/>
+  <text x="54" y="58" class="title">Shared foundation, two routes to perturbation modelling</text>
+  <text x="54" y="85" class="subtitle">Architecture and end-to-end workflow · a research design, not two completed models</text>
+  <rect x="1310" y="42" width="236" height="34" rx="4" fill="#f7eee3"/>
+  <text x="1325" y="64" class="tag">DASHED = PLANNED / BLOCKED</text>
+
+  <rect x="48" y="113" width="1504" height="220" rx="6" fill="#edf5ed" stroke="#d7e8da"/>
+  <text x="72" y="151" class="letter">A</text>
+  <text x="108" y="150" class="section">SHARED RNA FOUNDATION</text>
+  <text x="1420" y="150" text-anchor="end" class="tag">INCOMPLETE</text>
+  <rect x="90" y="177" width="275" height="112" rx="4" class="box"/>
+  <text x="110" y="207" class="box-title">Expression records</text>
+  <text x="110" y="233" class="box-text">Arc · Tabula · Orion</text>
+  <text x="110" y="258" class="tiny">Tahoe and others: not yet included</text>
+  <rect x="425" y="177" width="275" height="112" rx="4" class="box"/>
+  <text x="445" y="207" class="box-title">Align + measurement mask</text>
+  <text x="445" y="233" class="box-text">63,079 human gene features</text>
+  <text x="445" y="258" class="tiny">Unmeasured ≠ observed zero</text>
+  <rect x="760" y="177" width="275" height="112" rx="4" class="box"/>
+  <text x="780" y="207" class="box-title">Masked RNA encoder</text>
+  <text x="780" y="233" class="box-text">64-dimensional cell state</text>
+  <text x="780" y="258" class="tiny">RNA foundation pretraining</text>
+  <rect x="1095" y="177" width="345" height="112" rx="4" class="box"/>
+  <text x="1115" y="207" class="box-title">Reconstruction + EMA teacher</text>
+  <text x="1115" y="233" class="box-text">Checkpointed representation learning</text>
+  <text x="1115" y="258" class="tiny">No perturbation flow trained at this stage</text>
+  <path d="M365 233H418" class="flow"/><path d="M700 233H753" class="flow"/><path d="M1035 233H1088" class="flow"/>
+
+  <text x="72" y="377" class="letter">B</text>
+  <text x="108" y="376" class="section">TWO DISTINCT PERTURBATION BRANCHES</text>
+  <text x="1490" y="376" text-anchor="end" class="tiny">Dotted paths denote intended use of a completed shared encoder</text>
+  <rect x="74" y="404" width="1450" height="146" rx="6" fill="#f7faf6" stroke="#e0eae1"/>
+  <text x="95" y="430" class="number">A / REGULATORY NETWORK</text>
+  <text x="1475" y="430" text-anchor="end" class="tag">PROTOTYPE · POST-HOC ONLY</text>
+  <rect x="95" y="449" width="250" height="76" rx="4" class="box"/>
+  <text x="111" y="474" class="box-title">ATAC · methylation · TF</text>
+  <text x="111" y="499" class="tiny">and chromatin contacts</text>
+  <rect x="402" y="449" width="250" height="76" rx="4" class="box"/>
+  <text x="418" y="474" class="box-title">Candidate regulatory graph</text>
+  <text x="418" y="499" class="tiny">Bulk priors; not paired or causal</text>
+  <rect x="709" y="449" width="314" height="76" rx="4" class="future"/>
+  <text x="725" y="474" class="box-title">Graph + shared RNA state</text>
+  <text x="725" y="499" class="tiny">with perturbation conditioning</text>
+  <rect x="1080" y="449" width="320" height="76" rx="4" class="future"/>
+  <text x="1096" y="474" class="box-title">Predicted cellular response</text>
+  <text x="1096" y="499" class="tiny">Graph benefit remains unproven</text>
+  <path d="M345 487H395" class="flow"/><path d="M652 487H702" class="planned"/><path d="M1023 487H1073" class="planned"/>
+
+  <rect x="74" y="571" width="1450" height="146" rx="6" fill="#fbf8f3" stroke="#efe5d8"/>
+  <text x="95" y="597" class="number">B / STRICTLY SAME-CELL MULTIOME</text>
+  <text x="1475" y="597" text-anchor="end" class="tag">DATA GATE NOT MET</text>
+  <rect x="95" y="616" width="250" height="76" rx="4" class="future"/>
+  <text x="111" y="641" class="box-title">RNA + ATAC + contact</text>
+  <text x="111" y="666" class="tiny">Same cell and same cell line</text>
+  <rect x="402" y="616" width="250" height="76" rx="4" class="future"/>
+  <text x="418" y="641" class="box-title">Identity + pairing QC</text>
+  <text x="418" y="666" class="tiny">Multiple verified cell lines</text>
+  <rect x="709" y="616" width="314" height="76" rx="4" class="future"/>
+  <text x="725" y="641" class="box-title">Joint modality encoding</text>
+  <text x="725" y="666" class="tiny">Shared RNA state + perturbation</text>
+  <rect x="1080" y="616" width="320" height="76" rx="4" class="future"/>
+  <text x="1096" y="641" class="box-title">Predicted cellular response</text>
+  <text x="1096" y="666" class="tiny">No final model trained yet</text>
+  <path d="M345 654H395" class="planned"/><path d="M652 654H702" class="planned"/><path d="M1023 654H1073" class="planned"/>
+  <path d="M895 289V343H866V441" class="planned"/>
+  <path d="M895 343H1510V609H1040V654H1030" class="planned"/>
+
+  <rect x="48" y="760" width="1504" height="220" rx="6" fill="#f2f6f0" stroke="#dce8dd"/>
+  <text x="72" y="799" class="letter">C</text>
+  <text x="108" y="798" class="section">END-TO-END WORKFLOW</text>
+  <rect x="85" y="827" width="245" height="96" rx="4" class="box"/>
+  <text x="103" y="852" class="number">01</text>
+  <text x="103" y="877" class="box-title">Curate + protect</text>
+  <text x="103" y="900" class="tiny">Counts · held-out identities</text>
+  <rect x="375" y="827" width="245" height="96" rx="4" class="box"/>
+  <text x="393" y="852" class="number">02</text>
+  <text x="393" y="877" class="box-title">Pretrain RNA</text>
+  <text x="393" y="900" class="tiny">Masked representation</text>
+  <rect x="665" y="827" width="245" height="96" rx="4" class="future"/>
+  <text x="683" y="852" class="number">03</text>
+  <text x="683" y="877" class="box-title">Curate both branches</text>
+  <text x="683" y="900" class="tiny">Candidate graph / paired cells</text>
+  <rect x="955" y="827" width="245" height="96" rx="4" class="future"/>
+  <text x="973" y="852" class="number">04</text>
+  <text x="973" y="877" class="box-title">Train perturbations</text>
+  <text x="973" y="900" class="tiny">Separate models and controls</text>
+  <rect x="1245" y="827" width="250" height="96" rx="4" class="future"/>
+  <text x="1263" y="852" class="number">05</text>
+  <text x="1263" y="877" class="box-title">Evaluate single cells</text>
+  <text x="1263" y="900" class="tiny">cell-eval + strong baselines</text>
+  <path d="M330 875H368" class="flow"/><path d="M620 875H658" class="planned"/><path d="M910 875H948" class="planned"/><path d="M1200 875H1238" class="planned"/>
+  <text x="85" y="955" class="tiny">Stage 1 is in progress. Existing graph and cell-eval results are exploratory analyses of earlier models, not final-model validation.</text>
+  <text x="54" y="1024" class="tiny">GSE267117 cell-line RNA and DNA are from different batches and are excluded from strict pairing.</text>
+  <text x="54" y="1049" class="tiny">Contact assays may be accessibility-biased; measured data type and biological identity require dataset-specific verification.</text>
+  <text x="1546" y="1049" text-anchor="end" class="tiny">EPI-C3 · RESEARCH SNAPSHOT · 2026-11-12</text>
+</svg>

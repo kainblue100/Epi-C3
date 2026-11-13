@@ -1,0 +1,120 @@
+{
+  "format": "epi-c3-scperturbbench-foundation-audit-v1",
+  "state": "complete",
+  "created_at_utc": "2026-11-12T16:24:18.288867+00:00",
+  "foundation_plan_sha256": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+  "gene_axis_sha256": "838861a3896bc5f068f60a974eb83d785a75bd2a58efedc34beee166e9e83d31",
+  "download_state_sha256": "50867a28a1c26bcbf8909debd3094b8b1d636e48e6d6e7fafff57b86cca0f973",
+  "khp_evaluation_plan_sha256": "a2735da5b542a93a32e7ccbf317b5b7de25b853a5fea0de9c94bb341a792954e",
+  "preparation_script_sha256": "7dd7737c3214659ccd20b5a82c5e26f9f6db703a7665636f853cd01a0e1c6717",
+  "source_module_sha256": "f4ff76560eccd0266c7284c31d440b8c6d82bb4699f1ade29ab610288bf5bdeb",
+  "private_sha256": "c0427496272cfdf93f32c37ad57e1d50acc863eaa2f01a1c5e518ef6410fd604",
+  "validation_size": 32,
+  "selection_seed": 20261117,
+  "sources": {
+    "KHP": {
+      "file": "Perturb_KHP_sub10.h5ad",
+      "source_sha256": "b939eafd515799212c4480c26e92008f5c9b8d77798e43a56db5b5ebeb161177",
+      "count_layer": "layers/counts",
+      "mapping": {
+        "source_features": 5000,
+        "mapped_features": 4992,
+        "status_counts": {
+          "ambiguous_symbol": 8,
+          "unique_symbol": 4992
+        },
+        "unmapped_features": [
+          "NCMAP-DT",
+          "KBTBD11-OT1",
+          "LINC02851",
+          "LINC00484",
+          "PAXX",
+          "ZNF32-AS3",
+          "ITFG2-AS1",
+          "SFTA3"
+        ]
+      },
+      "numeric_audit": {
+        "encoding": "csr_matrix",
+        "shape": [
+          127595,
+          5000
+        ],
+        "stored_entries": 57427281,
+        "explicit_zero_entries": 0,
+        "unsorted_major_vectors": 4237,
+        "numeric_dtype": "float64",
+        "empty_total_rows": 0,
+        "empty_mapped_rows": 0,
+        "total_counts": 353983362.0,
+        "mapped_counts": 353951927.0,
+        "mapped_count_fraction": 0.9999111963912022,
+        "numeric_integrity": "nonnegative finite integer values, bounded and unique sparse indices"
+      },
+      "split": {
+        "total_rows": 127595,
+        "control_rows": 11611,
+        "noncontrol_rows_excluded": 115984,
+        "empty_mapped_rows_excluded": 0,
+        "known_protected_rows": 22473,
+        "training_controls": 9354,
+        "validation_controls": 32,
+        "other_excluded_rows": 118209,
+        "target_cd8_rows_excluded": 23898,
+        "heldout_donor_rows_excluded": null
+      }
+    },
+    "CMO": {
+      "file": "Perturb_cmo_V1_sub10.h5ad",
+      "source_sha256": "c679b56c52517cb6ea7ab9f2bd6c1783faa76af5d91554d143e578eb2492d867",
+      "count_layer": "layers/counts",
+      "mapping": {
+        "source_features": 5000,
+        "mapped_features": 5000,
+        "status_counts": {
+          "exact_id": 5000
+        },
+        "unmapped_features": []
+      },
+      "numeric_audit": {
+        "encoding": "csc_matrix",
+        "shape": [
+          10410,
+          5000
+        ],
+        "stored_entries": 4920689,
+        "explicit_zero_entries": 0,
+        "unsorted_major_vectors": 0,
+        "numeric_dtype": "float32",
+        "empty_total_rows": 0,
+        "empty_mapped_rows": 0,
+        "total_counts": 42649460.0,
+        "mapped_counts": 42649460.0,
+        "mapped_count_fraction": 1.0,
+        "numeric_integrity": "nonnegative finite integer values, bounded and unique sparse indices"
+      },
+      "split": {
+        "total_rows": 10410,
+        "control_rows": 2823,
+        "noncontrol_rows_excluded": 7587,
+        "empty_mapped_rows_excluded": 0,
+        "known_protected_rows": 0,
+        "training_controls": 1419,
+        "validation_controls": 32,
+        "other_excluded_rows": 8959,
+        "target_cd8_rows_excluded": null,
+        "heldout_donor_rows_excluded": 4853
+      }
+    }
+  },
+  "training_eligibility": "candidate-only; cross-source identity and chemistry isolation remain unresolved",
+  "limitations": [
+    "Only explicit controls are candidates; every treated row is excluded pending a cross-dataset chemical-identity and benchmark isolation audit.",
+    "KHP excludes the entire CD8T group, including all frozen target reference and input-control rows; source-cell controls may overlap older source training.",
+    "One CMO donor is excluded, but donor or cell identity overlap with other datasets has not been established.",
+    "The 5000-feature author-selected panels may use information from later held-out cells; feature selection was not redone.",
+    "Unique gene-symbol mappings use the frozen foundation annotations; unmapped features are discarded rather than represented as observed zeros.",
+    "Count-layer numerical integrity does not independently establish original raw-count provenance.",
+    "No new foundation training was performed by this audit."
+  ]
+}

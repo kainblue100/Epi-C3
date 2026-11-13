@@ -1,0 +1,38 @@
+{
+  "format": "epi-c3-replogle-essential-figure-v2",
+  "state": "complete",
+  "protocol_sha256": "acf5915613c340a5b37cecf9f67eb4fe468e2ee5d285efba322535baa5aff1a8",
+  "freeze_sha256": "52b70a974a85acf10bc0a7a930b6e8924fb4007d700571eaa58286a26061ad31",
+  "selection_sha256": "7378d5c666dfe0be0ae151f24e1dacd5e16a0b464f831c765982069cc180f99d",
+  "selection_audit_sha256": "7ede0be29a33b0f9b74a1bee216e805295406228ff0975cc6b14ae87ba0229be",
+  "validation_score_sha256": "bb35aa2fbc1259ad5f697e9fcb54f41839894c25e9ebdf170de5c404e3997fb1",
+  "test_score_sha256": "ca8d989354ba147d59f93b9d0de560962fc6fe3133ad5bdfa54e6083c5a953c7",
+  "test_audit_sha256": "faacf568bd33e5c34327dfdb99a29fc172528a2fa58525b38db61823e9130431",
+  "source_figure_manifest_sha256": "ded859c332b48f46439f4c410c04a4f8a637e7bdd87596d9abab0d0a4291bf10",
+  "source_table_sha256": "955a53c3db256c36acddd7852fa0031b2d56a7d97b3bf2c2bf68fb6852edf582",
+  "extractor_sha256": "44734e89af0b594b20bfcc872cc59bf883b4f66355245647ed041847d1b0279a",
+  "layout_helper_sha256": "dcce4111e1b6b7ef7b17decddc814890d455076c3dda1bef1c108c3ebb8f7fa6",
+  "marker_check_sha256": "efd2ff4d8ce511236d1abf73ba58d43d0e78af9dc511e36b1493af291a7f5287",
+  "script_sha256": "c3004d57eb55019e163dda1928d8418729941439e4528d011fc80930e787f572",
+  "matplotlib_version": "3.11.2",
+  "artifacts": {
+    "figure-14-replogle-essential.pdf": "cd43eddb30b7b47850dff11f34632513eb2168c03783d870db1add8e38834fa2",
+    "figure-14-replogle-essential.png": "a09e1d71131a9cd393989c0115764a644364c98c8bc6bb3c85bd9ef4ca279bfe",
+    "figure-14-replogle-essential.svg": "5808368fff090fc99e1b2dcc539f84dbc216b00af21c9a6014754e617272b452",
+    "per-target.csv": "0fe02f038af8ef157b873ce912045c832cc8074694dbc8b4424ae94064b077eb",
+    "validation-strength.csv": "c1ab48aa72b3d3f5ccb1fd4ad96d830d23f2aed6b1044e3887fd6db0fad4a099"
+  },
+  "targets": 127,
+  "methods": [
+    "no-effect",
+    "training-mean",
+    "c3-selected"
+  ],
+  "official_challenge_score": false,
+  "limitations": [
+    "The same test targets and scores were previously examined.",
+    "The previous audits independently recomputed MSE; they did not refit the model.",
+    "This is one internal split and one model seed, with reused controls.",
+    "The source matrix is integer-like, but its raw-count provenance is not independently established."
+  ]
+}

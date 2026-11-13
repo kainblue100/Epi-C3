@@ -1,0 +1,44 @@
+{
+  "format": "epi-c3-khp-four-method-figure-audit-v4",
+  "state": "complete",
+  "figure_manifest_sha256": "286745024c3ede7488cd8b80524cffe259e3d02e4da594c4493cd23864b1b852",
+  "source_summary_sha256": "12de865285a058b000c62dc4ed6fefe82d358aca47edfc3cfa1e2e3ec1b4a88f",
+  "source_table_sha256": "036b6679c33c3696c95cb5c5ad3dcf158d4b667e4859e1e5c2dbee84505eb0f5",
+  "script_sha256": "7467b214d7e7477059b37ff0e162eceba97cbe8fd81908cd1b55eeee0836e618",
+  "saved_score_checks": {
+    "conditions": 10,
+    "methods": 4,
+    "method_condition_rows": 40,
+    "saved_values_compared": 280,
+    "paired_mse_differences_recomputed": 40,
+    "cell_level_metrics_independently_recomputed": false
+  },
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 161.29,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 63,
+    "font_sizes_pt": [
+      5.1,
+      5.6,
+      6.1,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2857
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "official_challenge_score": false,
+  "scope": "Score-table cross-check against the same source summary and selected format checks; not journal certification.",
+  "limitations": [
+    "The original metrics and cells were previously examined.",
+    "No cell-level metric or model fit was independently recomputed.",
+    "Control reuse and missing donor/batch matching preclude biological-replicate inference."
+  ]
+}

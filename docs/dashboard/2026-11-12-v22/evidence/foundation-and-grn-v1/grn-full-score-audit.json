@@ -1,0 +1,211 @@
+{
+  "format": "epi-c3-population-grn-independent-audit-v1",
+  "status": "verified-saved-aggregates",
+  "plan_sha256": "e22d57934f3f661361f266b350906eecaef875521f1686d1cd9ee1d9ea5d40da",
+  "network_manifest_sha256": "edbf309cf0c91b2c1a6f813416cc52c3324b618bd17c1aadb25134390bdc498b",
+  "validation_prediction_state_sha256": "496d81a63647cf2de006df5dd08dbd36097adb412b5fbe20e5a7cacb0e1c49eb",
+  "test_prediction_state_sha256": "eba029f531c7b111026819e7723bb1c607ac730fe028ef152425dd954ac82a3b",
+  "validation_reference_state_sha256": "4791d8e58a7af2a27410be330c18de47bc5bff495f015e207ae2e8df7cc61a97",
+  "test_reference_state_sha256": "93d2e0c268e34ba0ff21a81dcbc54cae9fdc2831c9cd03609059346eb4cd51ff",
+  "selection_sha256": "811de5571683a6ca91eed5e771bfd86cff336982226a0af4331bd74975b734c2",
+  "published_summary_sha256": "016036eab06a419e996ba9f2f439e3c59ea10728b67dc8bd4f9672d28426d29a",
+  "published_target_scores_sha256": "864666cefd9a57358a69b1901a55baaf14e43b62a842b2ed3efde070a3e6d113",
+  "script_sha256": "79b259c1cc52c62407e1ac618c7f0e15d2f06ede7b80a1b8163e5b78329af20f",
+  "test_targets": 347,
+  "genes": 1861,
+  "validated_test_rows": 14574,
+  "max_validation_per_target_absolute_difference": 4.996003610813204e-16,
+  "max_test_per_target_absolute_difference": 2.498001805406602e-16,
+  "max_neighbor_metric_absolute_difference": 0.0,
+  "validation_objectives_by_arm_and_strength_order": {
+    "rna-only": [
+      0.01541368403693986,
+      0.015129207285907205,
+      0.015082397560158813,
+      0.01522337213299396,
+      0.015551980704354582
+    ],
+    "epi-nodes-only": [
+      0.01541368403693986,
+      0.015122907668835728,
+      0.015059018120057088,
+      0.01517523883184376,
+      0.01547158274858815
+    ],
+    "epi-real-graph": [
+      0.01541368403693986,
+      0.015114218515880518,
+      0.01504245079518448,
+      0.015150978455992793,
+      0.015439801906809629
+    ],
+    "epi-shuffled-graph": [
+      0.01541368403693986,
+      0.015120731231851292,
+      0.015053108874374568,
+      0.01516413088677377,
+      0.015453775203518377
+    ]
+  },
+  "selected_strengths": {
+    "rna-only": 0.5,
+    "epi-nodes-only": 0.5,
+    "epi-real-graph": 0.5,
+    "epi-shuffled-graph": 0.5
+  },
+  "real_minus_shuffled_mse": {
+    "mean": -6.8799827179159764e-06,
+    "by_seed": [
+      -9.823792638020238e-06,
+      -6.426251553352024e-06,
+      -4.389903962375666e-06
+    ],
+    "targets_real_lower_after_seed_averaging": 194,
+    "targets_shuffled_lower_after_seed_averaging": 153,
+    "targets_tied_after_seed_averaging": 0
+  },
+  "graph_source_targets": {
+    "SPI1": {
+      "population-v2-epi-real-graph-selected": [
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.01731339521743654,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 193,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.546742209631728,
+          "direction_accuracy_given_nonzero": 0.546742209631728
+        },
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.016964579460024963,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 199,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.5637393767705382,
+          "direction_accuracy_given_nonzero": 0.5637393767705382
+        },
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.01697714362920089,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 205,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.5807365439093485,
+          "direction_accuracy_given_nonzero": 0.5807365439093485
+        }
+      ],
+      "population-v2-epi-shuffled-graph-selected": [
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.016945203963847796,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 204,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.5779036827195467,
+          "direction_accuracy_given_nonzero": 0.5779036827195467
+        },
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.01675178564267959,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 208,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.5892351274787535,
+          "direction_accuracy_given_nonzero": 0.5892351274787535
+        },
+        {
+          "neighbor_count": 795,
+          "neighbor_mse": 0.016830293058331836,
+          "eligible_effect_count": 353,
+          "nonzero_predicted_effect_count": 353,
+          "correct_direction_count": 206,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.5835694050991501,
+          "direction_accuracy_given_nonzero": 0.5835694050991501
+        }
+      ]
+    },
+    "ZNF318": {
+      "population-v2-epi-real-graph-selected": [
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.011961450462378578,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 3,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 1.0,
+          "direction_accuracy_given_nonzero": 1.0
+        },
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.012040006714132518,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 2,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.6666666666666666,
+          "direction_accuracy_given_nonzero": 0.6666666666666666
+        },
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.012745102981038805,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 1,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.3333333333333333,
+          "direction_accuracy_given_nonzero": 0.3333333333333333
+        }
+      ],
+      "population-v2-epi-shuffled-graph-selected": [
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.011727234790808396,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 1,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.3333333333333333,
+          "direction_accuracy_given_nonzero": 0.3333333333333333
+        },
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.011693304314890948,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 2,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.6666666666666666,
+          "direction_accuracy_given_nonzero": 0.6666666666666666
+        },
+        {
+          "neighbor_count": 19,
+          "neighbor_mse": 0.012151710164753929,
+          "eligible_effect_count": 3,
+          "nonzero_predicted_effect_count": 3,
+          "correct_direction_count": 1,
+          "direction_coverage": 1.0,
+          "direction_accuracy_all_eligible": 0.3333333333333333,
+          "direction_accuracy_given_nonzero": 0.3333333333333333
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Recomputed from saved group means and candidate edges, not independently reconstructed from raw cells.",
+    "Post-hoc internal split and model design are not an independent blind evaluation.",
+    "Candidate edges are unpaired bulk associations; only two test targets directly source edges.",
+    "The shuffled graph changes only 31.25% of edges, and three response seeds share one encoder.",
+    "Target-wise wins and seed variation are descriptive, not biological replicates or significance tests.",
+    "The neighbor predicted direction includes the training-mean baseline shift and uses real-graph neighbors."
+  ],
+  "official_challenge_score": false,
+  "target_differences_sha256": "475ffc14a6977dd64ea2e22ed9b15c18715a0b4b3425bf214cec254e7e74d743"
+}

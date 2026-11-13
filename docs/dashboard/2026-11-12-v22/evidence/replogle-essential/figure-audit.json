@@ -1,0 +1,49 @@
+{
+  "format": "epi-c3-replogle-essential-figure-audit-v2",
+  "state": "complete",
+  "figure_manifest_sha256": "5a58257446bfc41a5c3ce528d9a351c07d2cad9212e0ba36b057140741c36a47",
+  "source_score_sha256": "ca8d989354ba147d59f93b9d0de560962fc6fe3133ad5bdfa54e6083c5a953c7",
+  "selection_sha256": "7378d5c666dfe0be0ae151f24e1dacd5e16a0b464f831c765982069cc180f99d",
+  "independent_test_audit_sha256": "faacf568bd33e5c34327dfdb99a29fc172528a2fa58525b38db61823e9130431",
+  "independent_validation_audit_sha256": "7ede0be29a33b0f9b74a1bee216e805295406228ff0975cc6b14ae87ba0229be",
+  "source_table_sha256": "955a53c3db256c36acddd7852fa0031b2d56a7d97b3bf2c2bf68fb6852edf582",
+  "script_sha256": "2dfada7a75063f8612da0a3fc4f91d892ea60beea479c27379df9ba2dd8259b4",
+  "saved_score_checks": {
+    "test_targets": 127,
+    "saved_method_target_mse_values_compared": 381,
+    "saved_paired_differences_compared": 127,
+    "validation_objectives_compared": 5,
+    "previously_independently_recomputed_method_target_mses": 381,
+    "previously_independently_recomputed_candidate_target_mses": 635,
+    "training_mean_lower_test_targets": 82
+  },
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 161.29,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 55,
+    "font_sizes_pt": [
+      5.0,
+      5.1,
+      5.5,
+      5.9,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2857
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "official_challenge_score": false,
+  "scope": "Saved score and prior independent mean-MSE audit cross-check, plus selected format checks; not journal certification.",
+  "limitations": [
+    "The original targets and scores were previously examined.",
+    "The prior metric audits did not refit the model or provide biological replicates.",
+    "Controls are reused and the count-like matrix is not independently proven to be raw."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "format": "epi-c3-tahoe-interim-independent-metric-audit-v1",
+  "state": "complete",
+  "source_figure_state_sha256": "d3a692dbd512f5e497b5c38bc8f2cdade3f083b3815ae4b7172ea567beaa2045",
+  "source_table_sha256": "058e5246273ca1345f7e47113dc741b5f8371d35253b29fee8947a7e7204a7d6",
+  "input_sha256": {
+    "reference": "9982bef49bdf4dc6cb701c76063ac64e831598b1e25ae59c539e2f21b5414874",
+    "controls": "fbc95adde97846aebe7587f223b175323dfa06011004254ee693c4f5ef802998",
+    "null": "86bde5fc29661528ed6d620bf64c2ab11cb74565bec4465d4f6b73a017f57154",
+    "full": "bdc9959e2a4a1655c65b851607ca725becb749b8ae0c11326f1570516aa09001",
+    "baseline": "1df25b37feef42861d2965d829c1d97eca7b6511eb5c06834dbc5fee3f161756"
+  },
+  "script_sha256": "41058db7c6d5573a903bc5db7051160bc67fe28fcdbfc90e79b9e7ccc28770dd",
+  "conditions": 9,
+  "genes": 62710,
+  "numeric_values_recomputed": 45,
+  "maximum_absolute_differences": {
+    "empirical_mean_abs_delta": 6.938893903907228e-18,
+    "logcpm_mse_noeffect": 1.734723475976807e-18,
+    "logcpm_mse_full": 3.469446951953614e-18,
+    "delta_pearson_noeffect": 2.220446049250313e-16,
+    "delta_pearson_full": 1.1102230246251565e-16
+  },
+  "reference_treated_cells": 765,
+  "reference_controls": 103,
+  "input_controls": 103,
+  "matched_plates": 7,
+  "noeffect_and_null_equal_input_controls": true,
+  "full_flow_greater_mse_conditions": 7,
+  "median_noeffect_mse": 0.005879337624632142,
+  "median_full_flow_mse": 0.006858803075362324,
+  "official_challenge_score": false,
+  "limitations": [
+    "The same nine cases and underlying matrices were previously examined.",
+    "The numerical audit is not an independent model fit or biological repeat.",
+    "Input controls are reused across predictions and can be shared across conditions.",
+    "The diagnostic uses partial training and no epigenomic prior.",
+    "Reference-control noise can make no-effect delta correlations nonzero."
+  ]
+}

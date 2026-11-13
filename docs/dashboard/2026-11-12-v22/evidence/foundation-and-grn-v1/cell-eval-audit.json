@@ -1,0 +1,23 @@
+{
+  "format": "epi-c3-tahoe-cell-eval-audit-v1",
+  "status": "complete",
+  "input_manifest_sha256": "a604bd3080bc26affb369cce2e67488d72fe1a2ba1f173c6aa0b6aed9c946fe5",
+  "evaluation_summary_sha256": "b3fffb16f8affc1960f60a674a9e8873d3aed4d05badfdf29da420db94be08bc",
+  "official_per_perturbation_sha256": "34fe4088e877ab032da1fb8a1cbb2fd28c99b6a4fb63ee87fff4c9985a431977",
+  "script_sha256": "9e4d98a27e77abf20885c71136f6882dc3c9a9e8f7ffbe1cbb4495090637d10f",
+  "independent_metric_comparisons": 90,
+  "maximum_absolute_error": {
+    "mse": 1.6389163220997816e-09,
+    "mae": 5.022087551376231e-09,
+    "mse_delta": 4.4994914356888405e-09,
+    "mae_delta": 5.82631303619463e-09,
+    "pearson_delta": 2.4050242798390187e-06
+  },
+  "control_and_prediction_parents_verified_disjoint": true,
+  "same_treatment_duplicate_parents_forbidden": true,
+  "limits": [
+    "This recomputes five expression metrics, not the package's differential-expression statistics.",
+    "The Pearson audit uses float64, whereas the official package evaluates float32 arrays; its tolerance is 1e-5.",
+    "The original experiment was post-hoc and is not an evaluation of the new foundation model."
+  ]
+}

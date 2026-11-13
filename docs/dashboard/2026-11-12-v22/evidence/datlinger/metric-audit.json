@@ -1,0 +1,34 @@
+{
+  "format": "epi-c3-datlinger-independent-metric-audit-v1",
+  "state": "complete",
+  "protocol_sha256": "488fb333fdd36570bd8f68349bbf1005ed227c3dba679e78dc488efa0b65c004",
+  "plan_sha256": "6ded1dc568a81db77f987335d01bf77265cb779ec1954b122732de1268cb94f6",
+  "freeze_sha256": "e12fa8c3fdfe7a1484f0f47a3e957d2769e168495ee03decfb61e44da146402f",
+  "test_score_sha256": "4993a61cde931acba28c2f66c16e4910ddce89679e361b36b240862f75c53bb7",
+  "script_sha256": "54b3b5ce527aefdfd67e20ae13429c4d7bbf12dfed3b018d1956246a8dcc419f",
+  "verified": {
+    "validation_strengths": 5,
+    "selected_strength": 0.5,
+    "no-effect": {
+      "conditions": 4,
+      "mean_expression_mse": 0.010305018561755369,
+      "delta_pearson": 0.5036093337961711
+    },
+    "training-mean": {
+      "conditions": 4,
+      "mean_expression_mse": 0.011114658150904568,
+      "delta_pearson": 0.5177489683446599
+    },
+    "c3-rna-only": {
+      "conditions": 4,
+      "mean_expression_mse": 0.010313313622815677,
+      "delta_pearson": 0.48987930516423095
+    },
+    "gears-adapted": {
+      "conditions": 4,
+      "mean_expression_mse": 0.014715971826631848,
+      "delta_pearson": 0.4506646680252777
+    }
+  },
+  "scope": "Independently recomputed validation mean-MSE selection and test mean-expression MSE/delta Pearson; DE and distribution metrics were not independently recomputed."
+}

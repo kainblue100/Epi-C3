@@ -1,0 +1,49 @@
+{
+  "format": "epi-c3-norman-combination-figure-audit-v2",
+  "state": "complete",
+  "figure_manifest_sha256": "e70125d8c85c7fe6ff7f00dc3e1af0fb491ff01c7dd466707f1b626979870d27",
+  "source_score_sha256": "40af5777f91511a2bfae3bb1c308e52691f656f57be6dbc0b9a59cb7f2554a77",
+  "independent_metric_audit_sha256": "54f9115900d97d2081f2b1d269f9b572a3da782d13ec6812eda14bb710f3001d",
+  "source_table_sha256": "94eb2ad7569b40c74710b3fe1607dbf34e9ca3cfd3abc153deab697818891a44",
+  "script_sha256": "a83f8fc238472ce65013429cd37d2934754b5d976c506473a8be4f5aa4a12eca",
+  "saved_score_checks": {
+    "conditions": 44,
+    "methods": 3,
+    "condition_method_rows": 132,
+    "saved_values_compared": 528,
+    "previously_independently_recomputed_values": 264,
+    "independently_recomputed_metrics": [
+      "mean expression MSE",
+      "delta Pearson"
+    ],
+    "distribution_metrics_independently_recomputed": false
+  },
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 161.29,
+  "pdf_embedded_unicode_truetype_fonts": 2,
+  "svg": {
+    "text_elements": 64,
+    "font_sizes_pt": [
+      5.0,
+      5.5,
+      5.9,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2857
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "official_challenge_score": false,
+  "scope": "Saved score and prior independent mean-metric audit cross-check, plus selected format checks; not journal certification.",
+  "limitations": [
+    "The original conditions and scores were previously examined.",
+    "The prior metric audit did not independently recompute distribution metrics or refit models.",
+    "Controls are reused and technical gemgroups are not independent biological replicates."
+  ]
+}

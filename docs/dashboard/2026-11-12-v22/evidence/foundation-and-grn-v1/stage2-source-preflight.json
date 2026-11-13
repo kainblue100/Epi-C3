@@ -1,0 +1,47 @@
+{
+  "format": "epi-c3-shared-stage2-live-preflight-v1",
+  "state": "complete",
+  "stage1_plan_sha256": "bd1dff1c75268c6982ddbcf7b65452a15ce2fe6b5a10b3029804b3238ac47ab7",
+  "stage2_driver_sha256": "8361bd31982a58edd8b63f91f6cb7b6b30a35c68c34b8872b5384079c6691d9d",
+  "stage1_driver_sha256": "84e177cac2131ece79529f1c85ee16eb36bc7582d566c81dc7234e3a26953230",
+  "tahoe_isolation_audit_sha256": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+  "preflight_script_sha256": "8a371a62221ba7059948b2850429149f5646edee463acd8bcd4303a8458a58ef",
+  "sources": {
+    "arc": {
+      "expected_training_rows": 108808,
+      "first_batch_rows": 48,
+      "measured_genes": 18080,
+      "cursor_replay_exact": true
+    },
+    "orion-HCT116": {
+      "expected_training_rows": 3260365,
+      "first_batch_rows": 14,
+      "measured_genes": 38606,
+      "cursor_replay_exact": true
+    },
+    "orion-HEK293T": {
+      "expected_training_rows": 4335720,
+      "first_batch_rows": 13,
+      "measured_genes": 38606,
+      "cursor_replay_exact": true
+    },
+    "tabula": {
+      "expected_training_rows": 998796,
+      "first_batch_rows": 48,
+      "measured_genes": 60606,
+      "cursor_replay_exact": true
+    },
+    "tahoe": {
+      "expected_training_rows": 92090669,
+      "first_batch_rows": 16,
+      "measured_genes": 62710,
+      "cursor_replay_exact": true
+    }
+  },
+  "optimizer_updates": 0,
+  "limitations": [
+    "The stage-one job is still running; this is not a completed-stage-one or stage-two training test.",
+    "Only the first batch and cursor replay were inspected for each source.",
+    "The Tahoe audit protects inventoried identities, not every possible benchmark or cross-source duplicate."
+  ]
+}

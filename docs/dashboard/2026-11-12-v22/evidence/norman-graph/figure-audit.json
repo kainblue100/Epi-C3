@@ -1,0 +1,50 @@
+{
+  "format": "epi-c3-norman-residual-figure-audit-v4",
+  "state": "complete",
+  "figure_manifest_sha256": "0b87adfb3d7588126d37eead51ecd0548f7fef529d3210548b9a1b68981312ff",
+  "fixed_score_sha256": "ccdf9a8e5327ec626537285aa8c51b504827426ebfb7f63fa3ea318eab9dc4c1",
+  "selected_score_sha256": "b676867c498734188085022644b7ff859a085b1f2a0b22acc3a4c74f89f32591",
+  "independent_metric_audit_sha256": "a40d4b5312ca3f026cf5b332b7d57fae51194869ba86dc49ef900714227a571e",
+  "graph_build_sha256": "cb1776a528c86b7e70efaeda4f521d017c739671170a174ee75948365ac91ec7",
+  "script_sha256": "a5c0373db7a5850118d0b1066969829e7b67abf38be747017d080fb10381d99f",
+  "saved_score_checks": {
+    "method_stratum_rows": 27,
+    "summary_values_checked": 81,
+    "underlying_seed_stratum_means_recomputed": 57,
+    "condition_rows": 44,
+    "condition_difference_values_recomputed": 176,
+    "calibration_contrasts_recomputed": 6,
+    "coverage_rows_checked": 6,
+    "previously_independently_recomputed_method_condition_pairs": 1672
+  },
+  "pdf_width_mm": 182.88,
+  "pdf_height_mm": 161.29,
+  "pdf_embedded_unicode_truetype_fonts": 3,
+  "svg": {
+    "text_elements": 78,
+    "font_sizes_pt": [
+      5.0,
+      5.4,
+      5.5,
+      5.8,
+      7.0
+    ],
+    "raster_images": 0
+  },
+  "png_preview_pixels": [
+    3240,
+    2857
+  ],
+  "png_preview_dpi": [
+    450.0118,
+    450.0118
+  ],
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "scope": "Saved score arithmetic, prior independent mean-metric audit binding and selected format checks; not journal certification.",
+  "limitations": [
+    "The original test conditions and scores were previously examined.",
+    "The prior metric audit did not independently recompute DE or distribution metrics or refit models.",
+    "Flow seeds share one representation and do not establish biological replication."
+  ]
+}

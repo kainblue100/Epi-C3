@@ -1,0 +1,15 @@
+{
+  "state": "running",
+  "started_at_utc": "2026-11-11T08:54:12.651340+00:00",
+  "stage": "representation",
+  "epoch": 0,
+  "file_position": 515,
+  "files": 3388,
+  "next_batch": 580,
+  "updates": 293000,
+  "trained_rows": 13959398,
+  "expected_rows_per_epoch": 92095728,
+  "pending_rows": 0,
+  "singleton_updates": 0,
+  "updated_at_utc": "2026-11-12T16:24:11.284708+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "format": "tahoe-foundation-stream-smoke-v2",
+  "state": "complete",
+  "audit_sha256": "a26f51f6239cbf586cee943ca962b5d845545d876ac8b6244f28ecc01c0c1351",
+  "foundation_plan_sha256": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+  "gene_count": 63079,
+  "measured_genes": 62710,
+  "validation_shape": [
+    32,
+    63079
+  ],
+  "audited_training_rows": 92090669,
+  "first_batch_rows": 16,
+  "replayed_batch_rows": 48,
+  "cursor_replay_exact": true,
+  "targeted_batch_eligible_before_exclusions": 48,
+  "targeted_batch_protected_rows": 1,
+  "targeted_batch_emitted_rows": 47,
+  "targeted_exclusion_matches_independent_identity_filter": true,
+  "scope": "Real-data loader smoke test only; no model training was performed."
+}

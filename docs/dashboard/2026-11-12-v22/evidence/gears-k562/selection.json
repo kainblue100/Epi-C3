@@ -1,0 +1,28 @@
+{
+  "format": "epi-c3-gwps-gears-validation-selection-v1",
+  "state": "frozen",
+  "strength": 0.5,
+  "validation_candidate_macro_mse": [
+    0.015696999837037037,
+    0.015579112682648643,
+    0.015540209063124916,
+    0.015580288978465855,
+    0.015699352428671456
+  ],
+  "validation_pipeline_sha256": "30a5f93c2d79a45beedfeac9f1e76cbd83e625a2e3a9a717768ab34cc0256d02",
+  "validation_prediction_state_sha256": "64b4a85f0ff9e9683fe8fa3e9d8971204152955e1421b509ef10016325aa0b47",
+  "validation_score_state_sha256": "ba3ac632d476d0a137e2e10f680e1b891e39659d9d1c1301a870d1b2871e69ab",
+  "validation_score_arrays_sha256": "ac6ab45a1a50035683302061ac2d99eef3456cc927621feeb652b76425dc9fcc",
+  "validation_summary_sha256": "3c35d10eeb652ea87f186537cc281e03b763f6b72cbf4a5389427e82162107ab",
+  "validation_audit_sha256": "d968e651b9f21a4848da7aecf43260304d8806a2b0a66f8ff6ee201ec1f2de99",
+  "training_state_sha256": "e7818b511e1cd6a568d5bde1d641bd6897617dbdd3175cbcafa4303e884ea600",
+  "training_checkpoint_sha256": "0df5e8dc2944ef89d88537311e50151911f96c4f3b5e5c85862236bb27fb0114",
+  "test_prediction_or_reference_loaded_by_this_script": false,
+  "post_hoc": true,
+  "official_challenge_score": false,
+  "limitations": [
+    "The original validation and test outcomes were examined before the GEARS extension.",
+    "The GEARS graph uses known held-out target identities and a public GO snapshot.",
+    "GEARS has one seed; C3 uses three flow seeds sharing a representation."
+  ]
+}

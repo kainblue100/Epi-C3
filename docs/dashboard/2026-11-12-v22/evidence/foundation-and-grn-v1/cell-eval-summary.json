@@ -1,0 +1,419 @@
+{
+  "format": "epi-c3-tahoe-cell-eval-v1",
+  "status": "complete",
+  "scope": "post-hoc exploration of an earlier partially trained Tahoe model",
+  "official_leaderboard_result": false,
+  "cell_eval_version": "0.8.2",
+  "pdex_version": "0.3.0",
+  "input_manifest_sha256": "a604bd3080bc26affb369cce2e67488d72fe1a2ba1f173c6aa0b6aed9c946fe5",
+  "script_sha256": "5a0925e2428aade1fb276062c2bc1dcc41a3d3484f601309c45c1c451b267802",
+  "profile": "full with explicitly skipped metrics where mathematically inapplicable",
+  "normalization": "the input manifest specifies log1p CPM 10,000 for both real and predicted cells",
+  "limitations": [
+    "The original models and split were examined before this analysis.",
+    "This is not a result for the new RNA foundation or either requested final model.",
+    "Prediction parents are distinct within each treatment but can be reused across treatments.",
+    "Control splitting reduces the effective number of predicted cells and differential-expression power.",
+    "Metrics that require multiple perturbations in a plate must not be interpreted when only one is available.",
+    "Predicted groups contain only 5-10 independent parents, so differential-expression estimates have low power.",
+    "A NaN is an undefined metric, not zero or evidence of model success or failure.",
+    "Zero significant genes can make official DEG-overlap values uninformative.",
+    "Default cell-eval/pdex settings may produce infinite log fold changes for genes with zero expression."
+  ],
+  "plates": {
+    "plate-000": {
+      "batch": "plate1",
+      "treatments": [
+        "compound-002"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-002": 6
+      }
+    },
+    "plate-001": {
+      "batch": "plate12",
+      "treatments": [
+        "compound-006"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-006": 6
+      }
+    },
+    "plate-002": {
+      "batch": "plate13",
+      "treatments": [
+        "compound-005"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-005": 5
+      }
+    },
+    "plate-003": {
+      "batch": "plate14",
+      "treatments": [
+        "compound-000"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-000": 5
+      }
+    },
+    "plate-004": {
+      "batch": "plate2",
+      "treatments": [
+        "compound-003",
+        "compound-004",
+        "compound-007"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement"
+      ],
+      "independent_prediction_parents": {
+        "compound-003": 9,
+        "compound-004": 9,
+        "compound-007": 9
+      }
+    },
+    "plate-005": {
+      "batch": "plate6",
+      "treatments": [
+        "compound-001"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-001": 10
+      }
+    },
+    "plate-006": {
+      "batch": "plate8",
+      "treatments": [
+        "compound-008"
+      ],
+      "skipped_metrics": [
+        "clustering_agreement",
+        "pearson_edistance",
+        "de_spearman_sig",
+        "discrimination_score_l1",
+        "discrimination_score_l2",
+        "discrimination_score_cosine"
+      ],
+      "independent_prediction_parents": {
+        "compound-008": 8
+      }
+    }
+  },
+  "summary": {
+    "full": {
+      "overlap_at_N": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_50": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_100": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_200": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_500": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_N": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_50": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_100": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_200": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_500": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_nsig_counts_real": {
+        "mean_of_finite": 23.11111111111111,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_nsig_counts_pred": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "pr_auc": {
+        "mean_of_finite": 0.0011056184553234465,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "roc_auc": {
+        "mean_of_finite": 0.5,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "pearson_delta": {
+        "mean_of_finite": -0.03912462687326802,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mse": {
+        "mean_of_finite": 0.01190374181088474,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mae": {
+        "mean_of_finite": 0.03272420126530859,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mse_delta": {
+        "mean_of_finite": 0.0251017018324799,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mae_delta": {
+        "mean_of_finite": 0.04820642703109317,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_direction_match": {
+        "mean_of_finite": 0.01951219512195122,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "de_spearman_lfc_sig": {
+        "mean_of_finite": -0.09051675138701439,
+        "finite_conditions": 1,
+        "undefined_conditions": 8
+      },
+      "de_sig_genes_recall": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "de_spearman_sig": {
+        "mean_of_finite": null,
+        "finite_conditions": 0,
+        "undefined_conditions": 9
+      },
+      "discrimination_score_l1": {
+        "mean_of_finite": 0.4444444444444445,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "discrimination_score_l2": {
+        "mean_of_finite": 0.6666666666666666,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "discrimination_score_cosine": {
+        "mean_of_finite": 0.6666666666666666,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "pearson_edistance": {
+        "mean_of_finite": 0.940319464476584,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      }
+    },
+    "noeffect": {
+      "overlap_at_N": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_50": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_100": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_200": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "overlap_at_500": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_N": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_50": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_100": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_200": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "precision_at_500": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_nsig_counts_real": {
+        "mean_of_finite": 23.11111111111111,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_nsig_counts_pred": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "pr_auc": {
+        "mean_of_finite": 0.0011056184553234465,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "roc_auc": {
+        "mean_of_finite": 0.5,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "pearson_delta": {
+        "mean_of_finite": -0.013795053314728042,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mse": {
+        "mean_of_finite": 0.010371097570492161,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mae": {
+        "mean_of_finite": 0.03171969888110956,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mse_delta": {
+        "mean_of_finite": 0.023367930203676224,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "mae_delta": {
+        "mean_of_finite": 0.04768900862998433,
+        "finite_conditions": 9,
+        "undefined_conditions": 0
+      },
+      "de_direction_match": {
+        "mean_of_finite": 0.016260162601626018,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "de_spearman_lfc_sig": {
+        "mean_of_finite": 0.11705400801054032,
+        "finite_conditions": 1,
+        "undefined_conditions": 8
+      },
+      "de_sig_genes_recall": {
+        "mean_of_finite": 0.0,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "de_spearman_sig": {
+        "mean_of_finite": null,
+        "finite_conditions": 0,
+        "undefined_conditions": 9
+      },
+      "discrimination_score_l1": {
+        "mean_of_finite": 0.6666666666666666,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "discrimination_score_l2": {
+        "mean_of_finite": 0.6666666666666666,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "discrimination_score_cosine": {
+        "mean_of_finite": 0.6666666666666666,
+        "finite_conditions": 3,
+        "undefined_conditions": 6
+      },
+      "pearson_edistance": {
+        "mean_of_finite": null,
+        "finite_conditions": 0,
+        "undefined_conditions": 9
+      }
+    }
+  }
+}
