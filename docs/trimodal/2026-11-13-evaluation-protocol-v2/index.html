@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="三模态评测协议草案补充：Figure 2 指标版本、缺失值和缺失情境的处理。">
+  <title>Epi-C3 | 三模态评测协议草案补充</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: #075e68; }
+    header { background: #122a3a; color: #fff; padding: 1.2rem max(6vw, 1.25rem); }
+    header a { color: #c4eee5; font-weight: 700; text-decoration: none; letter-spacing: .08em; }
+    main { max-width: 1080px; margin: auto; padding: 3rem 1.25rem 5rem; }
+    .eyebrow { color: #00786f; font-size: .82rem; font-weight: 750; letter-spacing: .13em; }
+    h1 { max-width: 850px; margin: .4rem 0 1rem; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.18; }
+    h2 { margin: 0 0 .7rem; font-size: 1.4rem; }
+    p { margin: .7rem 0; }
+    .lead { max-width: 850px; font-size: 1.1rem; }
+    .notice { margin: 1.6rem 0 2rem; padding: 1rem 1.2rem; border-left: 4px solid #bc6a18; background: #fff5e6; }
+    section { margin-top: 1.2rem; padding: 1.35rem; background: #fff; border: 1px solid #dce5e6; border-radius: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .7rem .6rem; border-bottom: 1px solid #e0e9e9; vertical-align: top; }
+    code { overflow-wrap: anywhere; }
+    .muted, footer { color: #536879; font-size: .93rem; }
+    footer { margin-top: 2rem; }
+    @media (max-width: 680px) { main { padding-top: 2rem; } }
+  </style>
+</head>
+<body>
+  <header><a href="../../">EPI.C3 / RESEARCH</a></header>
+  <main>
+    <p class="eyebrow">TRIMODAL EVALUATION / PROTOCOL DRAFT V2 / 2026.11.13</p>
+    <h1>Figure 2 字段同名，版本不一定同向。</h1>
+    <p class="lead">本补充与<a href="../2026-11-13-evaluation-protocol-v1/">协议草案 v1</a>共同阅读，保留其 PDS、并列、基因轴和对照规则，并增加历史绘图版本与缺失数据的约束。</p>
+    <div class="notice"><strong>候选协议，尚未预注册。</strong> 这是来源与评测规则说明，不是模型成绩，也不证明历史 CSV 的生成版本。</div>
+
+    <section>
+      <h2>旧绘图变换不能直接接当前字段</h2>
+      <p>作者固定版本的 Figure 2 notebook 对 <code>discrimination_score_l1</code> 使用 <code>1 - 2v</code>。官方 cell-eval 的<a href="https://github.com/arcinstitute/cell-eval/commit/e7f18852df88a817cd6d586b389b78faa29dbeb8">版本变更</a>曾将该函数的返回值从 <code>r/T</code> 改为 <code>1 - r/T</code>；0.8.2 使用后者。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">完美排名示例：<code>r = 0</code></th><th scope="col">字段值 <code>v</code></th><th scope="col">旧 notebook 的 <code>1 - 2v</code></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">返回 <code>r/T</code> 的实现</th><td>0</td><td>1</td></tr>
+            <tr><th scope="row">cell-eval 0.8.2：<code>1 - r/T</code></th><td>1</td><td>-1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>把 0.8.2 字段直接送入旧 notebook 会反转排名方向。即使数值尺度经过调整，也必须另行核对伪 bulk 或对照 delta、基因排除、候选集合和并列规则；不能仅凭变换宣称等于论文 PDS。</p>
+    </section>
+
+    <section>
+      <h2>历史结果先核验 provenance</h2>
+      <p>历史 CSV 的实际生成版本尚未核实，字段名相同不代表计算和方向相同。分别固定每项结果的生成包版本、源码提交或 wheel 哈希、输入与基因轴、对照和排名规则，以及后续绘图 notebook 提交与变换。来源无法确认时保留原字段并标记未知，不套用统一转换或纳入正式混排。</p>
+      <p>协议 v1 已记录 cell-eval 0.8.2 的官方 wheel SHA-256、默认靶基因精确字符串匹配、各自对照 delta 和 <code>numpy.argsort</code>。这些默认行为不能由历史字段名推断，也不能无条件换算成论文分数。</p>
+    </section>
+
+    <section>
+      <h2>缺失不等于零</h2>
+      <p>固定 notebook 的部分绘图路径中，<code>safe_apply</code> 将 NaN 转为 0；Tahoe 数据读取处的注释还称 scGPT 缺少一个细胞系。这是对 notebook 代码的观察，不是对历史文件完整性的独立证明，也不确定具体缺失情境。</p>
+      <ul>
+        <li>共同评测须区分未运行、缺失输入、评分失败和指标未定义，记录原因；非有限值不得静默替换成有效零分。</li>
+        <li>预先冻结各指标的有效性判定和汇总规则，分别报告每个模型、情境的有效数及缺失数；正式横向比较只使用共同且有效的集合，并明确该集合和分母。</li>
+        <li>某模型缺少细胞系时应标记缺失，不以零或其他细胞系填补，也不能声称其参与了该情境的同协议比较。</li>
+      </ul>
+      <p class="muted">共同集合筛选不能隐藏失败或改变预注册问题；按预定规则筛选指标时仍须保留原测试集合与排除清单。若改变训练、验证或测试划分，或改变共同基因轴，须按新的预注册方案重跑全部对照。真实同细胞数据、共享基础模型和泄漏审计的前置条件仍按 v1 执行。</p>
+    </section>
+
+    <footer>
+      <p>来源：<a href="https://github.com/ArcInstitute/state-reproduce/blob/1a29ba1aa57ae996a57f77ec273e8547e824835b/figures/fig2_plots.ipynb">作者固定 Figure 2 notebook</a>；
+      <a href="https://github.com/arcinstitute/cell-eval/commit/e7f18852df88a817cd6d586b389b78faa29dbeb8">cell-eval 返回方向变更</a>；
+      <a href="https://github.com/arcinstitute/cell-eval/blob/6928cf8bd7a706040ccfd13119e4085726dee64a/src/cell_eval/metrics/_anndata.py#L129-L198">cell-eval 0.8.2 指标实现</a>。</p>
+      <p><a href="../2026-11-13-evaluation-protocol-v1/">协议草案 v1</a> · <a href="../2026-11-13-data-qa-v1/">同细胞来源 QA</a></p>
+    </footer>
+  </main>
+</body>
+</html>
