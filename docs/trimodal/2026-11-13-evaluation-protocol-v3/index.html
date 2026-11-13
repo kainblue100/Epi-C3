@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="三模态评测协议草案补充：差异表达表的情境与基因键完整性。">
+  <title>Epi-C3 | 三模态差异表达评测协议草案</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: #075e68; }
+    header { background: #122a3a; color: #fff; padding: 1.2rem max(6vw, 1.25rem); }
+    header a { color: #c4eee5; font-weight: 700; text-decoration: none; letter-spacing: .08em; }
+    main { max-width: 1080px; margin: auto; padding: 3rem 1.25rem 5rem; }
+    .eyebrow { color: #00786f; font-size: .82rem; font-weight: 750; letter-spacing: .13em; }
+    h1 { max-width: 850px; margin: .4rem 0 1rem; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.18; }
+    h2 { margin: 0 0 .7rem; font-size: 1.4rem; }
+    p { margin: .7rem 0; }
+    .lead { max-width: 850px; font-size: 1.1rem; }
+    .notice { margin: 1.6rem 0 2rem; padding: 1rem 1.2rem; border-left: 4px solid #bc6a18; background: #fff5e6; }
+    section { margin-top: 1.2rem; padding: 1.35rem; background: #fff; border: 1px solid #dce5e6; border-radius: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .7rem .6rem; border-bottom: 1px solid #e0e9e9; vertical-align: top; }
+    code { overflow-wrap: anywhere; }
+    .muted, footer { color: #536879; font-size: .93rem; }
+    footer { margin-top: 2rem; }
+    @media (max-width: 680px) { main { padding-top: 2rem; } }
+  </style>
+</head>
+<body>
+  <header><a href="../../">EPI.C3 / RESEARCH</a></header>
+  <main>
+    <p class="eyebrow">TRIMODAL EVALUATION / PROTOCOL DRAFT V3 / 2026.11.13</p>
+    <h1>差异表达指标有数值，不代表基因键完整。</h1>
+    <p class="lead">本补充与<a href="../2026-11-13-evaluation-protocol-v1/">协议草案 v1</a>、<a href="../2026-11-13-evaluation-protocol-v2/">v2</a>共同阅读，增加正式评测前的真实与预测差异表达（DE）表完整性检查。</p>
+    <div class="notice"><strong>候选协议，尚未预注册。</strong> 本页仅说明固定版本的指标行为和合成反例，不是模型成绩，也不表明已经对真实预测运行 cell-eval。</div>
+
+    <section>
+      <h2>官方默认填充可能产生有限分数</h2>
+      <p>在 cell-eval 0.8.2 中，<code>DESpearmanLFC</code> 先取真实 DE 表中 FDR 小于 0.05 的基因，再按靶点与基因左连接预测表；预测 LFC 因缺行或为空而得到的 <code>null</code> 会填为 0。这个填充值不证明预测过该基因。</p>
+      <p>PR 实现以真实 FDR 小于 0.05 建立标签，左连接预测表，并将缺失或为 <code>null</code> 的预测 FDR 填为 1，再以负对数排序计算 <code>average_precision_score</code>。真实标签为 <code>null</code> 的行会被移除。这里的 PR 数值是该实现返回的平均精度，不应未经核验称为梯形积分面积。</p>
+      <p class="muted">这些是固定版本的 <code>fill_null</code> 行为；不能假定它也会处理 IEEE NaN、无穷值或其他无效输入。评分前仍需分别检查缺行、空值和非有限值。</p>
+    </section>
+
+    <section>
+      <h2>两个独立的合成反例</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">指标</th><th scope="col">真实表与预测表</th><th scope="col">固定实现的返回值</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">显著基因 LFC 的 Spearman</th><td>同一扰动的基因 a、b、c 真实 LFC 为 [1, 2, 3]，真实 FDR 均为 0.01；预测仅有 a=3、c=2，缺少 b。左连接后预测 LFC 为 [3, 0, 2]。</td><td><code>-0.5</code></td></tr>
+            <tr><th scope="row">PR 平均精度</th><td>基因 a、b、c 真实 FDR 为 [0.01, 0.01, 0.1]；预测仅有 a=0.01、c=0.1，缺少 b。填充后预测 FDR 为 [0.01, 1, 0.1]，排序为 a、c、b。</td><td><code>5/6</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>两个分数都是有限的，但预测表都缺少基因 b。它们只说明默认指标的缺键行为，不能视为完整预测、真实测量或模型表现。</p>
+      <p class="muted">复核时从下列 SHA-256 匹配的 0.8.2 wheel 单独提取并执行指标函数，使用合成轻量输入对象、Python 3.15.2、Polars 2.1.0 和 scikit-learn 1.9.1；没有执行完整官方评测流程或读取真实数据。</p>
+    </section>
+
+    <section>
+      <h2>候选的评分前门槛</h2>
+      <ul>
+        <li><strong>冻结应有键：</strong>在评分前固定共同测试情境、每个情境的有序评测基因轴、注释和靶点映射，以及 DE 方法、对照和 FDR 规则。对每个情境建立应有基因键；若各情境轴相同，即为情境与基因的笛卡尔积。未测量和预先排除项要单独登记，不能根据某个模型实际输出事后缩小集合。</li>
+        <li><strong>逐表核对：</strong>对真实表和每个模型的预测表分别检查应有键、缺键、多余键及重复键，并检查所需 LFC、FDR 的空值、非有限值和 FDR 范围；核对真实与预测表之间的键差异。相同情境须使用相同的预定基因集合和规则。</li>
+        <li><strong>保留证据：</strong>按模型和情境报告应有、有效、缺失、多余、重复和无效值的数量及处理状态；可追溯清单须符合数据授权，公开内容不包含原始单细胞身份。非有限或未定义的指标按 v2 记录，不能静默改成零。</li>
+        <li><strong>区分原值与资格：</strong>保留官方返回的原始数值及版本，不把官方填入的 0 或 1 当作真实测量。缺键、重复键或无效值须标记并按预注册规则处理；未经解决的情境不得作为键完整的同协议正式比较。为审计保留的官方分数须与完整性状态并列，而非隐去问题。</li>
+      </ul>
+      <p>若更改共同基因轴或数据划分，须在新的预注册方案上重跑全部模型和对照，不能沿用旧试验分数直接混排。不能通过补零、自动丢行或重新定义应有集合掩盖缺失。</p>
+    </section>
+
+    <section>
+      <h2>其他前置条件不变</h2>
+      <p>论文 PDS 与 cell-eval 的 L1 字段、版本方向、并列、靶基因排除和对照处理仍按 v1、v2 分别核验；差异表达键检查不能替代这些规则。</p>
+      <p>共享 RNA foundation 尚未完成，至少三个有授权和真实同细胞证据的人类三模态细胞系仍未确认。五个 Tahoe 测试细胞系的隔离仍是未接入续训的候选；第一阶段和重放的跨来源暴露仍未排除。未满足前置条件时，本协议不产生正式模型结果。</p>
+    </section>
+
+    <footer>
+      <p>来源：<a href="https://github.com/arcinstitute/cell-eval/blob/6928cf8bd7a706040ccfd13119e4085726dee64a/src/cell_eval/metrics/_de.py#L109-L147">cell-eval 0.8.2 Spearman LFC</a>；
+      <a href="https://github.com/arcinstitute/cell-eval/blob/6928cf8bd7a706040ccfd13119e4085726dee64a/src/cell_eval/metrics/_de.py#L208-L269">PR 与 ROC 实现</a>；
+      <a href="https://pypi.org/project/cell-eval/0.8.2/#files">官方 wheel</a> SHA-256：
+      <code>008da2f5f07398055d1b5a44108aa4a7157f6c9d63d1274bbb89abbef586ba22</code>。</p>
+      <p><a href="../2026-11-13-evaluation-protocol-v1/">协议草案 v1</a> · <a href="../2026-11-13-evaluation-protocol-v2/">协议草案 v2</a> · <a href="../2026-11-13-mask-audit-v1/">遮挡输入合成审计</a></p>
+    </footer>
+  </main>
+</body>
+</html>
