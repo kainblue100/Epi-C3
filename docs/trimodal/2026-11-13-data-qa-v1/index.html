@@ -91,7 +91,7 @@
     </section>
     <section class="panel" id="research-data-inventory">
       <h2>项目使用过的论文数据</h2>
-      <p><strong>目前可核实至少 11 篇来源论文：</strong>其中至少 8 篇的数据用于过真实模型训练或预测评估，另 1 篇用于后验描述性分析、2 篇仅用于数据质量检查。这里按原始研究去重，预印本也计入；不同数据子集、细胞系或评估次数不是不同论文。其他来源的论文归属及遗漏仍待核实，因此 11 是下限，不是全项目的最终总数。</p>
+      <p><strong>目前可核实至少 12 篇来源论文：</strong>其中至少 9 篇的数据用于过真实模型训练或预测评估，包含模型使用的 bulk 先验；另 1 篇用于后验描述性分析、2 篇仅用于数据质量检查。这里按原始研究去重，预印本也计入，但同一研究的预印本与期刊版不重复；不同数据子集、细胞系或评估次数不是不同论文。其他来源的论文归属及遗漏仍待核实，因此 12 是下限，不是全项目的最终总数。</p>
       <p>共享 RNA 第一阶段的分源数字来自 <a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/foundation-state.json">2026-11-12 17:27:54 UTC、26,250 次更新的静态快照</a>，合计 1,210,610 条已处理记录；不是跨来源去重细胞数，也不是最终检查点。较新的<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-grn-encode-v1">公开发布说明</a>记载第一阶段在验证处退出、第二阶段当时尚未开始；历史快照中的运行状态不是实时状态。</p>
       <div class="table-wrap">
         <table class="source-table">
@@ -134,9 +134,14 @@
               <td><strong>真实旧 RNA-only 模型训练和内部评价。</strong>单一数据集和种子，批次不是已证明的生物重复；并非新共享基础模型的外部盲测。</td>
             </tr>
             <tr>
-              <th scope="row"><a href="https://doi.org/10.1101/2025.02.20.639398">Tahoe-100M（2025，预印本）</a></th>
-              <td>人类细胞系药物扰动 RNA；旧单来源部分模型的表征检查点处理 1,622,016 行，并在 AN3 CA 的 9 个条件上做探索性评价。</td>
+              <th scope="row"><a href="https://doi.org/10.1016/j.cell.2026.08.035">Tahoe-100M（Cell，2026）</a><br><span class="muted"><a href="https://doi.org/10.1101/2025.02.20.639398">2025 年预印本</a></span></th>
+              <td>人类细胞系药物扰动 RNA；旧单来源部分模型的表征检查点处理 1,622,016 行，并在 AN3 CA 的 9 个条件上做探索性评价。期刊论文与该数据的预印本按同一研究计 1 篇。</td>
               <td><strong>真实旧模型部分训练与评价。</strong>该结果不是共享 foundation 的 Tahoe 第二阶段；其中 cell-eval 0.8.2 评估每条件仅有 5–10 个独立预测 parent，不是官方排行榜成绩。未来要求按细胞系分组 60% 训练 / 40% 测试；比例按细胞数还是细胞系数及验证策略尚未确定，旧评价不代表已实现该划分。<a href="../../dashboard/2026-11-12-v22/evidence/foundation-and-grn-v1/cell-eval-summary.json">评估范围</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://doi.org/10.1093/nar/gky1005">Xuan Lin 等 MethMotif（2019）</a></th>
+              <td>作者产生的人类 HCT116 未处理样本 bulk WGBS：<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM3317488">GSM3317488</a> 属于 <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE118030">GSE118030</a>。项目处理后保留 53,332,109 条测量记录，不是细胞数。</td>
+              <td><strong>旧模型甲基化先验。</strong><a href="https://github.com/kainblue100/Epi-C3/blob/main/scripts/make-hct116-matched-spec.py">来源绑定</a>用于旧 HCT116 全基因组先验，模型使用 35,309 个监督细胞训练；该 bulk 样本与 RNA 细胞未配对，源文件无逐位点读数覆盖度，不是三模态训练或因果证明。</td>
             </tr>
             <tr>
               <th scope="row"><a href="https://doi.org/10.1038/s41467-021-23213-w">Pierce 等 Spear-ATAC（2021）</a></th>
@@ -167,13 +172,13 @@
           <tbody>
             <tr>
               <th scope="row"><a href="https://huggingface.co/datasets/cyrilzakka/arc-institute-virtual-cell-dataset">Arc Virtual Cell Challenge</a></th>
-              <td>人类 RNA 来源矩阵 221,273 条记录 × 18,080 基因；共享第一阶段快照处理 15,544 条记录。</td>
-              <td><strong>真实训练来源。</strong>尚未可靠证明应对应哪篇原始论文，故未额外计入上面的篇数；不能把不同实验的记录相加为去重细胞。</td>
+              <td>人类 H1 hESC 单细胞 RNA 来源矩阵 221,273 条记录 × 18,080 基因；共享第一阶段快照处理 15,544 条记录。</td>
+              <td><strong>真实训练来源。</strong><a href="https://arcinstitute.org/tools/virtualcellatlas">Arc 官方</a>将该数据关联到一篇 <a href="https://doi.org/10.1016/j.cell.2025.06.008">Cell 文章</a>，并称其为 commentary；它不是原始研究，未计入上述篇数。其他原始研究归属仍待核实；不同实验的记录不能相加为去重细胞。</td>
             </tr>
             <tr>
               <th scope="row"><a href="https://www.encodeproject.org/">ENCODE</a> / <a href="https://www.gencodegenes.org/human/release_44.html">GENCODE v44</a></th>
-              <td>旧 K562/HCT116 实验使用过未配对 bulk 表观组先验：K562 ATAC 文件有 172,732 个峰及另选 7 个 TF ChIP 轨道；HCT116 WGBS 留存 53,332,109 条测量记录。</td>
-              <td>另有新 K562 ChIP/ATAC 与基因注释构建的 51,031 边<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-grn-encode-v1">候选图</a>，未用于模型训练；它与旧图不是同一实验。各原始实验和论文的对应关系尚未完整汇总，不额外计篇。</td>
+              <td>旧 K562/HCT116 实验使用过未配对 bulk 表观组先验：K562 ATAC 文件有 172,732 个峰及另选 7 个 TF ChIP 轨道；HCT116 ENCODE Hi-C 有 44,219 个候选环。</td>
+              <td>旧 HCT116 WGBS 属于上表的 MethMotif/GEO，而非 ENCODE，不在此重复计数。另有新 K562 ChIP/ATAC 与基因注释构建的 51,031 边<a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-grn-encode-v1">候选图</a>，未用于模型训练；它与旧图不是同一实验。各原始实验和论文的对应关系尚未完整汇总，不额外计篇。</td>
             </tr>
             <tr>
               <th scope="row">旧 HCT116 监督数据</th>
