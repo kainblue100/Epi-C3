@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="未来同细胞三模态评测的区分度指标协议草案，区分论文 PDS 与官方 cell-eval 默认字段。">
+  <title>Epi-C3 | 三模态评测指标协议草案</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f3f6f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: #075e68; }
+    header { background: #122a3a; color: #fff; padding: 1.2rem max(6vw, 1.25rem); }
+    header a { color: #c4eee5; font-weight: 700; text-decoration: none; letter-spacing: .08em; }
+    main { max-width: 1080px; margin: auto; padding: 3rem 1.25rem 5rem; }
+    .eyebrow { color: #00786f; font-size: .82rem; font-weight: 750; letter-spacing: .13em; }
+    h1 { max-width: 850px; margin: .4rem 0 1rem; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.18; }
+    h2 { margin: 0 0 .7rem; font-size: 1.4rem; }
+    p { margin: .7rem 0; }
+    .lead { max-width: 850px; font-size: 1.1rem; }
+    .notice { margin: 1.6rem 0 2rem; padding: 1rem 1.2rem; border-left: 4px solid #bc6a18; background: #fff5e6; }
+    section { margin-top: 1.2rem; padding: 1.35rem; background: #fff; border: 1px solid #dce5e6; border-radius: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: .7rem .6rem; border-bottom: 1px solid #e0e9e9; vertical-align: top; }
+    th { font-size: .95rem; }
+    code { overflow-wrap: anywhere; }
+    .formula { padding: .8rem 1rem; background: #f3f6f7; border-radius: 6px; }
+    .muted, footer { color: #536879; font-size: .93rem; }
+    footer { margin-top: 2rem; }
+    @media (max-width: 680px) { main { padding-top: 2rem; } }
+  </style>
+</head>
+<body>
+  <header><a href="../../">EPI.C3 / RESEARCH</a></header>
+  <main>
+    <p class="eyebrow">TRIMODAL EVALUATION / PROTOCOL DRAFT / 2026.11.13</p>
+    <h1>论文 PDS 与 cell-eval L1，不是同一个默认分数。</h1>
+    <p class="lead">为未来严格同细胞 RNA / ATAC / 单细胞 Hi-C 扰动预测预留的共同评测补充；适用于共同划分上的所有模型和对照，不把既有试验分数直接混排。</p>
+    <div class="notice"><strong>候选协议，不是模型成绩或已完成的预注册。</strong> 共享基础模型、合格训练来源和隔离审计尚未满足要求；本页不报告预测结果，也不表示已经运行官方评测。</div>
+
+    <section>
+      <h2>分开报告两个指标</h2>
+      <p>在一个冻结的评测情境内，令 <code>T</code> 为相同候选集合中非对照扰动的数量，<code>P_i</code> 为预测扰动 <code>i</code> 的伪 bulk 表达，<code>Y_j</code> 为真实扰动 <code>j</code> 的伪 bulk 表达。论文方法使用扰动伪 bulk 的距离，并按<strong>严格小于</strong>计算排名：</p>
+      <p class="formula"><code>r_i = #{ j : D(P_i, Y_j) &lt; D(P_i, Y_i) }</code><br>
+      <code>paper_PDS_i = 1 - 2r_i/T</code></p>
+      <p>候选方案拟在冻结的共同基因轴上使用 L1 距离；正式称为论文口径前，仍须核对论文的预处理、基因选择与距离细节。平局不计入严格小于的 <code>r_i</code>。记录逐扰动分数、排名、距离平局数和 <code>T</code>，并预先冻结跨条件与跨情境的汇总权重。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">报告名称</th><th scope="col">实际输入与排名</th><th scope="col">返回尺度</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">论文公式 PDS</th><td>按论文方法和冻结方案计算扰动伪 bulk 距离；严格小于正确扰动距离的项才计入排名。</td><td><code>1 - 2r/T</code></td></tr>
+            <tr><th scope="row">cell-eval 0.8.2<br><code>discrimination_score_l1</code></th><td>真实和预测各自减去各自对照的伪 bulk 均值；默认按扰动标签和基因名的精确字符串匹配排除靶基因；使用 <code>numpy.argsort</code> 的排序位置。</td><td><code>1 - rank/T</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>两个结果必须分别标注。对官方默认字段直接计算 <code>2 × cell-eval - 1</code> 只改变尺度，不会消除输入、基因排除、对照或平局规则的差异。只有两者实际排名一致时，该换算才等于论文公式；距离函数、输入、基因轴和排除规则一致且没有平局是充分条件，不应未经核验假定成立。</p>
+      <p class="muted">0.8.2 的 L1 实现会忽略 <code>embed_key</code> 并使用表达轴；平局的排序位置取决于 <code>argsort</code> 和输入顺序，不等于论文的严格小于规则。保存 NumPy 版本、候选顺序和每个条件的平局数；近似平局的敏感性分析须单独标注，不能悄悄改变主指标。</p>
+    </section>
+
+    <section>
+      <h2>基因轴、靶点与对照必须先冻结</h2>
+      <ul>
+        <li><strong>共同基因轴：</strong>冻结物种、基因注释版本、预处理、特征顺序与轴哈希；真实和各模型预测必须使用同一有序轴。未测量基因不能静默补零。</li>
+        <li><strong>靶点映射：</strong>预先审计 Ensembl ID、版本号和 gene symbol 的对应关系，以及多靶点或药物标签。记录可唯一映射、歧义、缺失和实际精确匹配的情况；不得把字符串未命中的靶基因声称为已排除。歧义或缺失必须按共同的预注册规则处理，不得逐模型静默删条件。</li>
+        <li><strong>对照：</strong>冻结真实与预测对照的来源、情境、处理方式和使用范围。论文伪 bulk 指标与 cell-eval 的各自对照 delta 分别计算；对照均值不同可能改变排序。缺少必需对照时应停止该项评分，而不是伪造或替换对照。</li>
+        <li><strong>可比性：</strong>固定相同的候选扰动集合、数据划分、预测细胞数和聚合方式，审计实际 cell-eval 输入及其预处理。若更改基因轴或划分，所有对照和模型都须在新的预注册划分上重跑，不沿用旧试验分数作正式混排。</li>
+      </ul>
+      <p class="muted">将靶点标签映射到评测基因轴必须有可追溯的唯一映射，且不能事后依分数挑选；多靶点或药物标签即使恰好与某个基因名相同，也不能据此推断该基因就是生物学靶点。默认指标的精确字符串行为及未命中情况都应如实报告。</p>
+    </section>
+
+    <section>
+      <h2>执行前置条件</h2>
+      <p>至少三个有授权和真实同细胞证据的人类细胞系须同时具备 RNA、ATAC 与单细胞接触测量；不得以小鼠组织、bulk Hi-C 或不同细胞的测量替代。共享 RNA foundation 须完成，并在任何正式评测前核验训练、验证、重放与测试的跨来源暴露。</p>
+      <p>五个 Tahoe 测试细胞系的整体隔离仍是候选，原续训方案未接入该隔离；若完整消费原计划流，至少 7,562,326 条论文测试扰动来源行可能被预训练接触。这不是去重细胞数，也不是已发生的暴露计数；第一阶段和重放的跨来源暴露仍未排除。</p>
+      <p>旧 RPE1 轴的靶点覆盖风险仍是待复现预检。任何新轴都必须与共享 foundation 和所有比较方法一起审计，不能把未完成的新模型、旧试验或历史论文分数当作同协议结果。</p>
+    </section>
+
+    <footer>
+      <p>来源：Adduri 等，<a href="https://doi.org/10.1016/j.cell.2026.07.052">State 论文</a>；
+      <a href="https://github.com/arcinstitute/cell-eval/blob/6928cf8bd7a706040ccfd13119e4085726dee64a/src/cell_eval/metrics/_anndata.py#L129-L198">cell-eval 0.8.2 固定源码</a>；
+      <a href="https://github.com/arcinstitute/cell-eval/blob/6928cf8bd7a706040ccfd13119e4085726dee64a/src/cell_eval/_types/_anndata.py">伪 bulk 与对照定义</a>；
+      <a href="https://pypi.org/project/cell-eval/0.8.2/#files">官方 wheel</a> SHA-256：
+      <code>008da2f5f07398055d1b5a44108aa4a7157f6c9d63d1274bbb89abbef586ba22</code>。</p>
+      <p><a href="../2026-11-13-data-qa-v1/">同细胞来源 QA</a> · <a href="../../benchmark/2026-11-13-tahoe-context-holdout-v2/">Tahoe 隔离候选审计</a></p>
+    </footer>
+  </main>
+</body>
+</html>
