@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="STATE、PerturbMean 和 ContextMean 在 K562 与 RPE1 单一划分上的探索性真实数据试验。">
+  <title>Epi-C3 | STATE 真实数据探索性试验</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="pilot-results.js"></script>
+  <script defer src="report.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../">EPI<span>.</span>C3 <small>RESEARCH ATLAS</small></a>
+      <nav aria-label="页面导航">
+        <a href="#figure">六项指标</a>
+        <a href="#design">试验设计</a>
+        <a href="#interpretation">如何解读</a>
+        <a href="#limitations">局限与后续</a>
+        <a href="../2026-11-13-v2/">论文原文与作者参考 ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero shell">
+      <p class="eyebrow">REAL-DATA PIPELINE PILOT / 2026.11.13 / STATIC SNAPSHOT</p>
+      <h1>共同划分的 STATE 试验，<br><em>不是论文排行榜。</em></h1>
+      <p class="lead">使用 K562 与 RPE1 的公开 CRISPRi 数据，在同一输入、对照和测试划分上运行 STATE 与两个均值基线，并用 cell-eval 计算六类指标。</p>
+      <div class="alert" role="note">
+        <strong>探索性结果：</strong>只有一个划分、两个细胞系和 40 个靶点；STATE 从随机初始化仅训练 512 个 CPU 更新。这里不是论文 Figure 2 的复现，不包含两种新 Epi-C3 模型或论文的其他基线，不能据此比较完整模型的优劣。
+      </div>
+      <div class="hero-links">
+        <a class="button" href="#figure">查看试验图 <span aria-hidden="true">↘</span></a>
+        <a href="../2026-11-13-v2/">查看原文解读与作者结果 ↗</a>
+      </div>
+    </section>
+
+    <section class="stats shell" aria-label="试验范围">
+      <div><strong>2</strong><span>细胞系：K562、RPE1</span></div>
+      <div><strong>40</strong><span>共同靶点被随机选取并冻结</span></div>
+      <div><strong>28</strong><span>RPE1 留出测试扰动</span></div>
+      <div><strong>2,000</strong><span>只用训练数据选取的高变基因</span></div>
+    </section>
+
+    <section class="shell section" id="figure">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / ONE COMMON SPLIT</p><h2>六项指标，三个已运行方法</h2></div>
+        <p>图中只使用本次真实试验的汇总值；不同指标各用独立纵轴。柱子不是误差棒，单次划分无法估计跨划分不确定性。</p>
+      </div>
+      <figure class="figure-card">
+        <img src="state-pilot-comparison.svg" alt="STATE、PerturbMean 和 ContextMean 的六面板探索性比较图：L1 排名、表达变化 Pearson、DE AUPRC、DE logFC Spearman、DE overlap at N 和 DE 基因数 Spearman。ContextMean 的 DE 基因数相关性未定义。">
+        <figcaption>
+          <span>前五项为三模型共同有效扰动的等权均值；最后一项为全部 28 个扰动的 DE 数相关。N/A 表示未定义。</span>
+          <span><a href="state-pilot-comparison.svg">SVG</a> <a href="state-pilot-comparison.png">PNG</a> <a href="state-pilot-comparison.pdf">PDF</a></span>
+        </figcaption>
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <caption>前五项为共同有效条件数；最后一项为参与 DE 数相关计算的扰动数。没有跨数据集混排。</caption>
+          <thead><tr><th scope="col">指标</th><th scope="col">条件数</th><th scope="col">STATE</th><th scope="col">PerturbMean</th><th scope="col">ContextMean</th></tr></thead>
+          <tbody id="pilot-results"><tr><td colspan="5">正在读取结果；也可直接打开下方聚合 JSON。</td></tr></tbody>
+        </table>
+      </div>
+      <p class="note">4 个真实扰动的显著 DE 基因数为零，因此 DE AUPRC 和 overlap 排除它们；另有 2 个条件仅有 1 个真实显著基因，logFC Spearman 进一步排除它们。ContextMean 各扰动的预测 DE 基因数恒定，相关性未定义，不作为零分。</p>
+      <div class="links">
+        <a href="pilot-results.json">聚合数值与审计 JSON ↗</a>
+        <a href="SHA256SUMS.txt">本页文件校验清单 ↗</a>
+        <a href="https://github.com/kainblue100/Epi-C3/tree/main/releases/2026-11-13-state-pilot-v1">可复现代码与说明 ↗</a>
+        <a href="../2026-11-13-v2/">作者参考图及原文解读 ↗</a>
+      </div>
+    </section>
+
+    <section class="shell section" id="design">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / EXPERIMENT DESIGN</p><h2>训练、验证和测试如何分开</h2></div>
+        <p>元数据选靶与抽样方案在读取表达值前冻结；三个方法使用相同划分、基因轴、对照角色及预测细胞数。</p>
+      </div>
+      <div class="coverage-grid">
+        <article class="card"><span class="tag">训练与测试</span><h3>低代表性 RPE1</h3><p>从两系都至少有 100 个细胞的 565 个共同靶点中，随机选取 40 个。K562 的 40 个靶点全部用于训练；RPE1 划为 10 个训练、2 个验证和 28 个测试靶点。测试靶点在 K562 训练中出现，所以这是跨情境试验，不是全局未见靶点。</p></article>
+        <article class="card"><span class="tag">表达与特征</span><h3>共同基因轴</h3><p>每个靶点每个细胞系抽取 100 个细胞；按原始测得文库总量缩放到 10,000 后取 log1p。只用 5,000 个训练扰动细胞及 3,230 个模型输入训练对照选择 2,000 个高变基因。</p></article>
+        <article class="card"><span class="tag">独立参考</span><h3>预测与真实对照分离</h3><p>RPE1 输入对照分为 280 个扰动预测 parent 和 280 个预测对照 parent；另从输入外的参考对照中选 280 个真实对照。三类身份不重叠；每个测试扰动有 100 个不同 parent。</p></article>
+      </div>
+      <p class="note">模型输入共 11,230 行，另有 560 个不进入模型输入的参考对照，其中 280 个用于评分。测试靶点在 RPE1 中各有 100 个真实细胞；真实处理细胞的表达在推理前被替换，未作为模型输入。</p>
+      <p class="note">STATE 为官方代码固定提交的小配置：隐藏维度 64、一层编码与解码、集合长度 8、种子 42，随机初始化后训练 512 个 CPU 更新。两个官方均值基线从训练数据计算统计量，各完成 1 个全局训练步；配置文件的最大步数不等于这两个基线的实际步数。</p>
+    </section>
+
+    <section class="shell section" id="interpretation">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / METRIC SEMANTICS</p><h2>指标的实际含义</h2></div>
+        <p>评分使用 cell-eval 0.8.2 与 pdex 0.3.0。DE 使用 Mann–Whitney/Wilcoxon 秩和检验、每个扰动内 BH 校正和 FDR &lt; 0.05。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">指标</th><th scope="col">本试验的计算口径</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">L1 排名</th><td>比较各扰动相对于对照的平均表达效应，按 L1 距离排序；若靶基因在特征轴中则排除。cell-eval 返回 1 − rank / 28；这不是论文归一化 PDS，不能直接换算后混排。</td></tr>
+            <tr><th scope="row">表达变化 Pearson</th><td>预测与真实平均表达相对各自对照之差的 Pearson 相关；当前实现不排除特征轴中的靶基因。</td></tr>
+            <tr><th scope="row">DE AUPRC</th><td>以真实 FDR &lt; 0.05 为标签、预测 FDR 排序，实际计算 average precision；真实标签只有一类时未定义。</td></tr>
+            <tr><th scope="row">DE logFC Spearman</th><td>只对真实显著基因比较 log fold change 的排序；真实显著基因少于两个或相关性不有限时未定义。</td></tr>
+            <tr><th scope="row">DE overlap at N</th><td>N 为真实显著基因数；预测显著基因按绝对 logFC 排序后截取至多 N 个，与真实显著集合求交并除以 N。真实 N 为零时排除。</td></tr>
+            <tr><th scope="row">DE 基因数 Spearman</th><td>对全部 28 个扰动的真实和预测显著基因数求 Spearman，包括真实零值；任一侧恒定时未定义。此处从 cell-eval 的逐扰动计数另行汇总。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="inset">
+        <h3>零表达与 logFC 敏感性</h3>
+        <p>本次 DE 设置为 <code>is_log1p=True</code>、<code>geometric_mean=True</code>、<code>epsilon=0</code>。在 28 × 2,000 个基因—条件组合中，真实 logFC 有 3 个无穷值；STATE 预测有 704 个。当前排序实现把无穷值当作极端秩。</p>
+        <p id="finite-sensitivity">有限值敏感性结果见聚合 JSON。</p>
+      </div>
+      <p class="note">独立算术审计重新计算 L1 排名、Pearson、average precision、logFC 相关、DE 计数及 overlap，并复核 BH 校正与部分秩和检验。其目的仅是核对这些实现，不消除下述实验局限。</p>
+    </section>
+
+    <section class="shell section" id="limitations">
+      <div class="section-head">
+        <div><p class="eyebrow">04 / LIMITATIONS</p><h2>哪些结论现在还不能下</h2></div>
+        <p>数值差异是管线试验的描述，不是稳定排名、因果结论或跨研究比较。</p>
+      </div>
+      <div class="coverage-grid">
+        <article class="card"><span class="tag">采样</span><h3>重复 parent 与跨批次</h3><p>同一 parent 可在不同扰动间复用；2,800 次扰动预测中有 33 次因同批容量不足而跨批次分配。DE 检验未把批次作为协变量。</p></article>
+        <article class="card"><span class="tag">DE 的解释</span><h3>预测不等于生物学重复</h3><p>STATE 同集合输出由注意力耦合；ContextMean 在每个扰动下的 100 个预测向量完全相同。将重复预测用于 DE 会影响显著性解释，不能把它们视为独立生物学重复。</p></article>
+        <article class="card"><span class="tag">数值处理</span><h3>截断及训练预算</h3><p>推理后按官方流程裁剪到 [0, 14]。PerturbMean 的 3,080 × 2,000 个预测值中有 1,666,400 个负值被截断，约 27.1%；STATE 训练预算也只是可行性试验。</p></article>
+      </div>
+      <div class="alert" role="note">
+        <strong>正式比较仍缺：</strong>论文其他基线、两种新 Epi-C3 模型、多个划分和跨来源暴露审计均未完成。现有 Epi-C3 共享基础模型与本试验测试细胞的潜在重叠尚未核查；不能直接把它接入这张图。
+      </div>
+      <p class="note">数据来自 <a href="https://doi.org/10.5281/zenodo.7041849">scPerturb 数据集</a>中的 Replogle K562 与 RPE1 文件；集合记录标示 CC BY 4.0，原始研究数据条款仍适用。原始研究：<a href="https://doi.org/10.1016/j.cell.2022.05.013">Replogle 等，Cell，2022</a>。论文解读：<a href="https://doi.org/10.1016/j.cell.2026.07.052">Adduri 等，Cell，2026</a>。</p>
+      <p class="note">STATE 官方<a href="https://github.com/ArcInstitute/state/blob/9bbfe78a434a55205e4de834e1ea99f85f7a3add/LICENSE">代码许可</a>为 CC BY-NC-SA 4.0；其<a href="https://github.com/ArcInstitute/state/blob/9bbfe78a434a55205e4de834e1ea99f85f7a3add/MODEL_LICENSE.md">模型许可</a>及使用政策另行适用。本页面不分发原始单细胞数据、细胞身份、parent 映射或模型权重。</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell">Epi-C3 · 探索性静态快照 · 不用于临床决策</div></footer>
+</body>
+</html>

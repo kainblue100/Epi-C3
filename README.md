@@ -2,12 +2,14 @@
 
 ## Latest research snapshots
 
-- [STATE paper interpretation and authors' reference results](https://kainblue100.github.io/Epi-C3/)
+- [STATE paper interpretation and authors' reference results](https://kainblue100.github.io/Epi-C3/benchmark/2026-11-13-v2/)
+- [Exploratory two-cell-line STATE and mean-baseline pilot](https://kainblue100.github.io/Epi-C3/benchmark/2026-11-13-v3/)
 - [Legacy Epi-C3 and GEARS comparison snapshot](https://kainblue100.github.io/Epi-C3/benchmark/2026-11-13-v1/)
 - [Interactive research dashboard, v22](https://kainblue100.github.io/Epi-C3/dashboard/2026-11-12-v22/)
 - [Dashboard source and evidence](docs/dashboard/2026-11-12-v22/)
 - [Post-hoc K562 comparison and reproducible analysis](releases/2026-11-13-benchmark-v1/)
 - [Authors' STATE reference figure and reproducible analysis](releases/2026-11-13-paper-reference-v2/)
+- [STATE exploratory pilot and reproducible analysis](releases/2026-11-13-state-pilot-v1/)
 - [Shared RNA foundation and two-branch prototypes, v13](releases/2026-11-12-foundation-v13/)
 - [Preliminary manuscript draft, v30](docs/dashboard/2026-11-12-v22/manuscripts/epi-c3-manuscript-draft-v30.md)
 
@@ -15,8 +17,9 @@ The comparison and dashboard are timestamped static snapshots, not live
 training status. The STATE reference uses the authors' saved results; it is
 not our experiment or an exact reproduction of the paper's Figure 2. The
 K562 comparison is an exploratory evaluation of legacy models, not a STATE
-benchmark. STATE and the new branches have not yet been evaluated under a
-shared protocol.
+benchmark. A separate single-split pilot compares a small, randomly initialized
+STATE with two mean baselines; it is not the paper benchmark. STATE and the
+new branches have not yet been evaluated under a shared protocol.
 The [prospective Tahoe exposure audit](docs/benchmark/2026-11-13-v2/tahoe-state-exposure.json)
 also shows that the scheduled continuation does not isolate the paper's
 held-out test conditions; a leakage-safe comparison requires a separately
