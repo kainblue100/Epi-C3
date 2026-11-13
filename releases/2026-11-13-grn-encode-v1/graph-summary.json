@@ -1,0 +1,64 @@
+{
+  "format": "epi-c3-encode-k562-promoter-graph-summary-v1",
+  "status": "candidate-prior-not-a-trained-model",
+  "input_sha256": {
+    "pilot_plan": "eb12e237bc459d24630c7399099393a17fe9bde2616b59508c78765790b6dbe3",
+    "foundation_stage1_plan": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+    "selected_peak_manifest": "29c279b55674873f88eeae62545f89aeeb748387bee23270de78daa04c1b85b4",
+    "verified_peak_manifest": "0dde35a9d78a832f3ab6227517d6c3e60f679f1a9ddce3710fb1c25c8f7a6dad",
+    "verified_atac_source": "c05143058178703c5ea72ac9604ce5c9cd9ca099b5a8332ebad5936efe69dfd0",
+    "gencode_v44_gtf": "01f817afed65feee863361b4baf30a95e722ee5c5d508ff77b04106ef7ba20d3",
+    "builder_script": "69b77cd07fd6d3005dc9f0bb8638b0378d54b0310676672bb022386eb170c667",
+    "real_edges": "8e411377dc6fae6dfb9c15a694530d5244949b4063246dbe3788440ab91b0ca0",
+    "shuffled_edges": "33d0b7fb548d40b628f90916bb4240d834a1e8e472991cb6a0146efdebb1f741"
+  },
+  "gene_mapping": {
+    "common_foundation_features": 7090,
+    "features_with_unambiguous_primary_gencode_transcripts": 6939,
+    "excluded_features_by_reason": {
+      "ambiguous_or_mismatched_gene": 151
+    },
+    "distinct_transcript_tss": 71983
+  },
+  "promoters": {
+    "promoter_radius_bp": 1000,
+    "promoter_atac_intersection_segments": 32867,
+    "genes_with_accessible_annotated_promoter": 6906
+  },
+  "graph": {
+    "candidate_edges": 51031,
+    "source_genes": 25,
+    "target_genes": 6846,
+    "edges_with_multiple_chip_experiments": 16899,
+    "pilot_target_sources_by_split": {
+      "train": 0,
+      "val": 0,
+      "test": 1
+    },
+    "excluded_chip_summit_rows": 47,
+    "excluded_atac_summit_rows": 0,
+    "source_genes_missing_unambiguous_annotation": 0,
+    "unique_self_edges_excluded": 11,
+    "usable_nonprimary_chip_rows_excluded": 108
+  },
+  "degree_preserving_shuffle": {
+    "seed": 20261113,
+    "attempted_swaps": 2082689,
+    "successful_swaps": 255155,
+    "requested_successful_swaps": 255155,
+    "real_edges_absent_from_shuffled": 17913,
+    "changed_fraction": 0.3510219278477788,
+    "nodes_with_different_in_degree": 0,
+    "nodes_with_different_out_degree": 0
+  },
+  "limitations": [
+    "The graph uses unpaired bulk K562 ChIP-seq and ATAC-seq, not matched single-cell or benchmark cultures.",
+    "Released public metadata exclude reported treatments and genetic modifications, but biological sample independence is not established.",
+    "Exact symbol and stable Ensembl matching with GENCODE v44 excludes unresolved aliases and non-primary or ambiguous loci.",
+    "A ChIP peak overlapping an accessible annotated promoter indicates binding evidence, not causal regulation or regulatory sign.",
+    "The K562 prior is a cross-cell-line transfer for RPE1 and does not establish RPE1-specific regulation.",
+    "This is a post-hoc graph candidate, not a held-out split, trained model, measured graph effect, or official cell-eval result.",
+    "One fixed-seed degree-preserving shuffled graph is reported; uniform sampling or convergence is not established.",
+    "All 40 pilot targets appear in K562 training and the shared foundation's cross-source exposure remains unaudited."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "format": "epi-c3-encode-k562-additional-degree-controls-v1",
+  "status": "structural-controls-only-not-model-results",
+  "input_sha256": {
+    "graph_summary": "06538583dcbef58718e9a80dc207f5a38633ae91466481d6bdfabc7435d94382",
+    "real_edges": "8e411377dc6fae6dfb9c15a694530d5244949b4063246dbe3788440ab91b0ca0",
+    "builder_script": "69b77cd07fd6d3005dc9f0bb8638b0378d54b0310676672bb022386eb170c667",
+    "control_script": "d291c94c0fed48d9121ffcad017268902bcf22aaed12edc3138d1bc921b0376d"
+  },
+  "additional_controls": [
+    {
+      "seed": 20261114,
+      "attempted_swaps": 2078214,
+      "successful_swaps": 255155,
+      "requested_successful_swaps": 255155,
+      "real_edges_absent_from_shuffled": 18027,
+      "changed_fraction": 0.35325586408261644,
+      "nodes_with_different_in_degree": 0,
+      "nodes_with_different_out_degree": 0,
+      "filename": "edges-shuffled-20261114.csv",
+      "sha256": "32dfe46816b6203939a9c8a91bc2d8ad7ea040d681068761aa2f51ba86689be3"
+    },
+    {
+      "seed": 20261115,
+      "attempted_swaps": 2083293,
+      "successful_swaps": 255155,
+      "requested_successful_swaps": 255155,
+      "real_edges_absent_from_shuffled": 17935,
+      "changed_fraction": 0.3514530383492387,
+      "nodes_with_different_in_degree": 0,
+      "nodes_with_different_out_degree": 0,
+      "filename": "edges-shuffled-20261115.csv",
+      "sha256": "206e081ed66b3b668222d6da9955235625c76e27712d9652bb9c03fcb93b87a8"
+    }
+  ],
+  "additional_controls_pairwise_different_edges": 17962,
+  "limitations": [
+    "Each control is one deterministic finite edge-swap chain; uniform sampling and convergence are not established.",
+    "Degree matching does not preserve biological edge evidence, and no model was trained or evaluated."
+  ]
+}
