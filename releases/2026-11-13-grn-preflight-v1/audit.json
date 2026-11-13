@@ -1,0 +1,142 @@
+{
+  "format": "epi-c3-grn-state-pilot-preflight-v1",
+  "status": "preflight-complete-not-a-model",
+  "scope": "Read-only compatibility analysis of frozen metadata and 64 pilot training controls",
+  "input_sha256": {
+    "pilot_plan": "eb12e237bc459d24630c7399099393a17fe9bde2616b59508c78765790b6dbe3",
+    "pilot_manifest": "6bb5a8d09b310dac58fccba46354370f0fd8a81b867a5491e79e0eecd20d0aac",
+    "pilot_dataset": "b71d3c1625e83ff4ecaef64bf9e91a7e354e6648e838419ee3bb8486dd399350",
+    "foundation_stage1_plan": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+    "legacy_graph_plan": "e22d57934f3f661361f266b350906eecaef875521f1686d1cd9ee1d9ea5d40da",
+    "graph_manifest": "edbf309cf0c91b2c1a6f813416cc52c3324b618bd17c1aadb25134390bdc498b",
+    "real_graph_edges": "a601fb795aee31688da7b49dce094c67d70760e03e13138046ce3353fd2713e4",
+    "shuffled_graph_edges": "e5c22300a8d89715f5b2213574d6e430f457055601291df30f5e0fef1ec01645",
+    "audit_script": "ed9ad36c80a35c0a195e40ea64063645f0d4af5b3db99beb1a81c1d68e36a47a"
+  },
+  "software_versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "h5py": "3.16.0"
+  },
+  "axis_and_graph": {
+    "shared_feature_count": 7094,
+    "shared_features_with_exact_ensembl_id_on_foundation_axis": 7090,
+    "hvg_count": 2000,
+    "hvgs_with_exact_ensembl_id_on_foundation_axis": 1997,
+    "missing_hvgs_with_foundation_symbol_fallback": 0,
+    "hvgs_on_legacy_graph_axis": 448,
+    "pilot_target_partitions": {
+      "train": {
+        "targets": 10,
+        "targets_on_hvg_axis": 3,
+        "targets_with_exact_ensembl_id_on_foundation_axis": 10,
+        "targets_on_legacy_graph_axis": 3,
+        "targets_directly_sourcing_real_edges": 0,
+        "targets_directly_sourcing_shuffled_edges": 0,
+        "targets_directly_sourcing_real_hvg_edges": 0,
+        "legacy_graph_target_split_overlaps": {
+          "train": 3,
+          "validation": 0,
+          "test": 0
+        }
+      },
+      "val": {
+        "targets": 2,
+        "targets_on_hvg_axis": 0,
+        "targets_with_exact_ensembl_id_on_foundation_axis": 2,
+        "targets_on_legacy_graph_axis": 1,
+        "targets_directly_sourcing_real_edges": 0,
+        "targets_directly_sourcing_shuffled_edges": 0,
+        "targets_directly_sourcing_real_hvg_edges": 0,
+        "legacy_graph_target_split_overlaps": {
+          "train": 0,
+          "validation": 1,
+          "test": 0
+        }
+      },
+      "test": {
+        "targets": 28,
+        "targets_on_hvg_axis": 5,
+        "targets_with_exact_ensembl_id_on_foundation_axis": 28,
+        "targets_on_legacy_graph_axis": 12,
+        "targets_directly_sourcing_real_edges": 0,
+        "targets_directly_sourcing_shuffled_edges": 0,
+        "targets_directly_sourcing_real_hvg_edges": 0,
+        "legacy_graph_target_split_overlaps": {
+          "train": 8,
+          "validation": 2,
+          "test": 2
+        }
+      },
+      "all_selected": {
+        "targets": 40,
+        "targets_on_hvg_axis": 8,
+        "targets_with_exact_ensembl_id_on_foundation_axis": 40,
+        "targets_on_legacy_graph_axis": 16,
+        "targets_directly_sourcing_real_edges": 0,
+        "targets_directly_sourcing_shuffled_edges": 0,
+        "targets_directly_sourcing_real_hvg_edges": 0,
+        "legacy_graph_target_split_overlaps": {
+          "train": 11,
+          "validation": 3,
+          "test": 2
+        }
+      }
+    },
+    "graph_full_axis": {
+      "real_edges": 4141,
+      "shuffled_edges": 4141,
+      "real_edges_absent_from_shuffled": 1294,
+      "shuffled_edges_absent_from_real": 1294,
+      "nodes_with_different_out_degree": 0,
+      "nodes_with_different_in_degree": 0
+    },
+    "graph_projected_to_pilot_hvgs": {
+      "real_edges": 626,
+      "shuffled_edges": 650,
+      "real_edges_absent_from_shuffled": 166,
+      "shuffled_edges_absent_from_real": 190,
+      "nodes_with_different_out_degree": 7,
+      "nodes_with_different_in_degree": 163
+    }
+  },
+  "same_source_training_row_overlap": {
+    "pilot_k562_training_treatment_rows": 4000,
+    "legacy_graph_partitions": {
+      "train": {
+        "overlapping_source_rows": 426,
+        "overlapping_perturbation_conditions": 11
+      },
+      "validation": {
+        "overlapping_source_rows": 189,
+        "overlapping_perturbation_conditions": 3
+      },
+      "test": {
+        "overlapping_source_rows": 128,
+        "overlapping_perturbation_conditions": 2
+      }
+    }
+  },
+  "training_control_normalization": {
+    "training_control_cells": 64,
+    "features": 2000,
+    "hvg_fraction_of_original_library": {
+      "minimum": 0.31418678133623773,
+      "mean": 0.3384159905106614,
+      "maximum": 0.367510087445321
+    },
+    "local_panel_vs_original_library_mean_absolute_difference": 0.3350139705665597,
+    "naive_log_input_vs_local_panel_mean_absolute_difference": 0.2814914376982455,
+    "naive_log_input_vs_local_panel_max_absolute_difference": 2.4726457549558543
+  },
+  "limitations": [
+    "This is a post-hoc preflight, not a trained model, independent benchmark or official cell-eval result.",
+    "The original source-file hashes in the frozen plans agree; the original source files were not rehashed by this audit.",
+    "Row overlap establishes membership in saved training and legacy evaluation inputs, not whether an optimizer consumed each row.",
+    "The candidate graph is K562 unpaired-bulk evidence, not RPE1-specific or proven causal regulation.",
+    "Foundation stage one is incomplete in the audited plan; no checkpoint or new perturbation model was loaded or trained.",
+    "Cross-source biological identity and condition overlap, including stage-one and replay sources, remain unverified.",
+    "The normalization diagnostic uses the first 64 RPE1 training controls in stored input order, not held-out treatment expression.",
+    "The planned Tahoe continuation is not connected to a candidate five-context isolation procedure; its full stream would expose at least 7562326 paper-test perturbation row occurrences."
+  ]
+}

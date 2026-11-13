@@ -1,0 +1,45 @@
+{
+  "format": "epi-c3-encode-k562-chip-selection-summary-v1",
+  "status": "source-selection-only-not-a-graph-or-model",
+  "input_sha256": {
+    "catalog_snapshot": "f9ccb328805da7a6ba127f772dc1ca086a2807ac7f4bd073281929c2885c83cf",
+    "pilot_plan": "eb12e237bc459d24630c7399099393a17fe9bde2616b59508c78765790b6dbe3",
+    "foundation_stage1_plan": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+    "k562_source": "d3269d9c863d96555eba768b42ab330cc1b57493cd33b4ac8fe7fbab8278f104",
+    "rpe1_source": "12d6a0cf9378c4f09411e27f0ce07b59f1d97731bd576d6fadf112f6f088d1a4",
+    "preparation_script": "0e799ad6b52cfcf4312c467546abd40665ef76d55548a1ccea7592a16ae3a18d",
+    "eligibility_script": "5eccf4f598048e7e65e135d9e279a4b447a9cc102949a14686412e828bd69854",
+    "selector_script": "3af9f278d254882460910b21b674b38f0cc720029e73598987bf10eae3b2fa0e",
+    "selected_file_manifest": "29c279b55674873f88eeae62545f89aeeb748387bee23270de78daa04c1b85b4"
+  },
+  "catalog_counts": {
+    "files": 1600,
+    "experiments": 430
+  },
+  "selection": {
+    "eligible_shared_targets": 565,
+    "eligible_targets_in_full_released_peak_catalog": 32,
+    "eligible_targets_with_selected_untreated_peak_experiment": 25,
+    "selected_experiments": 35,
+    "selected_peak_files": 35,
+    "selected_peak_bytes": 5438114,
+    "selected_output_types": {
+      "conservative IDR thresholded peaks": 35
+    },
+    "selected_sources_by_pilot_target_split": {
+      "train": 0,
+      "val": 0,
+      "test": 1
+    },
+    "rejected_candidate_file_counts": {
+      "experiment_not_in_untreated_catalog": 11
+    }
+  },
+  "limitations": [
+    "Experiment metadata describe untreated and unmodified K562 samples; independence of laboratory cultures from benchmark cells is not established.",
+    "Exact target labels and Ensembl IDs were required; labels include cofactors and are not all verified transcription factors.",
+    "Only two-context eligible single-gene conditions were considered; selection is post-hoc, not a new held-out split.",
+    "K562 evidence is cross-cell-line transfer for RPE1; ChIP binding is not causal regulation.",
+    "This is metadata selection, not a downloaded peak validation, graph, model, or cell-eval result."
+  ]
+}

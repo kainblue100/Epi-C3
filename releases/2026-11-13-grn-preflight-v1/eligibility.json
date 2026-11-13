@@ -1,0 +1,45 @@
+{
+  "format": "epi-c3-grn-pilot-eligible-targets-v1",
+  "status": "metadata-audit-complete-not-a-new-split",
+  "scope": "Exact-symbol graph coverage among metadata-eligible shared K562 and RPE1 perturbations",
+  "input_sha256": {
+    "k562_source": "d3269d9c863d96555eba768b42ab330cc1b57493cd33b4ac8fe7fbab8278f104",
+    "rpe1_source": "12d6a0cf9378c4f09411e27f0ce07b59f1d97731bd576d6fadf112f6f088d1a4",
+    "pilot_plan": "eb12e237bc459d24630c7399099393a17fe9bde2616b59508c78765790b6dbe3",
+    "foundation_stage1_plan": "77192b5b29c5b096b1b64dd17c3ec9d989acfba41ca97f4c5b7aebbcaf8550e9",
+    "legacy_graph_plan": "e22d57934f3f661361f266b350906eecaef875521f1686d1cd9ee1d9ea5d40da",
+    "graph_manifest": "edbf309cf0c91b2c1a6f813416cc52c3324b618bd17c1aadb25134390bdc498b",
+    "real_graph_edges": "a601fb795aee31688da7b49dce094c67d70760e03e13138046ce3353fd2713e4",
+    "pilot_preparation_script": "0e799ad6b52cfcf4312c467546abd40665ef76d55548a1ccea7592a16ae3a18d",
+    "common_preflight_script": "ed9ad36c80a35c0a195e40ea64063645f0d4af5b3db99beb1a81c1d68e36a47a",
+    "audit_script": "5eccf4f598048e7e65e135d9e279a4b447a9cc102949a14686412e828bd69854"
+  },
+  "software_versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "h5py": "3.16.0"
+  },
+  "eligibility": {
+    "minimum_single_perturbation_cells_per_context": 100,
+    "eligible_shared_targets": 565,
+    "eligible_targets_sourcing_real_graph_edges": 1,
+    "covered_targets_with_exact_ensembl_id_on_foundation_axis": 1,
+    "candidate_edges_from_eligible_graph_sources": 1,
+    "eligible_graph_sources_in_legacy_target_splits": {
+      "train": 1,
+      "validation": 0,
+      "test": 0
+    },
+    "eligible_graph_sources_outside_legacy_target_splits": 0,
+    "already_selected_pilot_targets_sourcing_real_graph_edges": 0
+  },
+  "limitations": [
+    "This is a post-hoc metadata feasibility audit, not a new held-out split or model result.",
+    "Target and graph-source matches are exact case-sensitive symbols without alias harmonization.",
+    "Only single-gene conditions with at least the frozen minimum number of cells in both source files are eligible.",
+    "The candidate graph is K562 unpaired-bulk evidence, not RPE1-specific or proven causal.",
+    "Some legacy validation and test outcomes have already been observed; this audit cannot establish a blind selection.",
+    "Foundation training and cross-source exposure isolation are incomplete; no checkpoint or held-out expression was read.",
+    "If the scheduled Tahoe stream is fully consumed, the separate tight audit found at least 7562326 exposed paper-test perturbation row occurrences."
+  ]
+}

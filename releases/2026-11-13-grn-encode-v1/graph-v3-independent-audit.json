@@ -1,0 +1,60 @@
+{
+  "format": "epi-c3-encode-k562-promoter-graph-independent-audit-v1",
+  "status": "structure-and-sampled-overlaps-verified-not-a-model",
+  "input_sha256": {
+    "graph_summary": "06538583dcbef58718e9a80dc207f5a38633ae91466481d6bdfabc7435d94382",
+    "real_edges": "8e411377dc6fae6dfb9c15a694530d5244949b4063246dbe3788440ab91b0ca0",
+    "shuffled_edges": "33d0b7fb548d40b628f90916bb4240d834a1e8e472991cb6a0146efdebb1f741",
+    "verified_peak_manifest": "0dde35a9d78a832f3ab6227517d6c3e60f679f1a9ddce3710fb1c25c8f7a6dad",
+    "additional_controls_summary": "cba775e15d6416876aa9791d1cc56470e842947ea9b9ce528bcfe09922341c23",
+    "gencode_v44_gtf": "01f817afed65feee863361b4baf30a95e722ee5c5d508ff77b04106ef7ba20d3",
+    "atac_peak": "47a71eaac0bfbad586a14d89971398c8922bf8864b5eeab4cb58d37ae925e0e9",
+    "audit_script": "e1879b38118ec293dc5ec42e0d1723e092390c55d126ecf359ea6a948bbdbd3f"
+  },
+  "structure": {
+    "real_edges": 51031,
+    "shuffled_edges": 51031,
+    "sources": 25,
+    "targets": 6846,
+    "degree_difference_nodes": 0,
+    "real_edges_absent_from_shuffled": 17913,
+    "changed_fraction": 0.3510219278477788,
+    "changed_edge_fraction_upper_bound_from_target_indegrees": 0.981481844369109,
+    "changed_edge_fraction_upper_bound_from_source_outdegrees": 0.6180360957065313,
+    "multiple_experiment_edges": 16899,
+    "sources_with_multiple_experiment_edges": 8
+  },
+  "spot_check": {
+    "seed": 20261113,
+    "sampled_edges": 50,
+    "sources_represented": 25,
+    "independent_three_way_overlap_checks_passed": 50,
+    "sampled_source_files": 33,
+    "sampling": "Up to two fixed-seed randomly selected edges per source gene."
+  },
+  "additional_control_checks": {
+    "controls": [
+      {
+        "seed": 20261114,
+        "edges": 51031,
+        "real_edges_absent_from_shuffled": 18027,
+        "changed_fraction": 0.35325586408261644,
+        "degree_difference_nodes": 0
+      },
+      {
+        "seed": 20261115,
+        "edges": 51031,
+        "real_edges_absent_from_shuffled": 17935,
+        "changed_fraction": 0.3514530383492387,
+        "degree_difference_nodes": 0
+      }
+    ],
+    "pairwise_different_edges": 17962
+  },
+  "limitations": [
+    "Three-way overlap was independently recomputed for the sampled edges only, not for every graph edge.",
+    "The source-only and target-only degree bounds do not incorporate both sets of constraints and may be unattainable.",
+    "Multiple distinct ENCODE experiments do not establish independent biological cultures.",
+    "This audit does not establish biological causality, clinical validity, or held-out prediction performance."
+  ]
+}

@@ -1,0 +1,5 @@
+# Preserve the original script bytes referenced by frozen SHA-256 values.
+*.py -text whitespace=cr-at-eol
+*.json text eol=lf
+*.md -text whitespace=cr-at-eol
+.gitattributes -text whitespace=cr-at-eol
